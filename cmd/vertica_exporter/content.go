@@ -5,12 +5,12 @@ import (
 	"html/template"
 	"net/http"
 
-	"github.com/burningalchemist/sql_exporter"
+	"github.com/vertica/vertica-exporter"
 	"github.com/prometheus/common/version"
 )
 
 const (
-	docsURL   = "https://github.com/burningalchemist/sql_exporter#readme"
+	docsURL   = "https://github.com/vertica/vertica-exporter#readme"
 	templates = `
     {{ define "page" -}}
       <html>
@@ -97,7 +97,7 @@ func HomeHandlerFunc(metricsPath string) func(http.ResponseWriter, *http.Request
 }
 
 // ConfigHandlerFunc is the HTTP handler for the `/config` page. It outputs the configuration marshaled in YAML format.
-func ConfigHandlerFunc(metricsPath string, exporter sql_exporter.Exporter) func(http.ResponseWriter, *http.Request) {
+func ConfigHandlerFunc(metricsPath string, exporter vertica_exporter.Exporter) func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		config, err := exporter.Config().YAML()
 		if err != nil {

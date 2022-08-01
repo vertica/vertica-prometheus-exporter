@@ -9,7 +9,7 @@ import (
 
 	_ "net/http/pprof"
 
-	"github.com/burningalchemist/sql_exporter"
+	"github.com/vertica/vertica-exporter"
 	_ "github.com/kardianos/minwinsvc"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
@@ -18,8 +18,8 @@ import (
 )
 
 const (
-	envConfigFile = "SQLEXPORTER_CONFIG"
-	envDebug      = "SQLEXPORTER_DEBUG"
+	envConfigFile = "VERTICAEXPORTER_CONFIG"
+	envDebug      = "VERTICAEXPORTER_DEBUG"
 )
 
 var (
@@ -27,12 +27,12 @@ var (
 	listenAddress = flag.String("web.listen-address", ":9399", "Address to listen on for web interface and telemetry")
 	metricsPath   = flag.String("web.metrics-path", "/metrics", "Path under which to expose metrics")
 	enableReload  = flag.Bool("web.enable-reload", false, "Enable reload collector data handler")
-	configFile    = flag.String("config.file", "sql_exporter.yml", "SQL Exporter configuration filename")
+	configFile    = flag.String("config.file", "vertica_exporter.yml", "vertica Exporter configuration filename")
 )
 
 func init() {
 	klog.InitFlags(nil)
-	prometheus.MustRegister(version.NewCollector("sql_exporter"))
+	prometheus.MustRegister(version.NewCollector("vertica_exporter"))
 }
 
 func main() {
@@ -46,7 +46,7 @@ func main() {
 		alsoLogToStderr.DefValue = "true"
 		_ = alsoLogToStderr.Value.Set("true")
 	}
-	// Override the config.file default with the SQLEXPORTER_CONFIG environment variable if set.
+	// Override the config.file default with the verticaEXPORTER_CONFIG environment variable if set.
 	if val, ok := os.LookupEnv(envConfigFile); ok {
 		*configFile = val
 	}
@@ -54,13 +54,13 @@ func main() {
 	flag.Parse()
 
 	if *showVersion {
-		fmt.Println(version.Print("sql_exporter"))
+		fmt.Println(version.Print("vertica_exporter"))
 		os.Exit(0)
 	}
 
-	klog.Infof("Starting SQL exporter %s %s", version.Info(), version.BuildContext())
+	klog.Infof("Starting vertica exporter %s %s", version.Info(), version.BuildContext())
 
-	exporter, err := sql_exporter.NewExporter(*configFile)
+	exporter, err := vertica_exporter.NewExporter(*configFile)
 	if err != nil {
 		klog.Fatalf("Error creating exporter: %s", err)
 	}
@@ -71,7 +71,7 @@ func main() {
 	http.HandleFunc("/config", ConfigHandlerFunc(*metricsPath, exporter))
 	http.Handle(*metricsPath, promhttp.InstrumentMetricHandler(prometheus.DefaultRegisterer, ExporterHandlerFor(exporter)))
 	// Expose exporter metrics separately, for debugging purposes.
-	http.Handle("/sql_exporter_metrics", promhttp.HandlerFor(prometheus.DefaultGatherer, promhttp.HandlerOpts{}))
+	http.Handle("/vertica_exporter_metrics", promhttp.HandlerFor(prometheus.DefaultGatherer, promhttp.HandlerOpts{}))
 
 	// Expose refresh handler to reload query collections
 	if *enableReload {
@@ -82,7 +82,7 @@ func main() {
 
 }
 
-func reloadCollectors(e sql_exporter.Exporter) func(http.ResponseWriter, *http.Request) {
+func reloadCollectors(e vertica_exporter.Exporter) func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		klog.Infof("Reloading the collectors...")
 		config := e.Config()
@@ -92,11 +92,11 @@ func reloadCollectors(e sql_exporter.Exporter) func(http.ResponseWriter, *http.R
 		}
 
 		// FIXME: Should be t.Collectors() instead of config.Collectors
-		target, err := sql_exporter.NewTarget("", "", string(config.Target.DSN), config.Collectors, nil, config.Globals)
+		target, err := vertica_exporter.NewTarget("", "", string(config.Target.DSN), config.Collectors, nil, config.Globals)
 		if err != nil {
 			klog.Errorf("Error creating a new target - %v", err)
 		}
-		e.UpdateTarget([]sql_exporter.Target{target})
+		e.UpdateTarget([]vertica_exporter.Target{target})
 
 		klog.Infof("Query collectors have been successfully reloaded")
 		w.WriteHeader(http.StatusNoContent)

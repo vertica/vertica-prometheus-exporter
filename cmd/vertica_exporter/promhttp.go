@@ -13,7 +13,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/burningalchemist/sql_exporter"
+	"github.com/vertica/vertica-exporter"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/common/expfmt"
 	"k8s.io/klog/v2"
@@ -27,7 +27,7 @@ const (
 )
 
 // ExporterHandlerFor returns an http.Handler for the provided Exporter.
-func ExporterHandlerFor(exporter sql_exporter.Exporter) http.Handler {
+func ExporterHandlerFor(exporter vertica_exporter.Exporter) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
 		ctx, cancel := contextFor(req, exporter)
 		defer cancel()
@@ -72,7 +72,7 @@ func ExporterHandlerFor(exporter sql_exporter.Exporter) http.Handler {
 	})
 }
 
-func contextFor(req *http.Request, exporter sql_exporter.Exporter) (context.Context, context.CancelFunc) {
+func contextFor(req *http.Request, exporter vertica_exporter.Exporter) (context.Context, context.CancelFunc) {
 	timeout := time.Duration(0)
 	configTimeout := time.Duration(exporter.Config().Globals.ScrapeTimeout)
 	// If a timeout is provided in the Prometheus header, use it.

@@ -1,4 +1,4 @@
-package sql_exporter
+package vertica_exporter
 
 import (
 	"context"
@@ -8,8 +8,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/burningalchemist/sql_exporter/config"
-	"github.com/burningalchemist/sql_exporter/errors"
+	"github.com/vertica/vertica-exporter/config"
+	"github.com/vertica/vertica-exporter/errors"
 	dto "github.com/prometheus/client_model/go"
 	"k8s.io/klog/v2"
 )

@@ -1,4 +1,4 @@
-package sql_exporter
+package vertica_exporter
 
 import (
 	"context"
@@ -8,7 +8,7 @@ import (
 	"os"
 	"sync"
 
-	"github.com/burningalchemist/sql_exporter/config"
+	"github.com/vertica/vertica-exporter/config"
 	"github.com/prometheus/client_golang/prometheus"
 	dto "github.com/prometheus/client_model/go"
 	"google.golang.org/protobuf/proto"

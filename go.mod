@@ -1,4 +1,4 @@
-module github.com/burningalchemist/sql_exporter
+module github.com/vertica/vertica-exporter
 
 go 1.16
 

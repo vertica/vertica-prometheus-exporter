@@ -1,4 +1,4 @@
-package sql_exporter
+package vertica_exporter
 
 import (
 	"context"

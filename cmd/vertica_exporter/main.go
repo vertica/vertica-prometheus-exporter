@@ -10,6 +10,7 @@ import (
 	_ "net/http/pprof"
 
 	"github.com/vertica/vertica-exporter"
+	
 	_ "github.com/kardianos/minwinsvc"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"

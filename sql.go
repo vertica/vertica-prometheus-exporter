@@ -7,12 +7,12 @@ import (
 	"strings"
 	"time"
 
-	_ "github.com/ClickHouse/clickhouse-go" // register the ClickHouse driver
-	_ "github.com/denisenkom/go-mssqldb"    // register the MS-SQL driver
-	_ "github.com/go-sql-driver/mysql"      // register the MySQL driver
-	_ "github.com/jackc/pgx/v4/stdlib"      // register the pgx PostgreSQL driver
-	_ "github.com/lib/pq"                   // register the libpq PostgreSQL driver
-	_ "github.com/snowflakedb/gosnowflake"  // register the Snowflake driver
+	// _ "github.com/ClickHouse/clickhouse-go" // register the ClickHouse driver
+	// _ "github.com/denisenkom/go-mssqldb"    // register the MS-SQL driver
+	// _ "github.com/go-sql-driver/mysql"      // register the MySQL driver
+	// _ "github.com/jackc/pgx/v4/stdlib"      // register the pgx PostgreSQL driver
+	// _ "github.com/lib/pq"                   // register the libpq PostgreSQL driver
+	// _ "github.com/snowflakedb/gosnowflake"  // register the Snowflake driver
 	_ "github.com/vertica/vertica-sql-go"   // register the Vertica driver
 
 	"k8s.io/klog/v2"
@@ -75,16 +75,16 @@ func OpenConnection(ctx context.Context, logContext, dsn string, maxConns, maxId
 	driver := dsn[:idx]
 
 	// Adjust DSN, where necessary.
-	switch driver {
-	case "mysql":
-		dsn = strings.TrimPrefix(dsn, "mysql://")
-	case "clickhouse":
-		dsn = "tcp://" + strings.TrimPrefix(dsn, "clickhouse://")
-	case "snowflake":
-		dsn = strings.TrimPrefix(dsn, "snowflake://")
-	case "pgx":
-		dsn = "postgres://" + strings.TrimPrefix(dsn, "pgx://")
-	}
+	// switch driver {
+	// case "mysql":
+	// 	dsn = strings.TrimPrefix(dsn, "mysql://")
+	// case "clickhouse":
+	// 	dsn = "tcp://" + strings.TrimPrefix(dsn, "clickhouse://")
+	// case "snowflake":
+	// 	dsn = strings.TrimPrefix(dsn, "snowflake://")
+	// case "pgx":
+	// 	dsn = "postgres://" + strings.TrimPrefix(dsn, "pgx://")
+	// }
 
 	// Open the DB handle in a separate goroutine so we can terminate early if the context closes.
 	var (

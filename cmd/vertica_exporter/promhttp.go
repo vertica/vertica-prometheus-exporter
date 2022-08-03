@@ -13,9 +13,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/vertica/vertica-exporter"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/common/expfmt"
+	"github.com/vertica/vertica-exporter"
 	"k8s.io/klog/v2"
 )
 

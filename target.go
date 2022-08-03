@@ -10,10 +10,10 @@ import (
 	"sync"
 	"time"
 
-	"github.com/vertica/vertica-exporter/config"
-	"github.com/vertica/vertica-exporter/errors"
 	"github.com/prometheus/client_golang/prometheus"
 	dto "github.com/prometheus/client_model/go"
+	"github.com/vertica/vertica-exporter/config"
+	"github.com/vertica/vertica-exporter/errors"
 	"google.golang.org/protobuf/proto"
 )
 

@@ -10,7 +10,7 @@ import (
 	_ "net/http/pprof"
 
 	"github.com/vertica/vertica-exporter"
-	
+
 	_ "github.com/kardianos/minwinsvc"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
@@ -25,7 +25,7 @@ const (
 
 var (
 	showVersion   = flag.Bool("version", false, "Print version information")
-	listenAddress = flag.String("web.listen-address", ":9399", "Address to listen on for web interface and telemetry")
+	listenAddress = flag.String("web.listen-address", ":9968", "Address to listen on for web interface and telemetry")
 	metricsPath   = flag.String("web.metrics-path", "/metrics", "Path under which to expose metrics")
 	enableReload  = flag.Bool("web.enable-reload", false, "Enable reload collector data handler")
 	configFile    = flag.String("config.file", "vertica_exporter.yml", "vertica Exporter configuration filename")
@@ -37,6 +37,7 @@ func init() {
 }
 
 func main() {
+
 	if os.Getenv(envDebug) != "" {
 		runtime.SetBlockProfileRate(1)
 		runtime.SetMutexProfileFraction(1)

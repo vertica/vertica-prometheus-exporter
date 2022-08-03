@@ -13,7 +13,7 @@ import (
 	// _ "github.com/jackc/pgx/v4/stdlib"      // register the pgx PostgreSQL driver
 	// _ "github.com/lib/pq"                   // register the libpq PostgreSQL driver
 	// _ "github.com/snowflakedb/gosnowflake"  // register the Snowflake driver
-	_ "github.com/vertica/vertica-sql-go"   // register the Vertica driver
+	_ "github.com/vertica/vertica-sql-go" // register the Vertica driver
 
 	"k8s.io/klog/v2"
 )

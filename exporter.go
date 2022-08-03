@@ -8,9 +8,9 @@ import (
 	"os"
 	"sync"
 
-	"github.com/vertica/vertica-exporter/config"
 	"github.com/prometheus/client_golang/prometheus"
 	dto "github.com/prometheus/client_model/go"
+	"github.com/vertica/vertica-exporter/config"
 	"google.golang.org/protobuf/proto"
 )
 
@@ -57,6 +57,7 @@ func NewExporter(configFile string) (Exporter, error) {
 	var targets []Target
 	if c.Target != nil {
 		target, err := NewTarget("", "", string(c.Target.DSN), c.Target.Collectors(), nil, c.Globals)
+		println(target)
 		if err != nil {
 			return nil, err
 		}
@@ -80,6 +81,7 @@ func NewExporter(configFile string) (Exporter, error) {
 		targets: targets,
 		ctx:     context.Background(),
 	}, nil
+
 }
 
 func (e *exporter) WithContext(ctx context.Context) Exporter {

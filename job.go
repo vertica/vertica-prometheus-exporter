@@ -3,9 +3,9 @@ package vertica_exporter
 import (
 	"fmt"
 
+	"github.com/prometheus/client_golang/prometheus"
 	"github.com/vertica/vertica-exporter/config"
 	"github.com/vertica/vertica-exporter/errors"
-	"github.com/prometheus/client_golang/prometheus"
 )
 
 // Job is a collection of targets with the same collectors applied.

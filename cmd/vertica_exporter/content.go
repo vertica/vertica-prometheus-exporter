@@ -5,8 +5,8 @@ import (
 	"html/template"
 	"net/http"
 
-	"github.com/vertica/vertica-exporter"
 	"github.com/prometheus/common/version"
+	"github.com/vertica/vertica-exporter"
 )
 
 const (

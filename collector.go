@@ -8,9 +8,9 @@ import (
 	"sync"
 	"time"
 
+	dto "github.com/prometheus/client_model/go"
 	"github.com/vertica/vertica-exporter/config"
 	"github.com/vertica/vertica-exporter/errors"
-	dto "github.com/prometheus/client_model/go"
 	"k8s.io/klog/v2"
 )
 

@@ -11,7 +11,7 @@ import (
 )
 
 //TestExporter function is checking vertica_exporter.yml file
-func TestExporter(t *testing.T){
+func Test_Exporter(t *testing.T){
 	yfile, err1 := ioutil.ReadFile("vertica_exporter.yml")
 	
 	if err1 != nil {
@@ -64,35 +64,43 @@ func TestExporter(t *testing.T){
 			case a:
 				if !a{
 					fmt.Println("collector_files not configured properly")
+					t.Fail()
 				}
 				
 			case b1:
 				if !b1{
 					fmt.Println("global:scrape_timeout_offset not configured properly")
+					t.Fail()
 				}
 			case b2:
 				if !b2{
 					fmt.Println("global:min_interval not configured properly")
+					t.Fail()
 				}
 			case b3:
 				if !b3{
 					fmt.Println("global:max_connection_lifetime not configured properly")
+					t.Fail()
 				}
 			case b4:
 				if !b4{
 					fmt.Println("global:max_connections not configured properly")
+					t.Fail()
 				}
 			case b5:
 				if !b5{
 					fmt.Println("global:max_idle_connections not configured properly")
+					t.Fail()
 				}
 			case c:
 				if !c{
 					fmt.Println("target:collectors not configured properly")
+					t.Fail()
 				}
 			case d:
 				if !d{
 					fmt.Println("target:data_source_name not configured properly")
+					t.Fail()
 				}
 		}
 	}
@@ -145,27 +153,33 @@ func Test_Verticastandard(t *testing.T){
 			case cp1:
 				if !cp1{
 					fmt.Println("collector_name not configured properly")
+					t.Fail()
 				}
 				
 			case cp2:
 				if !cp2{
 					fmt.Println("metrics:metric_name not configured properly")
+					t.Fail()
 				}
 			case cp3:
 				if !cp3{
 					fmt.Println("metrics:type not configured properly")
+					t.Fail()
 				}
 			case cp4:
 				if !cp4{
 					fmt.Println("metrics:help not configured properly")
+					t.Fail()
 				}
 			case cp5:
 				if !cp5{
 					fmt.Println("metrics:values not configured properly")
+					t.Fail()
 				}
 			case cp6:
 				if !cp6{
 					fmt.Println("metrics:query not configured properly")
+					t.Fail()
 				}
 		}
 	}

@@ -22,83 +22,85 @@ func Test_Exporter(t *testing.T){
 	if err != nil {
 			fmt.Println(fmt.Errorf("read: %w", err))
 		}
-	var a,b1,b2,b3,b4,b5,c,d bool
+	// cp is nothing but checkpoints.
+	var cp1,cp2,cp3,cp4,cp5,cp6,cp7,cp8 bool
+	//var a,b1,b2,b3,b4,b5,c,d bool
 	
 	for key, value := range data {
 		if key == "collector_files" && reflect.TypeOf(value).Kind() == reflect.Slice{
-			a = true
+			cp1 = true
 		}else if key == "global" {
 			for key2, value2 := range value.(map[interface {}]interface{}) {
 				if (key2 == "scrape_timeout_offset" && reflect.TypeOf(value2).Kind() == reflect.String){
-					b1 = true
+					cp2 = true
 					
 				}else if (key2 =="min_interval" && reflect.TypeOf(value2).Kind() == reflect.String){
-					b2 = true
+					cp3 = true
 					
 				}else if key2 =="max_connection_lifetime" && reflect.TypeOf(value2).Kind() == reflect.String{
-					b3 = true
+					cp4 = true
 					
 				}else if key2 =="max_connections" && reflect.TypeOf(value2).Kind() == reflect.Int{
-					b4 = true
+					cp5 = true
 					
 				}else if key2 =="max_idle_connections" && reflect.TypeOf(value2).Kind() == reflect.Int {
-					b5 = true	
+					cp6 = true	
 				}
 			}
 		}else if key =="target"{
 			for keys, values := range value.(map[interface {}]interface{}) {
 				if keys == "collectors" && reflect.TypeOf(values).Kind() == reflect.Slice{
-					c = true
+					cp7 = true
 				}else if keys == "data_source_name" && reflect.TypeOf(values).Kind() == reflect.String { 
 					s1:=values.(string)
 					if strings.HasPrefix(s1,"vertica://"){
-						d = true
+						cp8 = true
 					}
 				}
 			}
 		}
 	}
-	cps := []bool{a,b1,b2,b3,b4,b5,c,d}
+	cps := []bool{cp1,cp2,cp3,cp4,cp5,cp6,cp7,cp8}
 	for _,cp:= range cps{
 		switch cp {
-			case a:
-				if !a{
+			case cp1:
+				if !cp1{
 					fmt.Println("collector_files not configured properly")
 					t.Fail()
 				}
 				
-			case b1:
-				if !b1{
+			case cp2:
+				if !cp2{
 					fmt.Println("global:scrape_timeout_offset not configured properly")
 					t.Fail()
 				}
-			case b2:
-				if !b2{
+			case cp3:
+				if !cp3{
 					fmt.Println("global:min_interval not configured properly")
 					t.Fail()
 				}
-			case b3:
-				if !b3{
+			case cp4:
+				if !cp4{
 					fmt.Println("global:max_connection_lifetime not configured properly")
 					t.Fail()
 				}
-			case b4:
-				if !b4{
+			case cp5:
+				if !cp5{
 					fmt.Println("global:max_connections not configured properly")
 					t.Fail()
 				}
-			case b5:
-				if !b5{
+			case cp6:
+				if !cp6{
 					fmt.Println("global:max_idle_connections not configured properly")
 					t.Fail()
 				}
-			case c:
-				if !c{
+			case cp7:
+				if !cp7{
 					fmt.Println("target:collectors not configured properly")
 					t.Fail()
 				}
-			case d:
-				if !d{
+			case cp8:
+				if !cp8{
 					fmt.Println("target:data_source_name not configured properly")
 					t.Fail()
 				}

@@ -24,5 +24,5 @@ target:
 
 # Collector files specifies a list of globs. One collector definition is read from each matching file.
 collector_files: 
-# - "*.collector.yml"
-- "vertica_standard.collector.yml"
+- "*.collector.yml"
+# - "vertica_standard.collector.yml"

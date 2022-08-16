@@ -23,7 +23,6 @@ const (
 	envDebug      = "VERTICAEXPORTER_DEBUG"
 )
 
-
 var (
 	showVersion   = flag.Bool("version", false, "Print version information")
 	listenAddress = flag.String("web.listen-address", ":9968", "Address to listen on for web interface and telemetry")

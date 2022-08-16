@@ -23,12 +23,13 @@ const (
 	envDebug      = "VERTICAEXPORTER_DEBUG"
 )
 
+
 var (
 	showVersion   = flag.Bool("version", false, "Print version information")
 	listenAddress = flag.String("web.listen-address", ":9968", "Address to listen on for web interface and telemetry")
 	metricsPath   = flag.String("web.metrics-path", "/metrics", "Path under which to expose metrics")
 	enableReload  = flag.Bool("web.enable-reload", false, "Enable reload collector data handler")
-	configFile    = flag.String("config.file", "vertica_exporter.yml", "vertica Exporter configuration filename")
+	configFile    = flag.String("config.file", "metrices/vertica_exporter.yml", "vertica Exporter configuration filename")
 )
 
 func init() {

@@ -1,0 +1,19 @@
+keywords:
+  [collector_name,
+  metrics,
+  metric_name,
+  type,
+  help,
+  key_labels,
+  values,
+  query,
+  query_ref,
+  queries,
+  query_name]
+    
+
+types:
+  values: "Slice"
+  metrics: "Slice"
+  queries: "Slice"
+  key_labels: "Slice"

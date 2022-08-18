@@ -11,9 +11,33 @@ import (
 	"testing"
 )
 
+// fmt.Println(filepath.Abs("./examples/*.collector.yml"))
+// txt, _ := ioutil.ReadFile(path)
+func WalkMatch(root, pattern string) ([]string, error) {
+    var matches []string
+    err := filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
+        if err != nil {
+            return err
+        }
+        if info.IsDir() {
+            return nil
+        }
+        if matched, err := filepath.Match(pattern, filepath.Base(path)); err != nil {
+            return err
+        } else if matched {
+            matches = append(matches, path)
+        }
+        return nil
+    })
+    if err != nil {
+        return nil, err
+    }
+    return matches, nil
+}
+
 // TestExporter function is checking vertica_exporter.yml file
 func TestExporter(t *testing.T) {
-	yfile, err1 := ioutil.ReadFile("vertica_exporter.yml")
+	yfile,err1:= ioutil.ReadFile("../examples/vertica_exporter.yml")
 
 	if err1 != nil {
 		fmt.Println(fmt.Errorf("read: %w", err1))
@@ -110,29 +134,7 @@ func TestExporter(t *testing.T) {
 }
 
 
-// fmt.Println(filepath.Abs("./examples/*.collector.yml"))
-// txt, _ := ioutil.ReadFile(path)
-func WalkMatch(root, pattern string) ([]string, error) {
-    var matches []string
-    err := filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
-        if err != nil {
-            return err
-        }
-        if info.IsDir() {
-            return nil
-        }
-        if matched, err := filepath.Match(pattern, filepath.Base(path)); err != nil {
-            return err
-        } else if matched {
-            matches = append(matches, path)
-        }
-        return nil
-    })
-    if err != nil {
-        return nil, err
-    }
-    return matches, nil
-}
+
 
 
 func TestSamp(t *testing.T){

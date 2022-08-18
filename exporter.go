@@ -5,13 +5,12 @@ import (
 	"errors"
 	"flag"
 	"fmt"
-	"os"
-	"sync"
-
 	"github.com/prometheus/client_golang/prometheus"
 	dto "github.com/prometheus/client_model/go"
 	"github.com/vertica/vertica-exporter/config"
 	"google.golang.org/protobuf/proto"
+	"os"
+	"sync"
 )
 
 const envDsnOverride = "SQLEXPORTER_TARGET_DSN"

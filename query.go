@@ -4,7 +4,6 @@ import (
 	"context"
 	"database/sql"
 	"fmt"
-
 	"github.com/vertica/vertica-exporter/config"
 	"github.com/vertica/vertica-exporter/errors"
 	"k8s.io/klog/v2"

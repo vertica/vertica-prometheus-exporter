@@ -22,15 +22,15 @@ DOCKER_IMAGE_NAME   ?= vertica-exporter
 DOCKER_IMAGE_TAG    ?= $(subst /,-,$(shell git rev-parse --abbrev-ref HEAD))
 
 
-all: format build
+all: format test build
 
 style:
 	@echo ">> checking code style"
 	@! gofmt -d $(shell find . -path ./vendor -prune -o -name '*.go' -print) | grep '^'
 
-# test:
-# 	@echo ">> running tests"
-# 	@$(GO) test -short -race $(PREFIX)/Test
+test:
+	@echo ">> running tests"
+	@$(GO) test -short -race $(PREFIX)/Test
 
 format:
 	@echo ">> formatting code"

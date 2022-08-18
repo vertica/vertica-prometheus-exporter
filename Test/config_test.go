@@ -12,7 +12,7 @@ import (
 )
 
 // TestExporter function is checking vertica_exporter.yml file
-func Test_Exporter(t *testing.T) {
+func TestExporter(t *testing.T) {
 	yfile, err1 := ioutil.ReadFile("vertica_exporter.yml")
 
 	if err1 != nil {
@@ -135,7 +135,7 @@ func WalkMatch(root, pattern string) ([]string, error) {
 }
 
 
-func Test_samp(t *testing.T){
+func TestSamp(t *testing.T){
 	var path = "../examples/"
 	files, err := WalkMatch(path,"*.collector.yml")
 

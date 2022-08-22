@@ -3,7 +3,7 @@ collector_name: vertica_base_gauges
 metrics:
    - metric_name: vertica_license_size
      type: gauge
-     help: 'Total License size in MB'
+     help: 'Total License size in Bytes'
      values: [licsz]
      query: |
          select  /*+ LABEL(exporter_vertica_license_size MB) */ (license_size_bytes/1000000)::INTEGER as licsz

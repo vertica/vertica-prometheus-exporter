@@ -1,0 +1,16 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/vishal/Desktop/vertica-exporter'
+ 
+echo ">> formatting code"
+go fmt github.com/vertica/vertica-exporter github.com/vertica/vertica-exporter/Test github.com/vertica/vertica-exporter/cmd/vertica_exporter github.com/vertica/vertica-exporter/config github.com/vertica/vertica-exporter/errors
+ 
+echo ">> running tests"
+go test -short -race /home/vishal/Desktop/vertica-exporter/Test
+ 
+GOOS=linux \
+	GOARCH=amd64 \
+	go install github.com/prometheus/promu@v0.13.0
+echo ">> building binaries"
+/home/vishal/go/bin/promu build --prefix /home/vishal/Desktop/vertica-exporter
+make: Leaving directory '/home/vishal/Desktop/vertica-exporter'
+ 

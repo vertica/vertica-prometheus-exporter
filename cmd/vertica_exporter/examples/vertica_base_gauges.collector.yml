@@ -1,0 +1,43 @@
+collector_name: vertica_base_gauges
+# min_interval: 0s
+metrics:
+   - metric_name: vertica_license_size
+     type: gauge
+     help: 'Total License size in MB'
+     values: [licsz]
+     query: |
+         select  /*+ LABEL(exporter_vertica_license_size MB) */ (license_size_bytes/1000000)::INTEGER as licsz
+         from license_audits where audited_data='Total'
+         order by audit_end_timestamp desc limit 1;
+   - metric_name: vertica_database_size
+     type: gauge
+     help: 'Total Database size in MB'
+     values: [ttldbsz]
+     query: |
+         select  /*+ LABEL(exporter_vertica_total_database_size) */ (database_size_bytes/1000000)::INTEGER as ttldbsz
+         from license_audits where audited_data='Total'
+         order by audit_end_timestamp desc limit 1;
+   - metric_name: vertica_total_database_rows
+     type: gauge
+     help: 'Total Rows in Database from projection_storage table.'
+     values: [ttlrows]
+     query: |
+         select /*+ LABEL(exporter_vertica_total_projection_rows) */ sum(row_count) as ttlrows 
+         from projection_storage;
+   - metric_name: vertica_total_database_connections
+     type: gauge
+     help: 'Total Database Connections from sessions table.'
+     values: [ttlconns]
+     query: |
+         select /*+ LABEL(exporter_vertica_total_database_connections) */ count(*) as ttlconns 
+         from sessions;
+   - metric_name: vertica_state_not_up_or_standby
+     type: gauge
+     help: 'Nodes with state of other than UP or STANDBY.'
+     values: [down]
+     query: |
+         select count(*) as down 
+         from nodes 
+         where node_state!='UP' and node_state!='Standby';
+
+

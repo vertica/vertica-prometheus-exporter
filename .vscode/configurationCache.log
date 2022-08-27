@@ -1,1 +1,1 @@
-{"buildTargets":["all","build","crossbuild","crossbuild-checksum","crossbuild-release","crossbuild-tarballs","docker","format","promu","style","tarball","test","vet"],"launchTargets":[],"customConfigurationProvider":{"workspaceBrowse":{"browsePath":[],"compilerArgs":[]},"fileIndex":[]}}
+{"buildTargets":["all","build","docker","format","promu","style","tarball","test","vet"],"launchTargets":[],"customConfigurationProvider":{"workspaceBrowse":{"browsePath":[],"compilerArgs":[]},"fileIndex":[]}}

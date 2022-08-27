@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Aug 22 12:01:02 2022
+# Make data base, printed on Sat Aug 27 16:35:15 2022
 
 # Variables
 
@@ -19,7 +19,7 @@ NO_AT_BRIDGE = 1
 # environment
 GJS_DEBUG_OUTPUT = stderr
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-cef5ef52-db29-4696-9160-31e260551365.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-582b3fa0-c141-4e2c-88f7-3c5a409f02a7.sock
 # environment
 VSCODE_CWD = /home/vishal
 # makefile (from 'Makefile', line 16)
@@ -101,13 +101,13 @@ MAKEFILE_LIST := Makefile
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 5595
+VSCODE_PID = 3589
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # environment
-SESSION_MANAGER = local/unix:@/tmp/.ICE-unix/1916,unix/unix:/tmp/.ICE-unix/1916
+SESSION_MANAGER = local/unix:@/tmp/.ICE-unix/1905,unix/unix:/tmp/.ICE-unix/1905
 # automatic
 *F = $(notdir $*)
 # environment
@@ -145,7 +145,7 @@ MAKEFILES :=
 # makefile (from 'Makefile', line 19)
 PREFIX = $(shell pwd)
 # environment
-INVOCATION_ID = 801989e44bae46e1a950ad9200571cca
+INVOCATION_ID = e2ab4637be8b4141afe740d225e48d7a
 # environment
 VSCODE_LOG_NATIVE = false
 # environment
@@ -171,7 +171,7 @@ DOCKER_IMAGE_TAG = $(subst /,-,$(shell git rev-parse --abbrev-ref HEAD))
 # makefile
 .DEFAULT_GOAL := all
 # environment
-SYSTEMD_EXEC_PID = 1968
+SYSTEMD_EXEC_PID = 1959
 # environment
 HISTCONTROL = ignoredups
 # environment
@@ -187,15 +187,15 @@ MAKE_VERSION := 4.3
 # makefile (from 'Makefile', line 21)
 DOCKER_IMAGE_NAME = vertica-exporter
 # environment
-MANAGERPID = 1695
+MANAGERPID = 1688
 # environment
 which_declare = declare -f
 # environment
 DEBUGINFOD_URLS = https://debuginfod.fedoraproject.org/ 
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 5595
+GIO_LAUNCHED_DESKTOP_FILE_PID = 3589
 # environment
-SSH_AGENT_PID = 1860
+SSH_AGENT_PID = 1850
 # environment
 _ = /usr/bin/make
 # environment
@@ -205,7 +205,7 @@ pkgs = $(shell $(GO) list ./... | grep -v /vendor/)
 # environment
 GOMODCACHE = /home/vishal/go/pkg/mod
 # environment
-JOURNAL_STREAM = 8:30268
+JOURNAL_STREAM = 8:29325
 # environment
 XDG_SESSION_CLASS = user
 # environment
@@ -253,14 +253,6 @@ GDMSESSION = gnome-xorg
 
 # Files
 
-crossbuild: promu
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 52):
-	@echo ">> building crossbuild release"
-	@$(PROMU) crossbuild
-
 style:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
@@ -279,41 +271,20 @@ docker:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-18 11:52:48.332640139
- 
+#  Last modified 2022-08-26 12:32:44.853528833
 #  File has been updated.
 #  Successfully updated.
-
-crossbuild-checksum: promu
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 60):
-	@echo ">> calculating checksums for released tarballs"
-	@$(PROMU) checksum .tarballs
-
-crossbuild-release: promu crossbuild crossbuild-tarballs crossbuild-checksum
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
 
 promu:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 71):
+ 
+#  recipe to execute (from 'Makefile', line 74):
 	@GOOS=$(shell uname -s | tr A-Z a-z) \
 		GOARCH=$(subst x86_64,amd64,$(patsubst i%86,386,$(shell uname -m))) \
 		$(GO) install github.com/prometheus/promu@v0.13.0
-
-crossbuild-tarballs: promu
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 56):
-	@echo ">> building crossbuild release tarballs"
-	@$(PROMU) crossbuild tarballs
 
 # Not a target:
 .DEFAULT:
@@ -347,7 +318,10 @@ build: promu
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 44):
 	@echo ">> building binaries"
+	@echo $(PREFIX)
+	@echo $(PROMU)
 	@$(PROMU) build --prefix $(PREFIX)
+	
 
 test:
 #  Phony target (prerequisite of .PHONY).
@@ -358,14 +332,11 @@ test:
 	@echo ">> running tests"
 	@$(GO) test -short -race $(PREFIX)/Test
 
-tarball: promu
+tarball:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 48):
-	@echo ">> building release tarball"
-	@$(PROMU) tarball --prefix $(PREFIX) $(BIN_DIR)
 
 # 'override' directive
 format: .SHELLSTATUS := 0
@@ -410,19 +381,19 @@ format:
 #  File has not been updated.
 
 # files hash-table stats:
-# Load=17/1024=2%, Rehash=0, Collisions=0/54=0%
+# Load=13/1024=1%, Rehash=0, Collisions=0/42=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 45 / storage = 409 B / avg = 9 B
-# current buf: size = 8162 B / used = 409 B / count = 45 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 41 / storage = 339 B / avg = 8 B
+# current buf: size = 8162 B / used = 339 B / count = 41 / avg = 8 B
 
-# strcache performance: lookups = 84 / hit rate = 46%
+# strcache performance: lookups = 66 / hit rate = 37%
 # hash-table stats:
-# Load=45/8192=1%, Rehash=0, Collisions=0/84=0%
-# Finished Make data base on Mon Aug 22 12:01:02 2022
+# Load=41/8192=1%, Rehash=0, Collisions=0/66=0%
+# Finished Make data base on Sat Aug 27 16:35:15 2022
 
  

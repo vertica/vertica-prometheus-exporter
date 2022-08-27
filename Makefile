@@ -42,25 +42,28 @@ vet:
 
 build: promu
 	@echo ">> building binaries"
+	@echo $(PREFIX)
+	@echo $(PROMU)
 	@$(PROMU) build --prefix $(PREFIX)
+	
 
-tarball: promu
-	@echo ">> building release tarball"
-	@$(PROMU) tarball --prefix $(PREFIX) $(BIN_DIR)
+# tarball: promu
+# 	@echo ">> building release tarball"
+# 	@$(PROMU) tarball --prefix $(PREFIX) $(BIN_DIR)
 
-crossbuild: promu
-	@echo ">> building crossbuild release"
-	@$(PROMU) crossbuild
+# crossbuild: promu
+# 	@echo ">> building crossbuild release"
+# 	@$(PROMU) crossbuild
 
-crossbuild-tarballs: promu
-	@echo ">> building crossbuild release tarballs"
-	@$(PROMU) crossbuild tarballs
+# crossbuild-tarballs: promu
+# 	@echo ">> building crossbuild release tarballs"
+# 	@$(PROMU) crossbuild tarballs
 
-crossbuild-checksum: promu
-	@echo ">> calculating checksums for released tarballs"
-	@$(PROMU) checksum .tarballs
+# crossbuild-checksum: promu
+# 	@echo ">> calculating checksums for released tarballs"
+# 	@$(PROMU) checksum .tarballs
 
-crossbuild-release: promu crossbuild crossbuild-tarballs crossbuild-checksum
+# crossbuild-release: promu crossbuild crossbuild-tarballs crossbuild-checksum
 
 # docker:
 # 	@echo ">> building docker image"

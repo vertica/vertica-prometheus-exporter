@@ -1,24 +1,12 @@
-# FROM quay.io/prometheus/golang-builder AS builder
-# USER root
-# # Get vertica-exporter
-# ADD .   /go/src/github.com/vertica/vertica-exporter
-# WORKDIR /go/src/github.com/vertica/vertica-exporter
-
-# # Do makefile
-# RUN make
-
-# # Make image and copy build vertica-exporter
-# FROM        quay.io/prometheus/busybox:glibc
-# COPY        --from=builder /go/src/github.com/vertica/vertica-exporter/ /bin/
-# USER root
-# EXPOSE      9968
-# ENTRYPOINT  [ "/bin/vertica-exporter" ]
-
-
 FROM quay.io/prometheus/golang-builder AS builder
 USER root
-COPY . / /bin/
-WORKDIR  /bin/
+WORKDIR /bin/vertica-exporter
+COPY . .
 RUN make build
-EXPOSE      9968
-ENTRYPOINT  [ "vertica-exporter" ]
+
+FROM golang:1.18.5-alpine3.16 AS final
+WORKDIR /bin
+COPY --from=builder /bin/vertica-exporter/vertica-exporter  ./vertica-exporter
+COPY --from=builder /bin/vertica-exporter/examples  ./examples
+EXPOSE 9968
+ENTRYPOINT [ "vertica-exporter" ]

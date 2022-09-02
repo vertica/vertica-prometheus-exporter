@@ -6,7 +6,6 @@ import (
 	"path/filepath"
 	"strings"
 	"time"
-
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/common/model"
 	"gopkg.in/yaml.v3"
@@ -45,6 +44,7 @@ type Config struct {
 	Target         *TargetConfig      `yaml:"target,omitempty"`
 	Jobs           []*JobConfig       `yaml:"jobs,omitempty"`
 	Collectors     []*CollectorConfig `yaml:"collectors,omitempty"`
+	Retention      string           `yaml:"Retention"`
 
 	configFile string
 

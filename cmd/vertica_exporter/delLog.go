@@ -1,38 +1,50 @@
 package main
 
 import (
-	// "gopkg.in/yaml.v2"
+	"io/ioutil"
 
+	"gopkg.in/yaml.v2"
+
+	// "github.com/vertica/vertica-exporter/config"
 	"bufio"
 	"fmt"
 	"os"
-	"reflect"
+	// "reflect"
 	"regexp"
-	"strconv"
 	"strings"
 	"time"
 
-	"github.com/vertica/vertica-exporter/config"
 	"k8s.io/klog/v2"
+	"strconv"
 )
 
 func Updatelog(configFile string) {
 	// const Retention = "5days"
-	c, err1 := config.Load(configFile)
-	Retention := strings.Join(c.Retention, "")
-	re := regexp.MustCompile(`^[0-9]+`)
-	Rdays, _ := strconv.ParseInt(re.FindString(Retention), 0, 64)
-	fmt.Println("inside update", reflect.TypeOf(Rdays).Kind())
-	// yfile, err1 := ioutil.ReadFile("examples/vertica_exporter.yml")
+	// c, err1 := config.Load(configFile)
+	// Retention:=strings.Join(c.Retention,"")
+
+	// fmt.Println("inside update",reflect.TypeOf(Rdays).Kind())
+
+	yfile, err1 := ioutil.ReadFile("examples/vertica_exporter.yml")
 
 	if err1 != nil {
 		klog.Fatal(err1)
 	}
-	// data := make(map[string]interface{})
-	// err := yaml.Unmarshal(yfile, &data)
-	// if err != nil {
-	// 	klog.Fatal(err)
-	// }
+	data := make(map[string]interface{})
+	err := yaml.Unmarshal(yfile, &data)
+	if err != nil {
+		klog.Fatal(err)
+	}
+	var Rdays int64
+	for key, value := range data {
+		if key == "Retention" {
+			Retention:=fmt.Sprint(value)
+			re := regexp.MustCompile(`^[0-9]+`)
+			// fmt.Println(reflect.TypeOf(value).Kind(), "=", value)
+			Rdays,_=strconv.ParseInt(re.FindString(Retention), 0, 64)
+
+		}
+	}
 
 	f, err := os.Open("../../LogFile/myfile.log")
 	if err != nil {

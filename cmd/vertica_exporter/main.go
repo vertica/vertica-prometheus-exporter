@@ -9,7 +9,7 @@ import (
 
 	_ "net/http/pprof"
 
-	"github.com/vertica/vertica-exporter"
+	vertica_exporter "github.com/vertica/vertica-exporter"
 
 	_ "github.com/kardianos/minwinsvc"
 	"github.com/prometheus/client_golang/prometheus"
@@ -33,6 +33,9 @@ var (
 
 func init() {
 	klog.InitFlags(nil)
+	flag.Set("logtostderr", "false")
+	flag.Set("log_file", "../../LogFile/myfile.log")
+	flag.Parse()
 	prometheus.MustRegister(version.NewCollector("vertica_exporter"))
 }
 
@@ -61,7 +64,8 @@ func main() {
 	}
 
 	klog.Infof("Starting vertica exporter %s %s", version.Info(), version.BuildContext())
-
+	// update log file
+	Updatelog(*configFile)
 	exporter, err := vertica_exporter.NewExporter(*configFile)
 	if err != nil {
 		klog.Fatalf("Error creating exporter: %s", err)

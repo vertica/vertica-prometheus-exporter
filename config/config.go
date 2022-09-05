@@ -9,7 +9,9 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/common/model"
 	"gopkg.in/yaml.v3"
-	"k8s.io/klog/v2"
+	// "k8s.io/klog/v2"
+	log "github.com/sirupsen/logrus"
+	
 )
 
 // MaxInt32 defines the maximum value of allowed integers
@@ -18,7 +20,7 @@ const MaxInt32 int = 1<<31 - 1
 
 // Load attempts to parse the given config file and return a Config object.
 func Load(configFile string) (*Config, error) {
-	klog.Infof("Loading configuration from %s", configFile)
+	log.Info("Loading configuration from %s", configFile)
 	buf, err := ioutil.ReadFile(configFile)
 	if err != nil {
 		return nil, err
@@ -145,7 +147,7 @@ func (c *Config) loadCollectorFiles() error {
 			}
 
 			c.Collectors = append(c.Collectors, &cc)
-			klog.Infof("Loaded collector %q from %s", cc.Name, cf)
+			log.Info("Loaded collector %q from %s", cc.Name, cf)
 		}
 	}
 

@@ -6,7 +6,8 @@ import (
 	"fmt"
 	"github.com/vertica/vertica-exporter/config"
 	"github.com/vertica/vertica-exporter/errors"
-	"k8s.io/klog/v2"
+	// "k8s.io/klog/v2"
+	log "github.com/sirupsen/logrus"
 )
 
 // Query wraps a sql.Stmt and all the metrics populated from it. It helps extract keys and values from result rows.
@@ -130,7 +131,7 @@ func (q *Query) scanDest(rows *sql.Rows) ([]interface{}, errors.WithContext) {
 	if err != nil {
 		return nil, errors.Wrap(q.logContext, err)
 	}
-	klog.V(3).Infof(`returned_columns="%v"%v`, columns, q.logContext)
+	log.Info(`returned_columns="%v"%v`, columns, q.logContext)
 	// Create the slice to scan the row into, with strings for keys and float64s for values.
 	dest := make([]interface{}, 0, len(columns))
 	have := make(map[string]bool, len(q.columnTypes))
@@ -144,9 +145,9 @@ func (q *Query) scanDest(rows *sql.Rows) ([]interface{}, errors.WithContext) {
 			have[column] = true
 		default:
 			if column == "" {
-				klog.Warningf("[%s] Unnamed column %d returned by query", q.logContext, i)
+				log.Warn("[%s] Unnamed column %d returned by query", q.logContext, i)
 			} else {
-				klog.Warningf("[%s] Extra column %q returned by query", q.logContext, column)
+				log.Warn("[%s] Extra column %q returned by query", q.logContext, column)
 			}
 			dest = append(dest, new(interface{}))
 		}

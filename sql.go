@@ -22,45 +22,7 @@ import (
 // some driver supported DSN formats don't include a scheme), opens a DB handle ensuring early termination if the
 // context is closed (this is actually prevented by `database/sql` implementation), sets connection limits and returns
 // the handle.
-//
-// Below is the list of supported databases (with built in drivers) and their DSN formats. Unfortunately there is no
-// dynamic way of loading a third party driver library (as e.g. with Java classpaths), so any driver additions require
-// a binary rebuild.
-//
-// MySQL
-//
-// Using the https://github.com/go-sql-driver/mysql driver, DSN format (passed to the driver stripped of the `mysql://`
-// prefix):
-//   mysql://username:password@protocol(host:port)/dbname?param=value
-//
-// PostgreSQL (libpq driver)
-//
-// Using the https://godoc.org/github.com/lib/pq driver, DSN format (passed through to the driver unchanged):
-//   postgres://username:password@host:port/dbname?param=value
-//
-// PostgreSQL (pgx driver)
-//
-// Using the https://godoc.org/github.com/lib/pq driver, DSN format (passed through to the driver unchanged):
-//   pgx://username:password@host:port/dbname?param=value
-//
-///
-// MS SQL Server
-//
-// Using the https://github.com/denisenkom/go-mssqldb driver, DSN format (passed through to the driver unchanged):
-//   sqlserver://username:password@host:port/instance?param=value
-//
-// Clickhouse
-//
-// Using the https://github.com/kshvakov/clickhouse driver, DSN format (passed to the driver with the`clickhouse://`
-// prefix replaced with `tcp://`):
-//   clickhouse://host:port?username=username&password=password&database=dbname&param=value
-//
-// Snowflake
-//
-// Using the https://godoc.org/github.com/snowflakedb/gosnowflake driver, DSN format (passed to the driver stripped
-// of the `snowflake://`` prefix):
-//   snowflake://username:password@account/dbname?role=rolename&warehouse=warehousename&param=value
-//
+
 // Vertica
 //
 // Using the https://github.com/vertica/vertica-sql-go driver, DSN format (passed through to the driver unchanged):

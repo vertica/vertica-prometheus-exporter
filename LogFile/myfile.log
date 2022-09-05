@@ -1,0 +1,243 @@
+Log file created at: 2022/08/02 15:47:07
+Running on machine: LAPTOP-KA5SMGTO
+Binary: Built with gc go1.18.4 for windows/amd64
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I0902 15:47:07.332842   11328 config.go:22] Loading configuration from examples/vertica_exporter.yml
+I0902 15:47:07.335573   11328 config.go:149] Loaded collector "vertica_base_gauges" from examples\vertica_base_gauges.collector.yml
+I0902 15:47:07.336070   11328 config.go:149] Loaded collector "vertica_base_graphs" from examples\vertica_base_graphs.collector.yml
+I0902 15:47:07.344079   11328 main.go:69] Starting vertica exporter (version=, branch=, revision=) (go=go1.18.4, user=, date=)
+I0902 15:47:07.345498   11328 config.go:22] Loading configuration from examples/vertica_exporter.yml
+I0902 15:47:07.346850   11328 config.go:149] Loaded collector "vertica_base_gauges" from examples\vertica_base_gauges.collector.yml
+I0902 15:47:07.348849   11328 config.go:149] Loaded collector "vertica_base_graphs" from examples\vertica_base_graphs.collector.yml
+I0902 15:47:07.349843   11328 main.go:88] Listening on :9968
+Log file created at: 2022/09/02 15:48:53
+Running on machine: LAPTOP-KA5SMGTO
+Binary: Built with gc go1.18.4 for windows/amd64
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I0902 15:48:53.763853   10936 config.go:22] Loading configuration from examples/vertica_exporter.yml
+I0902 15:48:53.765978   10936 config.go:149] Loaded collector "vertica_base_gauges" from examples\vertica_base_gauges.collector.yml
+I0902 15:48:53.766499   10936 config.go:149] Loaded collector "vertica_base_graphs" from examples\vertica_base_graphs.collector.yml
+I0902 15:48:53.778873   10936 main.go:69] Starting vertica exporter (version=, branch=, revision=) (go=go1.18.4, user=, date=)
+I0902 15:48:53.778873   10936 config.go:22] Loading configuration from examples/vertica_exporter.yml
+I0902 15:48:53.782086   10936 config.go:149] Loaded collector "vertica_base_gauges" from examples\vertica_base_gauges.collector.yml
+I0902 15:48:53.783170   10936 config.go:149] Loaded collector "vertica_base_graphs" from examples\vertica_base_graphs.collector.yml
+I0902 15:48:53.784875   10936 main.go:88] Listening on :9968
+Log file created at: 2022/09/02 15:49:32
+Running on machine: LAPTOP-KA5SMGTO
+Binary: Built with gc go1.18.4 for windows/amd64
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I0902 15:49:32.618528    3696 config.go:22] Loading configuration from examples/vertica_exporter.yml
+I0902 15:49:32.620074    3696 config.go:149] Loaded collector "vertica_base_gauges" from examples\vertica_base_gauges.collector.yml
+I0902 15:49:32.620706    3696 config.go:149] Loaded collector "vertica_base_graphs" from examples\vertica_base_graphs.collector.yml
+I0902 15:49:32.629896    3696 main.go:68] Starting vertica exporter (version=, branch=, revision=) (go=go1.18.4, user=, date=)
+I0902 15:49:32.629896    3696 config.go:22] Loading configuration from examples/vertica_exporter.yml
+I0902 15:49:32.631106    3696 config.go:149] Loaded collector "vertica_base_gauges" from examples\vertica_base_gauges.collector.yml
+I0902 15:49:32.631612    3696 config.go:149] Loaded collector "vertica_base_graphs" from examples\vertica_base_graphs.collector.yml
+I0902 15:49:32.632728    3696 main.go:87] Listening on :9968
+Log file created at: 2022/09/02 15:50:50
+Running on machine: LAPTOP-KA5SMGTO
+Binary: Built with gc go1.18.4 for windows/amd64
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I0902 15:50:50.639123    8928 config.go:22] Loading configuration from examples/vertica_exporter.yml
+I0902 15:50:50.641122    8928 config.go:149] Loaded collector "vertica_base_gauges" from examples\vertica_base_gauges.collector.yml
+I0902 15:50:50.641622    8928 config.go:149] Loaded collector "vertica_base_graphs" from examples\vertica_base_graphs.collector.yml
+I0902 15:50:50.651633    8928 main.go:68] Starting vertica exporter (version=, branch=, revision=) (go=go1.18.4, user=, date=)
+I0902 15:50:50.651633    8928 config.go:22] Loading configuration from examples/vertica_exporter.yml
+I0902 15:50:50.653623    8928 config.go:149] Loaded collector "vertica_base_gauges" from examples\vertica_base_gauges.collector.yml
+I0902 15:50:50.654621    8928 config.go:149] Loaded collector "vertica_base_graphs" from examples\vertica_base_graphs.collector.yml
+I0902 15:50:50.655625    8928 main.go:87] Listening on :9968
+Log file created at: 2022/09/02 15:51:50
+Running on machine: LAPTOP-KA5SMGTO
+Binary: Built with gc go1.18.4 for windows/amd64
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I0902 15:51:50.398601    9500 main.go:66] Starting vertica exporter (version=, branch=, revision=) (go=go1.18.4, user=, date=)
+I0902 15:51:50.399600    9500 config.go:22] Loading configuration from examples/vertica_exporter.yml
+I0902 15:51:50.401178    9500 config.go:149] Loaded collector "vertica_base_gauges" from examples\vertica_base_gauges.collector.yml
+I0902 15:51:50.402259    9500 config.go:149] Loaded collector "vertica_base_graphs" from examples\vertica_base_graphs.collector.yml
+I0902 15:51:50.414650    9500 config.go:22] Loading configuration from examples/vertica_exporter.yml
+I0902 15:51:50.416065    9500 config.go:149] Loaded collector "vertica_base_gauges" from examples\vertica_base_gauges.collector.yml
+I0902 15:51:50.417295    9500 config.go:149] Loaded collector "vertica_base_graphs" from examples\vertica_base_graphs.collector.yml
+I0902 15:51:50.418063    9500 main.go:86] Listening on :9968
+Log file created at: 2022/09/02 15:52:44
+Running on machine: LAPTOP-KA5SMGTO
+Binary: Built with gc go1.18.4 for windows/amd64
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I0902 15:52:44.526970   18220 main.go:66] Starting vertica exporter (version=, branch=, revision=) (go=go1.18.4, user=, date=)
+I0902 15:52:44.527971   18220 config.go:22] Loading configuration from examples/vertica_exporter.yml
+I0902 15:52:44.529070   18220 config.go:149] Loaded collector "vertica_base_gauges" from examples\vertica_base_gauges.collector.yml
+I0902 15:52:44.529474   18220 config.go:149] Loaded collector "vertica_base_graphs" from examples\vertica_base_graphs.collector.yml
+I0902 15:52:44.540482   18220 config.go:22] Loading configuration from examples/vertica_exporter.yml
+I0902 15:52:44.541114   18220 config.go:149] Loaded collector "vertica_base_gauges" from examples\vertica_base_gauges.collector.yml
+I0902 15:52:44.542099   18220 config.go:149] Loaded collector "vertica_base_graphs" from examples\vertica_base_graphs.collector.yml
+I0902 15:52:44.543090   18220 main.go:86] Listening on :9968
+Log file created at: 2022/09/02 16:01:32
+Running on machine: LAPTOP-KA5SMGTO
+Binary: Built with gc go1.18.4 for windows/amd64
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I0902 16:01:32.284876   17380 main.go:66] Starting vertica exporter (version=, branch=, revision=) (go=go1.18.4, user=, date=)
+I0902 16:01:32.285876   17380 config.go:22] Loading configuration from examples/vertica_exporter.yml
+I0902 16:01:32.287377   17380 config.go:149] Loaded collector "vertica_base_gauges" from examples\vertica_base_gauges.collector.yml
+I0902 16:01:32.287878   17380 config.go:149] Loaded collector "vertica_base_graphs" from examples\vertica_base_graphs.collector.yml
+I0902 16:01:32.288875   17380 config.go:22] Loading configuration from examples/vertica_exporter.yml
+I0902 16:01:32.289879   17380 config.go:149] Loaded collector "vertica_base_gauges" from examples\vertica_base_gauges.collector.yml
+I0902 16:01:32.290875   17380 config.go:149] Loaded collector "vertica_base_graphs" from examples\vertica_base_graphs.collector.yml
+I0902 16:01:32.302388   17380 main.go:87] Listening on :9968
+Log file created at: 2022/09/02 16:02:13
+Running on machine: LAPTOP-KA5SMGTO
+Binary: Built with gc go1.18.4 for windows/amd64
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I0902 16:02:13.243882   14800 main.go:66] Starting vertica exporter (version=, branch=, revision=) (go=go1.18.4, user=, date=)
+I0902 16:02:13.245046   14800 config.go:22] Loading configuration from examples/vertica_exporter.yml
+I0902 16:02:13.246557   14800 config.go:149] Loaded collector "vertica_base_gauges" from examples\vertica_base_gauges.collector.yml
+I0902 16:02:13.247053   14800 config.go:149] Loaded collector "vertica_base_graphs" from examples\vertica_base_graphs.collector.yml
+I0902 16:02:13.259231   14800 config.go:22] Loading configuration from examples/vertica_exporter.yml
+I0902 16:02:13.260390   14800 config.go:149] Loaded collector "vertica_base_gauges" from examples\vertica_base_gauges.collector.yml
+I0902 16:02:13.261550   14800 config.go:149] Loaded collector "vertica_base_graphs" from examples\vertica_base_graphs.collector.yml
+I0902 16:02:13.264132   14800 main.go:86] Listening on :9968
+Log file created at: 2022/09/02 18:02:49
+Running on machine: LAPTOP-KA5SMGTO
+Binary: Built with gc go1.18.4 for windows/amd64
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I0902 18:02:49.875506   19180 main.go:66] Starting vertica exporter (version=, branch=, revision=) (go=go1.18.4, user=, date=)
+I0902 18:02:49.876006   19180 config.go:22] Loading configuration from examples/vertica_exporter.yml
+I0902 18:02:49.877006   19180 config.go:149] Loaded collector "vertica_base_gauges" from examples\vertica_base_gauges.collector.yml
+I0902 18:02:49.877506   19180 config.go:149] Loaded collector "vertica_base_graphs" from examples\vertica_base_graphs.collector.yml
+I0902 18:02:49.886517   19180 config.go:22] Loading configuration from examples/vertica_exporter.yml
+I0902 18:02:49.887508   19180 config.go:149] Loaded collector "vertica_base_gauges" from examples\vertica_base_gauges.collector.yml
+I0902 18:02:49.888010   19180 config.go:149] Loaded collector "vertica_base_graphs" from examples\vertica_base_graphs.collector.yml
+I0902 18:02:49.889507   19180 main.go:86] Listening on :9968
+Log file created at: 2022/09/02 18:44:00
+Running on machine: LAPTOP-KA5SMGTO
+Binary: Built with gc go1.18.4 for windows/amd64
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I0902 18:44:00.116798   15472 main.go:66] Starting vertica exporter (version=, branch=, revision=) (go=go1.18.4, user=, date=)
+I0902 18:44:00.126896   15472 config.go:21] Loading configuration from examples/vertica_exporter.yml
+I0902 18:44:00.128919   15472 config.go:148] Loaded collector "vertica_base_gauges" from examples\vertica_base_gauges.collector.yml
+I0902 18:44:00.128919   15472 config.go:148] Loaded collector "vertica_base_graphs" from examples\vertica_base_graphs.collector.yml
+I0902 18:44:00.130919   15472 main.go:86] Listening on :9968
+Log file created at: 2022/09/02 18:48:17
+Running on machine: LAPTOP-KA5SMGTO
+Binary: Built with gc go1.18.4 for windows/amd64
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I0902 18:48:17.546440   19616 main.go:66] Starting vertica exporter (version=, branch=, revision=) (go=go1.18.4, user=, date=)
+I0902 18:48:17.556637   19616 config.go:21] Loading configuration from examples/vertica_exporter.yml
+I0902 18:48:17.558851   19616 config.go:148] Loaded collector "vertica_base_gauges" from examples\vertica_base_gauges.collector.yml
+I0902 18:48:17.559851   19616 config.go:148] Loaded collector "vertica_base_graphs" from examples\vertica_base_graphs.collector.yml
+I0902 18:48:17.560349   19616 main.go:86] Listening on :9968
+Log file created at: 2022/09/02 18:48:44
+Running on machine: LAPTOP-KA5SMGTO
+Binary: Built with gc go1.18.4 for windows/amd64
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I0902 18:48:44.424036    8576 main.go:66] Starting vertica exporter (version=, branch=, revision=) (go=go1.18.4, user=, date=)
+I0902 18:48:44.439187    8576 config.go:21] Loading configuration from examples/vertica_exporter.yml
+I0902 18:48:44.441372    8576 config.go:148] Loaded collector "vertica_base_gauges" from examples\vertica_base_gauges.collector.yml
+I0902 18:48:44.442377    8576 config.go:148] Loaded collector "vertica_base_graphs" from examples\vertica_base_graphs.collector.yml
+I0902 18:48:44.443878    8576 main.go:86] Listening on :9968
+Log file created at: 2022/09/02 18:49:09
+Running on machine: LAPTOP-KA5SMGTO
+Binary: Built with gc go1.18.4 for windows/amd64
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I0902 18:49:09.131253    5164 main.go:66] Starting vertica exporter (version=, branch=, revision=) (go=go1.18.4, user=, date=)
+I0902 18:49:09.143791    5164 config.go:21] Loading configuration from examples/vertica_exporter.yml
+F0902 18:49:09.145750    5164 main.go:71] Error creating exporter: yaml: unmarshal errors:
+  line 29: cannot unmarshal !!str `15days` into []string
+goroutine 1 [running]:
+k8s.io/klog/v2/internal/dbg.Stacks(0x1)
+	C:/Users/User/go/pkg/mod/k8s.io/klog/v2@v2.70.1/internal/dbg/dbg.go:35 +0x8a
+k8s.io/klog/v2.(*loggingT).output(0x155a720, 0x3, 0x0, 0xc0001ed420, 0x1, {0x12e5c42?, 0x1?}, 0x1567400?, 0x0)
+	C:/Users/User/go/pkg/mod/k8s.io/klog/v2@v2.70.1/klog.go:940 +0x6af
+k8s.io/klog/v2.(*loggingT).printfDepth(0x155a720, 0x3?, 0x0, {0x0, 0x0}, 0x1520160?, {0x1150fda, 0x1b}, {0xc00019b580, 0x1, ...})
+	C:/Users/User/go/pkg/mod/k8s.io/klog/v2@v2.70.1/klog.go:737 +0x1f3
+k8s.io/klog/v2.(*loggingT).printf(...)
+	C:/Users/User/go/pkg/mod/k8s.io/klog/v2@v2.70.1/klog.go:719
+k8s.io/klog/v2.Fatalf(...)
+	C:/Users/User/go/pkg/mod/k8s.io/klog/v2@v2.70.1/klog.go:1618
+main.main()
+	D:/shilpa_data/microfocus/VerticaExpo/vertica-exporter/cmd/vertica_exporter/main.go:71 +0x50d
+
+goroutine 36 [select]:
+k8s.io/klog/v2.(*flushDaemon).run.func1()
+	C:/Users/User/go/pkg/mod/k8s.io/klog/v2@v2.70.1/klog.go:1136 +0x11e
+created by k8s.io/klog/v2.(*flushDaemon).run
+	C:/Users/User/go/pkg/mod/k8s.io/klog/v2@v2.70.1/klog.go:1132 +0x178
+Log file created at: 2022/09/02 18:55:13
+Running on machine: LAPTOP-KA5SMGTO
+Binary: Built with gc go1.18.4 for windows/amd64
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I0902 18:55:13.193259   18800 main.go:66] Starting vertica exporter (version=, branch=, revision=) (go=go1.18.4, user=, date=)
+I0902 18:55:13.207095   18800 config.go:21] Loading configuration from examples/vertica_exporter.yml
+F0902 18:55:13.208152   18800 main.go:71] Error creating exporter: yaml: unmarshal errors:
+  line 29: cannot unmarshal !!str `15days` into []string
+goroutine 1 [running]:
+k8s.io/klog/v2/internal/dbg.Stacks(0x1)
+	C:/Users/User/go/pkg/mod/k8s.io/klog/v2@v2.70.1/internal/dbg/dbg.go:35 +0x8a
+k8s.io/klog/v2.(*loggingT).output(0x10fa720, 0x3, 0x0, 0xc0002b6070, 0x1, {0xe85c62?, 0x1?}, 0x1107400?, 0x0)
+	C:/Users/User/go/pkg/mod/k8s.io/klog/v2@v2.70.1/klog.go:940 +0x6af
+k8s.io/klog/v2.(*loggingT).printfDepth(0x10fa720, 0x3?, 0x0, {0x0, 0x0}, 0x10c0160?, {0xcf0fda, 0x1b}, {0xc000285260, 0x1, ...})
+	C:/Users/User/go/pkg/mod/k8s.io/klog/v2@v2.70.1/klog.go:737 +0x1f3
+k8s.io/klog/v2.(*loggingT).printf(...)
+	C:/Users/User/go/pkg/mod/k8s.io/klog/v2@v2.70.1/klog.go:719
+k8s.io/klog/v2.Fatalf(...)
+	C:/Users/User/go/pkg/mod/k8s.io/klog/v2@v2.70.1/klog.go:1618
+main.main()
+	D:/shilpa_data/microfocus/VerticaExpo/vertica-exporter/cmd/vertica_exporter/main.go:71 +0x50d
+
+goroutine 37 [select]:
+k8s.io/klog/v2.(*flushDaemon).run.func1()
+	C:/Users/User/go/pkg/mod/k8s.io/klog/v2@v2.70.1/klog.go:1136 +0x11e
+created by k8s.io/klog/v2.(*flushDaemon).run
+	C:/Users/User/go/pkg/mod/k8s.io/klog/v2@v2.70.1/klog.go:1132 +0x178
+Log file created at: 2022/09/02 19:02:02
+Running on machine: LAPTOP-KA5SMGTO
+Binary: Built with gc go1.18.4 for windows/amd64
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I0902 19:02:02.598945    7112 main.go:66] Starting vertica exporter (version=, branch=, revision=) (go=go1.18.4, user=, date=)
+I0902 19:02:02.610684    7112 config.go:21] Loading configuration from examples/vertica_exporter.yml
+F0902 19:02:02.611922    7112 main.go:71] Error creating exporter: yaml: unmarshal errors:
+  line 29: cannot unmarshal !!str `15days` into []string
+goroutine 1 [running]:
+k8s.io/klog/v2/internal/dbg.Stacks(0x1)
+	C:/Users/User/go/pkg/mod/k8s.io/klog/v2@v2.70.1/internal/dbg/dbg.go:35 +0x8a
+k8s.io/klog/v2.(*loggingT).output(0x19ca700, 0x3, 0x0, 0xc0001eb490, 0x1, {0x1755c22?, 0x1?}, 0x19d73e0?, 0x0)
+	C:/Users/User/go/pkg/mod/k8s.io/klog/v2@v2.70.1/klog.go:940 +0x6af
+k8s.io/klog/v2.(*loggingT).printfDepth(0x19ca700, 0x3?, 0x0, {0x0, 0x0}, 0x1990160?, {0x15c0fe1, 0x1b}, {0xc000197920, 0x1, ...})
+	C:/Users/User/go/pkg/mod/k8s.io/klog/v2@v2.70.1/klog.go:737 +0x1f3
+k8s.io/klog/v2.(*loggingT).printf(...)
+	C:/Users/User/go/pkg/mod/k8s.io/klog/v2@v2.70.1/klog.go:719
+k8s.io/klog/v2.Fatalf(...)
+	C:/Users/User/go/pkg/mod/k8s.io/klog/v2@v2.70.1/klog.go:1618
+main.main()
+	D:/shilpa_data/microfocus/VerticaExpo/vertica-exporter/cmd/vertica_exporter/main.go:71 +0x50d
+
+goroutine 38 [select]:
+k8s.io/klog/v2.(*flushDaemon).run.func1()
+	C:/Users/User/go/pkg/mod/k8s.io/klog/v2@v2.70.1/klog.go:1136 +0x11e
+created by k8s.io/klog/v2.(*flushDaemon).run
+	C:/Users/User/go/pkg/mod/k8s.io/klog/v2@v2.70.1/klog.go:1132 +0x178
+Log file created at: 2022/09/02 19:03:00
+Running on machine: LAPTOP-KA5SMGTO
+Binary: Built with gc go1.18.4 for windows/amd64
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I0902 19:03:00.691098   17600 main.go:66] Starting vertica exporter (version=, branch=, revision=) (go=go1.18.4, user=, date=)
+I0902 19:03:00.704668   17600 config.go:21] Loading configuration from examples/vertica_exporter.yml
+I0902 19:03:00.706324   17600 config.go:148] Loaded collector "vertica_base_gauges" from examples\vertica_base_gauges.collector.yml
+I0902 19:03:00.707449   17600 config.go:148] Loaded collector "vertica_base_graphs" from examples\vertica_base_graphs.collector.yml
+I0902 19:03:00.708087   17600 main.go:86] Listening on :9968
+Log file created at: 2022/09/02 19:03:49
+Running on machine: LAPTOP-KA5SMGTO
+Binary: Built with gc go1.18.4 for windows/amd64
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I0902 19:03:49.006050   20416 main.go:66] Starting vertica exporter (version=, branch=, revision=) (go=go1.18.4, user=, date=)
+I0902 19:03:49.018596   20416 config.go:21] Loading configuration from examples/vertica_exporter.yml
+I0902 19:03:49.020107   20416 config.go:148] Loaded collector "vertica_base_gauges" from examples\vertica_base_gauges.collector.yml
+I0902 19:03:49.020613   20416 config.go:148] Loaded collector "vertica_base_graphs" from examples\vertica_base_graphs.collector.yml
+I0902 19:03:49.021610   20416 main.go:86] Listening on :9968
+Log file created at: 2022/09/02 19:04:33
+Running on machine: LAPTOP-KA5SMGTO
+Binary: Built with gc go1.18.4 for windows/amd64
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I0902 19:04:33.190408   18496 main.go:66] Starting vertica exporter (version=, branch=, revision=) (go=go1.18.4, user=, date=)
+I0902 19:04:33.207893   18496 config.go:21] Loading configuration from examples/vertica_exporter.yml
+I0902 19:04:33.209122   18496 config.go:148] Loaded collector "vertica_base_gauges" from examples\vertica_base_gauges.collector.yml
+I0902 19:04:33.210232   18496 config.go:148] Loaded collector "vertica_base_graphs" from examples\vertica_base_graphs.collector.yml
+I0902 19:04:33.211616   18496 main.go:86] Listening on :9968

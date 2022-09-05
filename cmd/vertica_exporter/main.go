@@ -9,13 +9,15 @@ import (
 
 	_ "net/http/pprof"
 
-	"github.com/vertica/vertica-exporter"
+	vertica_exporter "github.com/vertica/vertica-exporter"
 
 	_ "github.com/kardianos/minwinsvc"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/prometheus/common/version"
-	"k8s.io/klog/v2"
+	// "k8s.io/klog/v2"
+	log "github.com/sirupsen/logrus"
+	// "gopkg.in/natefinch/lumberjack.v2"
 )
 
 const (
@@ -32,12 +34,16 @@ var (
 )
 
 func init() {
-	klog.InitFlags(nil)
+	log.SetFormatter(&log.TextFormatter{
+		// DisableColors: true,
+		FullTimestamp: true,
+	})
+	
+	// log.SetLevel(log.InfoLevel)
 	prometheus.MustRegister(version.NewCollector("vertica_exporter"))
 }
 
 func main() {
-
 	if os.Getenv(envDebug) != "" {
 		runtime.SetBlockProfileRate(1)
 		runtime.SetMutexProfileFraction(1)
@@ -60,13 +66,13 @@ func main() {
 		os.Exit(0)
 	}
 
-	klog.Infof("Starting vertica exporter %s %s", version.Info(), version.BuildContext())
-
+	log.Infof("Starting vertica exporter %s %s", version.Info(), version.BuildContext())
+	
 	exporter, err := vertica_exporter.NewExporter(*configFile)
 	if err != nil {
-		klog.Fatalf("Error creating exporter: %s", err)
+		log.Fatal("Error creating exporter: %s", err)
 	}
-
+	SetupLogger(*configFile)
 	// Setup and start webserver.
 	http.HandleFunc("/healthz", func(w http.ResponseWriter, r *http.Request) { http.Error(w, "OK", http.StatusOK) })
 	http.HandleFunc("/", HomeHandlerFunc(*metricsPath))
@@ -79,28 +85,30 @@ func main() {
 	if *enableReload {
 		http.HandleFunc("/reload", reloadCollectors(exporter))
 	}
-	klog.Infof("Listening on %s", *listenAddress)
-	klog.Fatal(http.ListenAndServe(*listenAddress, nil))
+	log.Info("Listening on %s", *listenAddress)
+
+	log.Fatal(http.ListenAndServe(*listenAddress, nil))
+	// SetupLogger()
 
 }
 
 func reloadCollectors(e vertica_exporter.Exporter) func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-		klog.Infof("Reloading the collectors...")
+		log.Info("Reloading the collectors...")
 		config := e.Config()
 		if err := config.ReloadCollectorFiles(); err != nil {
-			klog.Errorf("Error reloading collector configs - %v", err)
+			log.Error("Error reloading collector configs - %v", err)
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 		}
 
 		// FIXME: Should be t.Collectors() instead of config.Collectors
 		target, err := vertica_exporter.NewTarget("", "", string(config.Target.DSN), config.Collectors, nil, config.Globals)
 		if err != nil {
-			klog.Errorf("Error creating a new target - %v", err)
+			log.Error("Error creating a new target - %v", err)
 		}
 		e.UpdateTarget([]vertica_exporter.Target{target})
 
-		klog.Infof("Query collectors have been successfully reloaded")
+		log.Info("Query collectors have been successfully reloaded")
 		w.WriteHeader(http.StatusNoContent)
 	}
 }

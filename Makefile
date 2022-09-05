@@ -42,8 +42,6 @@ vet:
 
 build: promu
 	@echo ">> building binaries"
-	@echo $(PREFIX)
-	@echo $(PROMU)
 	@$(PROMU) build --prefix $(PREFIX)
 	
 

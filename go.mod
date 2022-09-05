@@ -14,8 +14,10 @@ require (
 	github.com/prometheus/client_golang v1.12.2
 	github.com/prometheus/client_model v0.2.0
 	github.com/prometheus/common v0.35.0
+	github.com/sirupsen/logrus v1.9.0 // indirect
 	github.com/vertica/vertica-sql-go v1.2.2
 	google.golang.org/protobuf v1.28.0
+	gopkg.in/natefinch/lumberjack.v2 v2.0.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0
 	gopkg.in/yaml.v3 v3.0.1
 	k8s.io/klog/v2 v2.70.1

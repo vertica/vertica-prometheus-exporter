@@ -131,7 +131,7 @@ func (q *Query) scanDest(rows *sql.Rows) ([]interface{}, errors.WithContext) {
 	if err != nil {
 		return nil, errors.Wrap(q.logContext, err)
 	}
-	log.Info(`returned_columns="%v"%v`, columns, q.logContext)
+	log.Infof(`returned_columns="%v"%v`, columns, q.logContext)
 	// Create the slice to scan the row into, with strings for keys and float64s for values.
 	dest := make([]interface{}, 0, len(columns))
 	have := make(map[string]bool, len(q.columnTypes))
@@ -145,9 +145,9 @@ func (q *Query) scanDest(rows *sql.Rows) ([]interface{}, errors.WithContext) {
 			have[column] = true
 		default:
 			if column == "" {
-				log.Warn("[%s] Unnamed column %d returned by query", q.logContext, i)
+				log.Warnf("[%s] Unnamed column %d returned by query", q.logContext, i)
 			} else {
-				log.Warn("[%s] Extra column %q returned by query", q.logContext, column)
+				log.Warnf("[%s] Extra column %q returned by query", q.logContext, column)
 			}
 			dest = append(dest, new(interface{}))
 		}

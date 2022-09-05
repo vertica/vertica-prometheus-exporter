@@ -37,7 +37,7 @@ func ExporterHandlerFor(exporter vertica_exporter.Exporter) http.Handler {
 		gatherer := prometheus.Gatherers{exporter.WithContext(ctx)}
 		mfs, err := gatherer.Gather()
 		if err != nil {
-			log.Info("Error gathering metrics:", err)
+			log.Infof("Error gathering metrics:", err)
 			if len(mfs) == 0 {
 				http.Error(w, "No metrics gathered, "+err.Error(), http.StatusInternalServerError)
 				return
@@ -53,7 +53,7 @@ func ExporterHandlerFor(exporter vertica_exporter.Exporter) http.Handler {
 		for _, mf := range mfs {
 			if err := enc.Encode(mf); err != nil {
 				errs = append(errs, err)
-				log.Info("Error encoding metric family %q: %s", mf.GetName(), err)
+				log.Infof("Error encoding metric family %q: %s", mf.GetName(), err)
 			}
 		}
 		if closer, ok := writer.(io.Closer); ok {
@@ -84,11 +84,11 @@ func contextFor(req *http.Request, exporter vertica_exporter.Exporter) (context.
 			switch {
 			case errors.Is(parseError, strconv.ErrSyntax):
 				{
-					log.Error("Failed to parse timeout from Prometheus header: unsupported value")
+					log.Errorf("Failed to parse timeout from Prometheus header: unsupported value")
 				}
 			case errors.Is(parseError, strconv.ErrRange):
 				{
-					log.Error("Failed to parse timeout from Prometheus header: value is out of range")
+					log.Errorf("Failed to parse timeout from Prometheus header: value is out of range")
 				}
 			}
 		} else {
@@ -97,7 +97,7 @@ func contextFor(req *http.Request, exporter vertica_exporter.Exporter) (context.
 			// Subtract the timeout offset, unless the result would be negative or zero.
 			timeoutOffset := time.Duration(exporter.Config().Globals.TimeoutOffset)
 			if timeoutOffset > timeout {
-				log.Error("global.scrape_timeout_offset (`%s`) is greater than Prometheus' scraping timeout (`%s`), ignoring",
+				log.Errorf("global.scrape_timeout_offset (`%s`) is greater than Prometheus' scraping timeout (`%s`), ignoring",
 					timeoutOffset, timeout)
 			} else {
 				timeout -= timeoutOffset

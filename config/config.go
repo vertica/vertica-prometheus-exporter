@@ -20,7 +20,7 @@ const MaxInt32 int = 1<<31 - 1
 
 // Load attempts to parse the given config file and return a Config object.
 func Load(configFile string) (*Config, error) {
-	log.Info("Loading configuration from %s", configFile)
+	log.Infof("Loading configuration from %s", configFile)
 	buf, err := ioutil.ReadFile(configFile)
 	if err != nil {
 		return nil, err
@@ -147,7 +147,7 @@ func (c *Config) loadCollectorFiles() error {
 			}
 
 			c.Collectors = append(c.Collectors, &cc)
-			log.Info("Loaded collector %q from %s", cc.Name, cf)
+			log.Infof("Loaded collector %q from %s", cc.Name, cf)
 		}
 	}
 

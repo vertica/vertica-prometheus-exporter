@@ -70,7 +70,7 @@ func main() {
 	
 	exporter, err := vertica_exporter.NewExporter(*configFile)
 	if err != nil {
-		log.Fatal("Error creating exporter: %s", err)
+		log.Fatalf("Error creating exporter: %s", err)
 	}
 	SetupLogger(*configFile)
 	// Setup and start webserver.
@@ -85,7 +85,7 @@ func main() {
 	if *enableReload {
 		http.HandleFunc("/reload", reloadCollectors(exporter))
 	}
-	log.Info("Listening on %s", *listenAddress)
+	log.Infof("Listening on %s", *listenAddress)
 
 	log.Fatal(http.ListenAndServe(*listenAddress, nil))
 	// SetupLogger()
@@ -94,21 +94,21 @@ func main() {
 
 func reloadCollectors(e vertica_exporter.Exporter) func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
-		log.Info("Reloading the collectors...")
+		log.Infof("Reloading the collectors...")
 		config := e.Config()
 		if err := config.ReloadCollectorFiles(); err != nil {
-			log.Error("Error reloading collector configs - %v", err)
+			log.Errorf("Error reloading collector configs - %v", err)
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 		}
 
 		// FIXME: Should be t.Collectors() instead of config.Collectors
 		target, err := vertica_exporter.NewTarget("", "", string(config.Target.DSN), config.Collectors, nil, config.Globals)
 		if err != nil {
-			log.Error("Error creating a new target - %v", err)
+			log.Errorf("Error creating a new target - %v", err)
 		}
 		e.UpdateTarget([]vertica_exporter.Target{target})
 
-		log.Info("Query collectors have been successfully reloaded")
+		log.Infof("Query collectors have been successfully reloaded")
 		w.WriteHeader(http.StatusNoContent)
 	}
 }

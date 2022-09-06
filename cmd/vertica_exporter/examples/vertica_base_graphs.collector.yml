@@ -2,7 +2,7 @@ collector_name: vertica_base_graphs
 # min_interval: 10s
 metrics:
   - metric_name: vertica_connections_per_node
-    type: counter
+    type: gauge
     help: 'Connections per node'
     key_labels:
        - node_name
@@ -13,7 +13,7 @@ metrics:
         GROUP BY node_name
         ORDER BY node_name;
   - metric_name: vertica_query_requests_transactions_count_per_node
-    type: counter
+    type: gauge
     help: 'Running transactions per node'
     key_labels:
        - node_name
@@ -25,42 +25,42 @@ metrics:
        WHERE start_timestamp between date_trunc('minute',sysdate) - '1 minutes'::interval and date_trunc('minute',sysdate) - '1 milliseconds'::interval
        GROUP BY node_name;
   - metric_name: vertica_cpu_usage_pct
-    type: counter
+    type: gauge
     help: 'vertica cpu usage percentage'
     key_labels: 
        - node_name
     values: [avg_cpu_usage_pct]
     query_ref: vertica_system_resources
   - metric_name: vertica_mem_usage_pct
-    type: counter
+    type: gauge
     help: 'vertica memory usage percentage'
     key_labels:
        - node_name
     values: [avg_mem_usage_pct]
     query_ref: vertica_system_resources
   - metric_name: vertica_net_rx_bytespersec
-    type: counter
+    type: gauge
     help: 'Vertica Network Receive bps'
     key_labels:
        - node_name
     values: [net_rx_bps]
     query_ref: vertica_system_resources
   - metric_name: vertica_net_tx_bytespersec
-    type: counter
+    type: gauge
     help: 'Vertica Network Transmit bps'
     key_labels:
        - node_name
     values: [net_tx_bps]
     query_ref: vertica_system_resources
   - metric_name: vertica_io_read_bytespersec
-    type: counter
+    type: gauge
     help: 'Vertica IO Read bps'
     key_labels:
        - node_name
     values: [io_read_bps]
     query_ref: vertica_system_resources
   - metric_name: vertica_io_write_bytespersec
-    type: counter
+    type: gauge
     help: 'Vertica IO Writes bps'
     key_labels:
        - node_name

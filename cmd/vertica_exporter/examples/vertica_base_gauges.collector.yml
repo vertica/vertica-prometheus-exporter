@@ -32,7 +32,7 @@ metrics:
          select /*+ LABEL(exporter_vertica_total_database_connections) */ count(*) as ttlconns 
          from sessions;
    - metric_name: vertica_state_not_up_or_standby
-     type: gauge
+     type: counter
      help: 'Nodes with state of other than UP or STANDBY.'
      values: [down]
      query: |

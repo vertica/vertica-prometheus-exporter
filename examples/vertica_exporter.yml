@@ -1,7 +1,7 @@
 global:
   scrape_timeout_offset: 500ms
 
-  min_interval: 0s
+  min_interval: 10s
 
   # Maximum number of open connections to any one target. Metric queries will run concurrently on multiple connections,
   # as will concurrent scrapes.

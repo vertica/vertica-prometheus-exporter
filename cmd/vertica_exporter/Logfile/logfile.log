@@ -147,3 +147,12 @@
 [36mINFO[0m[2022-09-05T19:06:31+05:30] Error gathering metrics:[from Gatherer #1] context deadline exceeded 
 [36mINFO[0m[2022-09-05T19:06:46+05:30] Error gathering metrics:[from Gatherer #1] context deadline exceeded 
 [36mINFO[0m[2022-09-05T19:06:58+05:30] Listening on :9968                           
+[36mINFO[0m[2022-09-05T19:07:16+05:30] Error gathering metrics:%!(EXTRA *errors.errorString=[from Gatherer #1] context deadline exceeded) 
+[36mINFO[0m[2022-09-05T19:07:31+05:30] Error gathering metrics:%!(EXTRA *errors.errorString=[from Gatherer #1] context deadline exceeded) 
+[36mINFO[0m[2022-09-05T19:07:46+05:30] Error gathering metrics:%!(EXTRA *errors.errorString=[from Gatherer #1] context deadline exceeded) 
+[36mINFO[0m[2022-09-05T19:08:01+05:30] Error gathering metrics:%!(EXTRA *errors.errorString=[from Gatherer #1] context deadline exceeded) 
+[36mINFO[0m[2022-09-05T19:08:16+05:30] Error gathering metrics:%!(EXTRA *errors.errorString=[from Gatherer #1] context deadline exceeded) 
+[36mINFO[0m[2022-09-05T19:08:31+05:30] Error gathering metrics:%!(EXTRA *errors.errorString=[from Gatherer #1] context deadline exceeded) 
+[36mINFO[0m[2022-09-05T19:08:46+05:30] Error gathering metrics:%!(EXTRA *errors.errorString=[from Gatherer #1] context deadline exceeded) 
+[36mINFO[0m[2022-09-05T19:09:01+05:30] Error gathering metrics:%!(EXTRA *errors.errorString=[from Gatherer #1] context deadline exceeded) 
+[36mINFO[0m[2022-09-05T19:09:16+05:30] Error gathering metrics:%!(EXTRA *errors.errorString=[from Gatherer #1] context deadline exceeded) 

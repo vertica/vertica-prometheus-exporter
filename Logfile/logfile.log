@@ -198,3 +198,4 @@
 [36mINFO[0m[2022-09-06T11:33:55+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
 [36mINFO[0m[2022-09-06T11:33:56+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
 [36mINFO[0m[2022-09-06T11:33:56+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-07T12:39:26+05:30] Listening on :9968                           

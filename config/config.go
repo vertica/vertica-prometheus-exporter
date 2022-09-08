@@ -6,12 +6,13 @@ import (
 	"path/filepath"
 	"strings"
 	"time"
+
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/common/model"
 	"gopkg.in/yaml.v3"
+
 	// "k8s.io/klog/v2"
 	log "github.com/sirupsen/logrus"
-	
 )
 
 // MaxInt32 defines the maximum value of allowed integers
@@ -35,6 +36,7 @@ func Load(configFile string) (*Config, error) {
 	return &c, nil
 }
 
+
 //
 // Top-level config
 //
@@ -46,7 +48,9 @@ type Config struct {
 	Target         *TargetConfig      `yaml:"target,omitempty"`
 	Jobs           []*JobConfig       `yaml:"jobs,omitempty"`
 	Collectors     []*CollectorConfig `yaml:"collectors,omitempty"`
-	Retention      string           `yaml:"Retention"`
+	Log      		 map[string]interface{}       `yaml:"Log"`
+
+	
 
 	configFile string
 
@@ -162,10 +166,10 @@ type GlobalConfig struct {
 	MaxConnLifetime time.Duration  `yaml:"max_connection_lifetime"` // maximum amount of time a connection may be reused to any one target
 	MaxConns        int            `yaml:"max_connections"`         // maximum number of open connections to any one target
 	MaxIdleConns    int            `yaml:"max_idle_connections"`    // maximum number of idle connections to any one target
-
 	// Catches all undefined fields and must be empty after parsing.
 	XXX map[string]interface{} `yaml:",inline" json:"-"`
 }
+
 
 // UnmarshalYAML implements the yaml.Unmarshaler interface for GlobalConfig.
 func (g *GlobalConfig) UnmarshalYAML(unmarshal func(interface{}) error) error {

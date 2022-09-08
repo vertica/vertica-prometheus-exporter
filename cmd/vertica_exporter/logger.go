@@ -1,58 +1,53 @@
 package main
 
 import (
-	"fmt"
 	"io"
 	"os"
-	"regexp"
-	"strconv"
-	// "path/filepath"
-	// "time"
-
 	"io/ioutil"
-
 	"gopkg.in/yaml.v2"
-
-
 	log "github.com/sirupsen/logrus"
 	"gopkg.in/natefinch/lumberjack.v2"
 )
+
+// Logging function to log to the file
+// it will take max file size and retention_day from vertica_exporter.yml file .
 
 func SetupLogger(configFile string) {
 	yfile, err1 := ioutil.ReadFile("examples/vertica_exporter.yml")
 	if err1 != nil {
 		log.Fatal(err1)
 	}
-	data := make(map[string]interface{})
+	data := make(map[interface{}]interface{})
+
 	err := yaml.Unmarshal(yfile, &data)
 	if err != nil {
 		log.Fatal(err)
 	}
-	var Rdays int64
+
+	var Rdays int
+	var maxFilesize int
 	for key, value := range data {
-		if key == "Retention" {
-			Retention:=fmt.Sprint(value)
-			re := regexp.MustCompile(`^[0-9]+`)
-			// re := regexp.MustCompile("[0-9]+")
-			// s := re.FindAllString(Retention,-1)
-			// t := strconv.Atoi(s)
-			
-			// fmt.Println(t)
-			// Rdays,_ = 
-			
-			Rdays,_=strconv.ParseInt(re.FindString(Retention),0,64)
-			
+		if key == "Log" {
+			for key, v := range value.(map[interface{}]interface{}) {
+				if key == "retention_day" {
+					Rdays = v.(int)
+				}
+				if key == "max_log_filesize" {
+					maxFilesize = v.(int)
+				}
+			}
+
 		}
 	}
-	
-	retention_days := int(Rdays)
+
 	lumberjackLogger := &lumberjack.Logger{
 		Filename:   "./Logfile/logfile.log",
-		MaxSize:    500, // megabytes
+		MaxSize:    maxFilesize, // megabytes
 		MaxBackups: 3,
-		MaxAge:     retention_days, //days
-		Compress:   true, // disabled by default
-	  }
-	  mWriter := io.MultiWriter(os.Stderr, lumberjackLogger)
-	  log.SetOutput(mWriter)
+		MaxAge:     Rdays, //days
+		Compress:   true,  // disabled by default
+	}
+	mWriter := io.MultiWriter(os.Stderr, lumberjackLogger)
+	log.SetOutput(mWriter)
+
 }

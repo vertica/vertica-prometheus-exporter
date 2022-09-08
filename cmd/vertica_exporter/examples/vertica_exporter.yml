@@ -13,6 +13,8 @@ global:
   # If 0, connections are not closed due to a connection's age.
   max_connection_lifetime: 5m
 
+ 
+
 # The target to monitor and the collectors to execute on it.
 target:
   # Data source name always has a URI schema that matches the driver name. In some cases (e.g. MySQL)
@@ -26,4 +28,9 @@ target:
 collector_files: 
 # - "*.collector.yml"
 - "*.collector.yml"
-Retention: 15days  
+
+Log: 
+  retention_day:  15
+  max_log_filesize:  5000 # in megabytes 
+
+

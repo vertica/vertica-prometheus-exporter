@@ -72,7 +72,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("Error creating exporter: %s", err)
 	}
-	SetupLogger(*configFile)
+	
 	// Setup and start webserver.
 	http.HandleFunc("/healthz", func(w http.ResponseWriter, r *http.Request) { http.Error(w, "OK", http.StatusOK) })
 	http.HandleFunc("/", HomeHandlerFunc(*metricsPath))
@@ -86,7 +86,7 @@ func main() {
 		http.HandleFunc("/reload", reloadCollectors(exporter))
 	}
 	log.Infof("Listening on %s", *listenAddress)
-
+	SetupLogger(*configFile)
 	log.Fatal(http.ListenAndServe(*listenAddress, nil))
 	// SetupLogger()
 

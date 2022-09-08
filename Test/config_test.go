@@ -2,17 +2,18 @@ package Test
 
 import (
 	"fmt"
-	"gopkg.in/yaml.v2"
 	"io/ioutil"
+	"log"
 	"os"
 	"path/filepath"
 	"reflect"
 	"strings"
 	"testing"
+
+	"gopkg.in/yaml.v2"
 )
 
-// fmt.Println(filepath.Abs("./examples/*.collector.yml"))
-// txt, _ := ioutil.ReadFile(path)
+
 func WalkMatch(root, pattern string) ([]string, error) {
 	var matches []string
 	err := filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
@@ -133,10 +134,11 @@ func TestExporter(t *testing.T) {
 
 }
 
+
 func TestSamp(t *testing.T) {
 	var path = "../examples/"
 	files, err := WalkMatch(path, "*.collector.yml")
-
+	uniquemetric := []string{}
 	sfile, err2 := ioutil.ReadFile("sample.yml")
 	if err2 != nil {
 		fmt.Println(fmt.Errorf("read: %w", err2))
@@ -203,6 +205,9 @@ func TestSamp(t *testing.T) {
 											count2 = 0
 											if m_key == "metric_name" && reflect.TypeOf(m_value).Kind() == reflect.String {
 												s1 := m_value.(string)
+												uniquemetric = append(uniquemetric, s1)
+												// fmt.Println(uniquemetric)
+												// fmt.Println("something",s1)
 												if !strings.HasPrefix(s1, "vertica_") {
 													fmt.Println(key, ":", m_key, "not configured properly")
 													t.Fail()
@@ -252,85 +257,21 @@ func TestSamp(t *testing.T) {
 			}
 		}
 	}
+	DuplicateMetricCheck(uniquemetric)
+	
+	
 
 }
 
-// Test_Verticastandard function is checking vertica_standard.collector.yml file
-// func Test_Verticastandard(t *testing.T) {
-// 	yfile, err1 := ioutil.ReadFile("vertica_standard.collector.yml")
-
-// 	if err1 != nil {
-// 		fmt.Println(fmt.Errorf("read: %w", err1))
-// 	}
-// 	data := make(map[string]interface{})
-// 	err := yaml.Unmarshal(yfile, &data)
-// 	if err != nil {
-// 		fmt.Println(fmt.Errorf("read: %w", err))
-// 	}
-// 	var cp1, cp2, cp3, cp4, cp5, cp6 bool
-// 	for key, value := range data {
-// 		if key == "collector_name" && value == "vertica_standard" {
-// 			cp1 = true
-// 		} else if key == "metrics" {
-// 			for _, mvalue := range value.([]interface{}) {
-// 				for m_key, m_value := range mvalue.(map[interface{}]interface{}) {
-// 					if m_key == "metric_name" && reflect.TypeOf(m_value).Kind() == reflect.String {
-// 						s1 := m_value.(string)
-// 						if strings.HasPrefix(s1, "vertica_") {
-// 							cp2 = true
-// 						}
-// 					} else if m_key == "type" && reflect.TypeOf(m_value).Kind() == reflect.String {
-// 						cp3 = true
-// 					} else if m_key == "help" && reflect.TypeOf(m_value).Kind() == reflect.String {
-// 						cp4 = true
-// 					//key_labels
-// 					} else if m_key == "values" && reflect.TypeOf(m_value).Kind() == reflect.Slice {
-// 						cp5 = true
-// 					} else if m_key == "query" || m_key == "query_ref"{
-// 						cp6 = true
-// 					}
-// 					//&& reflect.TypeOf(m_value).Kind() == reflect.String {
-
-// 				}
-// 			}
-
-// 		}
-// 	}
-
-// 	cps := []bool{cp1, cp2, cp3, cp4, cp5, cp6}
-// 	for _, cp := range cps {
-// 		switch cp {
-// 		case cp1:
-// 			if !cp1 {
-// 				fmt.Println("collector_name not configured properly")
-// 				t.Fail()
-// 			}
-
-// 		case cp2:
-// 			if !cp2 {
-// 				fmt.Println("metrics:metric_name not configured properly")
-// 				t.Fail()
-// 			}
-// 		case cp3:
-// 			if !cp3 {
-// 				fmt.Println("metrics:type not configured properly")
-// 				t.Fail()
-// 			}
-// 		case cp4:
-// 			if !cp4 {
-// 				fmt.Println("metrics:help not configured properly")
-// 				t.Fail()
-// 			}
-// 		case cp5:
-// 			if !cp5 {
-// 				fmt.Println("metrics:values not configured properly")
-// 				t.Fail()
-// 			}
-// 		case cp6:
-// 			if !cp6 {
-// 				fmt.Println("metrics:query not configured properly")
-// 				t.Fail()
-// 			}
-// 		}
-// 	}
-// }
+func DuplicateMetricCheck(v []string){
+	uniqueMap := make(map[string]bool)
+	for _, v := range v {
+		if _, exists := uniqueMap[v]; !exists {
+			uniqueMap[v] = true
+		}else{
+			log.Fatal("Duplicate Metric Found:", v)
+		}
+		
+		
+	}
+}

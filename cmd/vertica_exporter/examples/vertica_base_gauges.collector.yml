@@ -9,6 +9,7 @@ metrics:
          select  /*+ LABEL(exporter_vertica_license_size MB) */ (license_size_bytes/1000000)::INTEGER as licsz
          from license_audits where audited_data='Total'
          order by audit_end_timestamp desc limit 1;
+   
    - metric_name: vertica_database_size
      type: gauge
      help: 'Total Database size in MB'

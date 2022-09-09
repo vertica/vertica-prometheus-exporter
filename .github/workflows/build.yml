@@ -49,3 +49,10 @@ jobs:
             
           echo "Vertica exporter started successfully..."
           docker ps
+    - name: curl data using exporter from vertica database
+      timeout-minutes: 15
+      run: |
+          echo "getting data using vertica-exporter from vertica database..."
+          curl --location --request GET 'http://localhost:9968/metrics'
+          
+      

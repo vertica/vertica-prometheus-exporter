@@ -2416,3 +2416,448 @@
 [36mINFO[0m[2022-09-09T13:39:15+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
 [36mINFO[0m[2022-09-09T13:39:15+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
 [36mINFO[0m[2022-09-09T13:39:15+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T13:39:17+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T13:39:18+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T13:39:27+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=15.154s 
+[36mINFO[0m[2022-09-09T13:39:27+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=15.154s 
+[36mINFO[0m[2022-09-09T13:39:29+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T13:39:29+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T13:39:29+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T13:39:30+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
+[36mINFO[0m[2022-09-09T13:39:31+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T13:39:31+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T13:39:32+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T13:39:33+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T13:39:42+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=14.579s 
+[36mINFO[0m[2022-09-09T13:39:42+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=14.579s 
+[36mINFO[0m[2022-09-09T13:39:43+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T13:39:43+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T13:39:43+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T13:39:45+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T13:39:45+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T13:39:46+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T13:39:46+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
+[36mINFO[0m[2022-09-09T13:39:47+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T13:39:57+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=15.222s 
+[36mINFO[0m[2022-09-09T13:39:57+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=15.222s 
+[36mINFO[0m[2022-09-09T13:39:59+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T13:39:59+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T13:39:59+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T13:40:00+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T13:40:00+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T13:40:02+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
+[36mINFO[0m[2022-09-09T13:40:03+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T13:40:03+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T13:40:12+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=14.981s 
+[36mINFO[0m[2022-09-09T13:40:12+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=14.981s 
+[36mINFO[0m[2022-09-09T13:40:14+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T13:40:14+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T13:40:16+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T13:40:17+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T13:40:18+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T13:40:18+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T13:40:20+05:30] Error gathering metrics:%!(EXTRA prometheus.MultiError=2 error(s) occurred:
+* [from Gatherer #1] [collector="vertica_base_graphs", query="vertica_connections_per_node"] context deadline exceeded
+* [from Gatherer #1] [collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node"] context deadline exceeded) 
+[36mINFO[0m[2022-09-09T13:40:26+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=13.996s 
+[36mINFO[0m[2022-09-09T13:40:26+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=13.996s 
+[36mINFO[0m[2022-09-09T13:40:28+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T13:40:28+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T13:40:28+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T13:40:30+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T13:40:30+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T13:40:31+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T13:40:31+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
+[36mINFO[0m[2022-09-09T13:40:32+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T13:40:42+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=16.078s 
+[36mINFO[0m[2022-09-09T13:40:42+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=16.078s 
+[36mINFO[0m[2022-09-09T13:40:44+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T13:40:44+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T13:40:44+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T13:40:45+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T13:40:46+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T13:40:47+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T13:40:47+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T13:40:48+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
+[36mINFO[0m[2022-09-09T13:40:57+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=14.951s 
+[36mINFO[0m[2022-09-09T13:40:57+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=14.951s 
+[36mINFO[0m[2022-09-09T13:40:58+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T13:40:59+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T13:40:59+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T13:41:01+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T13:41:01+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T13:41:01+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
+[36mINFO[0m[2022-09-09T13:41:02+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T13:41:03+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T13:41:12+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=14.643s 
+[36mINFO[0m[2022-09-09T13:41:12+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=14.643s 
+[36mINFO[0m[2022-09-09T13:41:13+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
+[36mINFO[0m[2022-09-09T13:41:13+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T13:41:14+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T13:41:14+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T13:41:14+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T13:41:14+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T13:41:14+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T13:41:15+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T13:41:26+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=14.539s 
+[36mINFO[0m[2022-09-09T13:41:26+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=14.539s 
+[36mINFO[0m[2022-09-09T13:41:27+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T13:41:27+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T13:41:27+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T13:41:28+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T13:41:28+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T13:41:29+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
+[36mINFO[0m[2022-09-09T13:41:29+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T13:41:29+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T13:41:41+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=14.899s 
+[36mINFO[0m[2022-09-09T13:41:41+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=14.899s 
+[36mINFO[0m[2022-09-09T13:41:42+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T13:41:42+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T13:41:42+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T13:41:43+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
+[36mINFO[0m[2022-09-09T13:41:43+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T13:41:44+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T13:41:44+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T13:41:45+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T13:41:56+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=15.072s 
+[36mINFO[0m[2022-09-09T13:41:56+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=15.072s 
+[36mINFO[0m[2022-09-09T13:41:57+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T13:41:57+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T13:41:57+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T13:41:58+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
+[36mINFO[0m[2022-09-09T13:41:58+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T13:41:59+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T13:41:59+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T13:41:59+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T13:42:00+05:30] [collector="vertica_base_gauges"] Returning cached metrics: min_interval=10.000s cache_age=3.923s 
+[36mINFO[0m[2022-09-09T13:42:00+05:30] [collector="vertica_base_graphs"] Returning cached metrics: min_interval=10.000s cache_age=3.923s 
+[36mINFO[0m[2022-09-09T13:42:11+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=15.086s 
+[36mINFO[0m[2022-09-09T13:42:11+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=15.086s 
+[36mINFO[0m[2022-09-09T13:42:12+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T13:42:12+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T13:42:12+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T13:42:13+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T13:42:13+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T13:42:14+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
+[36mINFO[0m[2022-09-09T13:42:14+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T13:42:14+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T13:42:26+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=14.950s 
+[36mINFO[0m[2022-09-09T13:42:26+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=14.950s 
+[36mINFO[0m[2022-09-09T13:42:27+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T13:42:27+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T13:42:27+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T13:42:28+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T13:42:28+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
+[36mINFO[0m[2022-09-09T13:42:28+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T13:42:29+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T13:42:30+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T13:42:41+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=15.054s 
+[36mINFO[0m[2022-09-09T13:42:41+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=15.054s 
+[36mINFO[0m[2022-09-09T13:42:42+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T13:42:42+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T13:42:42+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T13:42:43+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T13:42:43+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T13:42:43+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T13:42:44+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
+[36mINFO[0m[2022-09-09T13:42:45+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T13:42:56+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=14.950s 
+[36mINFO[0m[2022-09-09T13:42:56+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=14.950s 
+[36mINFO[0m[2022-09-09T13:42:57+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T13:42:57+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T13:42:57+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T13:42:58+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T13:42:58+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
+[36mINFO[0m[2022-09-09T13:42:58+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T13:42:59+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T13:43:00+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T13:43:12+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=15.361s 
+[36mINFO[0m[2022-09-09T13:43:12+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=15.361s 
+[36mINFO[0m[2022-09-09T13:43:13+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T13:43:13+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T13:43:13+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T13:43:14+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T13:43:14+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T13:43:15+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T13:43:16+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
+[36mINFO[0m[2022-09-09T13:43:16+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T13:43:26+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=14.643s 
+[36mINFO[0m[2022-09-09T13:43:26+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=14.643s 
+[36mINFO[0m[2022-09-09T13:43:27+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T13:43:27+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T13:43:27+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T13:43:28+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
+[36mINFO[0m[2022-09-09T13:43:28+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T13:43:28+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T13:43:29+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T13:43:30+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T13:43:41+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=14.949s 
+[36mINFO[0m[2022-09-09T13:43:41+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=14.949s 
+[36mINFO[0m[2022-09-09T13:43:42+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T13:43:42+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T13:43:42+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T13:43:43+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
+[36mINFO[0m[2022-09-09T13:43:43+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T13:43:44+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T13:43:44+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T13:43:44+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T13:43:56+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=15.053s 
+[36mINFO[0m[2022-09-09T13:43:56+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=15.053s 
+[36mINFO[0m[2022-09-09T13:43:57+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T13:43:57+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T13:43:58+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T13:43:58+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T13:43:59+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
+[36mINFO[0m[2022-09-09T13:44:00+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T13:44:00+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T13:44:01+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T13:44:11+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=14.951s 
+[36mINFO[0m[2022-09-09T13:44:11+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=14.951s 
+[36mINFO[0m[2022-09-09T13:44:12+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T13:44:12+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T13:44:12+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T13:44:13+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T13:44:13+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T13:44:14+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
+[36mINFO[0m[2022-09-09T13:44:14+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T13:44:14+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T13:44:26+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=15.056s 
+[36mINFO[0m[2022-09-09T13:44:26+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=15.056s 
+[36mINFO[0m[2022-09-09T13:44:27+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T13:44:27+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T13:44:27+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T13:44:28+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T13:44:28+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T13:44:28+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T13:44:29+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
+[36mINFO[0m[2022-09-09T13:44:30+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T13:44:41+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=15.153s 
+[36mINFO[0m[2022-09-09T13:44:41+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=15.153s 
+[36mINFO[0m[2022-09-09T13:44:42+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T13:44:42+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T13:44:42+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T13:44:43+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T13:44:43+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
+[36mINFO[0m[2022-09-09T13:44:44+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T13:44:44+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T13:44:45+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T13:44:56+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=14.847s 
+[36mINFO[0m[2022-09-09T13:44:56+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=14.847s 
+[36mINFO[0m[2022-09-09T13:44:57+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T13:44:57+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T13:44:57+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T13:44:58+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T13:44:58+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T13:44:59+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
+[36mINFO[0m[2022-09-09T13:44:59+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T13:44:59+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T13:45:11+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=14.950s 
+[36mINFO[0m[2022-09-09T13:45:11+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=14.950s 
+[36mINFO[0m[2022-09-09T13:45:12+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T13:45:12+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T13:45:12+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T13:45:13+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T13:45:13+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T13:45:14+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
+[36mINFO[0m[2022-09-09T13:45:14+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T13:45:14+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T13:45:26+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=15.056s 
+[36mINFO[0m[2022-09-09T13:45:26+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=15.056s 
+[36mINFO[0m[2022-09-09T13:45:27+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T13:45:28+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T13:45:30+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
+[36mINFO[0m[2022-09-09T13:45:30+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T13:45:31+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T13:45:32+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T13:45:33+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T13:45:33+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T13:45:41+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=14.950s 
+[36mINFO[0m[2022-09-09T13:45:41+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=14.950s 
+[36mINFO[0m[2022-09-09T13:45:42+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T13:45:42+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T13:45:42+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T13:45:43+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
+[36mINFO[0m[2022-09-09T13:45:44+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T13:45:44+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T13:45:44+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T13:45:46+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T13:45:56+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=15.051s 
+[36mINFO[0m[2022-09-09T13:45:56+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=15.051s 
+[36mINFO[0m[2022-09-09T13:45:57+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T13:45:57+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T13:45:57+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T13:45:58+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T13:45:58+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T13:45:58+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T13:45:59+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
+[36mINFO[0m[2022-09-09T13:46:00+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T13:46:11+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=14.949s 
+[36mINFO[0m[2022-09-09T13:46:11+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=14.949s 
+[36mINFO[0m[2022-09-09T13:46:12+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T13:46:12+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T13:46:12+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T13:46:13+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T13:46:13+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T13:46:14+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
+[36mINFO[0m[2022-09-09T13:46:14+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T13:46:14+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T13:46:26+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=15.055s 
+[36mINFO[0m[2022-09-09T13:46:26+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=15.055s 
+[36mINFO[0m[2022-09-09T13:46:27+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T13:46:27+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T13:46:27+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T13:46:28+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T13:46:28+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T13:46:29+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T13:46:29+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T13:46:29+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
+[36mINFO[0m[2022-09-09T13:46:42+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=15.476s 
+[36mINFO[0m[2022-09-09T13:46:42+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=15.476s 
+[36mINFO[0m[2022-09-09T13:46:43+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T13:46:43+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T13:46:43+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T13:46:44+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
+[36mINFO[0m[2022-09-09T13:46:44+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T13:46:45+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T13:46:45+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T13:46:45+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T13:46:56+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=14.527s 
+[36mINFO[0m[2022-09-09T13:46:56+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=14.527s 
+[36mINFO[0m[2022-09-09T13:46:57+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T13:46:57+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T13:46:57+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T13:46:58+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T13:46:58+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
+[36mINFO[0m[2022-09-09T13:46:59+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T13:46:59+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T13:46:59+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T13:47:11+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=14.745s 
+[36mINFO[0m[2022-09-09T13:47:11+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=14.745s 
+[36mINFO[0m[2022-09-09T13:47:12+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T13:47:12+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T13:47:12+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T13:47:13+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T13:47:13+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T13:47:13+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
+[36mINFO[0m[2022-09-09T13:47:14+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T13:47:15+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T13:47:26+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=15.256s 
+[36mINFO[0m[2022-09-09T13:47:26+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=15.256s 
+[36mINFO[0m[2022-09-09T13:47:27+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T13:47:27+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T13:47:27+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T13:47:28+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T13:47:28+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
+[36mINFO[0m[2022-09-09T13:47:28+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T13:47:29+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T13:47:30+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T13:47:41+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=14.899s 
+[36mINFO[0m[2022-09-09T13:47:41+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=14.899s 
+[36mINFO[0m[2022-09-09T13:47:42+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T13:47:42+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T13:47:43+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T13:47:43+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T13:47:43+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T13:47:44+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
+[36mINFO[0m[2022-09-09T13:47:44+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T13:47:44+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T13:47:56+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=15.107s 
+[36mINFO[0m[2022-09-09T13:47:56+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=15.107s 
+[36mINFO[0m[2022-09-09T13:47:57+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T13:47:57+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T13:47:57+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T13:47:58+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T13:47:58+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T13:47:58+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
+[36mINFO[0m[2022-09-09T13:47:59+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T13:48:00+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T13:48:11+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=14.954s 
+[36mINFO[0m[2022-09-09T13:48:11+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=14.954s 
+[36mINFO[0m[2022-09-09T13:48:12+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T13:48:12+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T13:48:12+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T13:48:13+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T13:48:13+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T13:48:14+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T13:48:14+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T13:48:14+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
+[36mINFO[0m[2022-09-09T13:48:26+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=15.050s 
+[36mINFO[0m[2022-09-09T13:48:26+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=15.050s 
+[36mINFO[0m[2022-09-09T13:48:27+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T13:48:27+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T13:48:27+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T13:48:28+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T13:48:28+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
+[36mINFO[0m[2022-09-09T13:48:28+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T13:48:29+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T13:48:30+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T13:48:41+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=14.949s 
+[36mINFO[0m[2022-09-09T13:48:41+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=14.949s 
+[36mINFO[0m[2022-09-09T13:48:42+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T13:48:42+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T13:48:42+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T13:48:43+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T13:48:43+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T13:48:43+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
+[36mINFO[0m[2022-09-09T13:48:44+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T13:48:45+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T13:48:56+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=15.053s 
+[36mINFO[0m[2022-09-09T13:48:56+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=15.053s 
+[36mINFO[0m[2022-09-09T13:48:57+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T13:48:57+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T13:48:57+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T13:48:58+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T13:48:58+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
+[36mINFO[0m[2022-09-09T13:48:58+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T13:48:59+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T13:49:00+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T13:49:11+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=14.848s 
+[36mINFO[0m[2022-09-09T13:49:11+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=14.848s 
+[36mINFO[0m[2022-09-09T13:49:12+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T13:49:12+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T13:49:13+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T13:49:13+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
+[36mINFO[0m[2022-09-09T13:49:14+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T13:49:15+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T13:49:15+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T13:49:16+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T13:49:26+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=15.158s 
+[36mINFO[0m[2022-09-09T13:49:26+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=15.158s 
+[36mINFO[0m[2022-09-09T13:49:27+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T13:49:27+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T13:49:27+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T13:49:28+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T13:49:28+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
+[36mINFO[0m[2022-09-09T13:49:28+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T13:49:29+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T13:49:30+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T13:49:41+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=14.948s 
+[36mINFO[0m[2022-09-09T13:49:41+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=14.949s 
+[36mINFO[0m[2022-09-09T13:49:42+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
+[36mINFO[0m[2022-09-09T13:49:42+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T13:49:43+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T13:49:43+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T13:49:44+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T13:49:44+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T13:49:44+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T13:49:44+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T13:49:56+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=15.055s 
+[36mINFO[0m[2022-09-09T13:49:56+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=15.055s 
+[36mINFO[0m[2022-09-09T13:49:57+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T13:49:57+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T13:49:57+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T13:49:58+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T13:49:58+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T13:49:59+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T13:49:59+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
+[36mINFO[0m[2022-09-09T13:50:00+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T13:50:11+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=14.904s 
+[36mINFO[0m[2022-09-09T13:50:11+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=14.904s 
+[36mINFO[0m[2022-09-09T13:50:12+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T13:50:12+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T13:50:12+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T13:50:13+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T13:50:13+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T13:50:13+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
+[36mINFO[0m[2022-09-09T13:50:14+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T13:50:15+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 

@@ -45,9 +45,7 @@ jobs:
       timeout-minutes: 15
       run: |
           docker build . -t vertica_exporter
-          docker run -d -p 9968:9968 
-            --name vertica_exporter \
-            vertica_exporter
+          docker run -d -i -p 9968:9968 vertica_exporter:latest
             
           echo "Vertica exporter started successfully..."
           docker ps

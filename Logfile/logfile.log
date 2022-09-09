@@ -200,3 +200,76 @@
 [36mINFO[0m[2022-09-06T11:33:56+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
 [36mINFO[0m[2022-09-07T12:39:26+05:30] Listening on :9968                           
 [36mINFO[0m[2022-09-07T12:50:15+05:30] Listening on :9968                           
+[36mINFO[0m[2022-09-09T14:02:09+05:30] Error gathering metrics:%!(EXTRA *errors.errorString=[from Gatherer #1] Failed to establish a connection to the primary server or any backup host.
+  'localhost:5433': dial tcp 127.0.0.1:5433: connect: connection refused
+  'localhost:5433': dial tcp [::1]:5433: connect: connection refused) 
+[36mINFO[0m[2022-09-09T14:02:10+05:30] Error gathering metrics:%!(EXTRA *errors.errorString=[from Gatherer #1] Failed to establish a connection to the primary server or any backup host.
+  'localhost:5433': dial tcp [::1]:5433: connect: connection refused
+  'localhost:5433': dial tcp 127.0.0.1:5433: connect: connection refused) 
+[36mINFO[0m[2022-09-09T14:02:13+05:30] Error gathering metrics:%!(EXTRA *errors.errorString=[from Gatherer #1] Failed to establish a connection to the primary server or any backup host.
+  'localhost:5433': dial tcp 127.0.0.1:5433: connect: connection refused
+  'localhost:5433': dial tcp [::1]:5433: connect: connection refused) 
+[36mINFO[0m[2022-09-09T14:02:25+05:30] Error gathering metrics:%!(EXTRA *errors.errorString=[from Gatherer #1] Failed to establish a connection to the primary server or any backup host.
+  'localhost:5433': dial tcp [::1]:5433: connect: connection refused
+  'localhost:5433': dial tcp 127.0.0.1:5433: connect: connection refused) 
+[36mINFO[0m[2022-09-09T14:07:05+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=9223372036.855s 
+[36mINFO[0m[2022-09-09T14:07:05+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=9223372036.855s 
+[36mINFO[0m[2022-09-09T14:07:05+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T14:07:05+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T14:07:05+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T14:07:05+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
+[36mINFO[0m[2022-09-09T14:07:05+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T14:07:05+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T14:07:05+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T14:07:05+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T14:07:05+05:30] Error gathering metrics:%!(EXTRA *errors.errorString=[from Gatherer #1] [collector="vertica_base_graphs", query="vertica_system_resources"] scanning of query result failed: sql: Scan error on column index 5, name "io_read_bps": converting NULL to float64 is unsupported) 
+[36mINFO[0m[2022-09-09T14:07:10+05:30] [collector="vertica_base_graphs"] Returning cached metrics: min_interval=10.000s cache_age=5.134s 
+[36mINFO[0m[2022-09-09T14:07:10+05:30] [collector="vertica_base_gauges"] Returning cached metrics: min_interval=10.000s cache_age=5.134s 
+[36mINFO[0m[2022-09-09T14:07:10+05:30] Error gathering metrics:%!(EXTRA *errors.errorString=[from Gatherer #1] [collector="vertica_base_graphs", query="vertica_system_resources"] scanning of query result failed: sql: Scan error on column index 5, name "io_read_bps": converting NULL to float64 is unsupported) 
+[36mINFO[0m[2022-09-09T14:07:19+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=14.386s 
+[36mINFO[0m[2022-09-09T14:07:19+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=14.386s 
+[36mINFO[0m[2022-09-09T14:07:19+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
+[36mINFO[0m[2022-09-09T14:07:19+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T14:07:19+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T14:07:19+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T14:07:19+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T14:07:19+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T14:07:19+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T14:07:19+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T14:07:19+05:30] Error gathering metrics:%!(EXTRA *errors.errorString=[from Gatherer #1] [collector="vertica_base_graphs", query="vertica_system_resources"] scanning of query result failed: sql: Scan error on column index 5, name "io_read_bps": converting NULL to float64 is unsupported) 
+[36mINFO[0m[2022-09-09T14:07:25+05:30] [collector="vertica_base_graphs"] Returning cached metrics: min_interval=10.000s cache_age=5.746s 
+[36mINFO[0m[2022-09-09T14:07:25+05:30] [collector="vertica_base_gauges"] Returning cached metrics: min_interval=10.000s cache_age=5.746s 
+[36mINFO[0m[2022-09-09T14:07:25+05:30] Error gathering metrics:%!(EXTRA *errors.errorString=[from Gatherer #1] [collector="vertica_base_graphs", query="vertica_system_resources"] scanning of query result failed: sql: Scan error on column index 5, name "io_read_bps": converting NULL to float64 is unsupported) 
+[36mINFO[0m[2022-09-09T14:07:40+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=20.747s 
+[36mINFO[0m[2022-09-09T14:07:40+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=20.747s 
+[36mINFO[0m[2022-09-09T14:07:40+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
+[36mINFO[0m[2022-09-09T14:07:40+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T14:07:40+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T14:07:40+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T14:07:40+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T14:07:40+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T14:07:40+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T14:07:40+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T14:07:40+05:30] Error gathering metrics:%!(EXTRA *errors.errorString=[from Gatherer #1] [collector="vertica_base_graphs", query="vertica_system_resources"] scanning of query result failed: sql: Scan error on column index 5, name "io_read_bps": converting NULL to float64 is unsupported) 
+[36mINFO[0m[2022-09-09T14:07:55+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=15.000s 
+[36mINFO[0m[2022-09-09T14:07:55+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=15.000s 
+[36mINFO[0m[2022-09-09T14:07:55+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
+[36mINFO[0m[2022-09-09T14:07:55+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T14:07:55+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T14:07:55+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T14:07:55+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T14:07:55+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T14:07:55+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T14:07:55+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T14:07:55+05:30] Error gathering metrics:%!(EXTRA *errors.errorString=[from Gatherer #1] [collector="vertica_base_graphs", query="vertica_system_resources"] scanning of query result failed: sql: Scan error on column index 5, name "io_read_bps": converting NULL to float64 is unsupported) 
+[36mINFO[0m[2022-09-09T14:08:10+05:30] [collector="vertica_base_graphs"] Collecting fresh metrics: min_interval=10.000s cache_age=15.001s 
+[36mINFO[0m[2022-09-09T14:08:10+05:30] [collector="vertica_base_gauges"] Collecting fresh metrics: min_interval=10.000s cache_age=15.001s 
+[36mINFO[0m[2022-09-09T14:08:10+05:30] returned_columns="[node_name totaltrans]"collector="vertica_base_graphs", query="vertica_connections_per_node" 
+[36mINFO[0m[2022-09-09T14:08:10+05:30] returned_columns="[node_name total]"collector="vertica_base_graphs", query="vertica_query_requests_transactions_count_per_node" 
+[36mINFO[0m[2022-09-09T14:08:10+05:30] returned_columns="[ttlrows]"collector="vertica_base_gauges", query="vertica_total_database_rows" 
+[36mINFO[0m[2022-09-09T14:08:10+05:30] returned_columns="[licsz]"collector="vertica_base_gauges", query="vertica_license_size" 
+[36mINFO[0m[2022-09-09T14:08:10+05:30] returned_columns="[ttlconns]"collector="vertica_base_gauges", query="vertica_total_database_connections" 
+[36mINFO[0m[2022-09-09T14:08:10+05:30] returned_columns="[ttldbsz]"collector="vertica_base_gauges", query="vertica_database_size" 
+[36mINFO[0m[2022-09-09T14:08:10+05:30] returned_columns="[node_name avg_cpu_usage_pct avg_mem_usage_pct net_rx_bps net_tx_bps io_read_bps io_write_bps]"collector="vertica_base_graphs", query="vertica_system_resources" 
+[36mINFO[0m[2022-09-09T14:08:10+05:30] returned_columns="[down]"collector="vertica_base_gauges", query="vertica_state_not_up_or_standby" 
+[36mINFO[0m[2022-09-09T14:08:10+05:30] Error gathering metrics:%!(EXTRA *errors.errorString=[from Gatherer #1] [collector="vertica_base_graphs", query="vertica_system_resources"] scanning of query result failed: sql: Scan error on column index 5, name "io_read_bps": converting NULL to float64 is unsupported) 

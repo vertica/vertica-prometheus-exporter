@@ -25,3 +25,7 @@ target:
 # Collector files specifies a list of globs. One collector definition is read from each matching file.
 collector_files: 
 - "*.collector.yml"
+
+Log: 
+  retention_day:  15 # In days
+  max_log_filesize:  500 # In megabytes 

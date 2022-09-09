@@ -30,7 +30,7 @@ collector_files:
 - "*.collector.yml"
 
 Log: 
-  retention_day:  15
-  max_log_filesize:  500 # in megabytes 
+  retention_day:  15 # In days
+  max_log_filesize:  500 # In megabytes 
 
 

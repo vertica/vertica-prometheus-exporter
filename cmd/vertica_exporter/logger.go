@@ -13,7 +13,7 @@ import (
 // it will take max file size and retention_day from vertica_exporter.yml file .
 
 func SetupLogger(configFile string) {
-	yfile, err1 := ioutil.ReadFile("examples/vertica_exporter.yml")
+	yfile, err1 := ioutil.ReadFile("metrices/vertica_exporter.yml")
 	if err1 != nil {
 		log.Fatal(err1)
 	}

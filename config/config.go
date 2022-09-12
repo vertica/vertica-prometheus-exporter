@@ -11,7 +11,6 @@ import (
 	"github.com/prometheus/common/model"
 	"gopkg.in/yaml.v3"
 
-	// "k8s.io/klog/v2"
 	log "github.com/sirupsen/logrus"
 )
 

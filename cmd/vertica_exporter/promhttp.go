@@ -16,7 +16,6 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/common/expfmt"
 	"github.com/vertica/vertica-exporter"
-	// "k8s.io/klog/v2"
 	log "github.com/sirupsen/logrus"
 )
 

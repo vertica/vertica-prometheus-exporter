@@ -7,15 +7,8 @@ import (
 	"strings"
 	"time"
 
-	// _ "github.com/ClickHouse/clickhouse-go" // register the ClickHouse driver
-	// _ "github.com/denisenkom/go-mssqldb"    // register the MS-SQL driver
-	// _ "github.com/go-sql-driver/mysql"      // register the MySQL driver
-	// _ "github.com/jackc/pgx/v4/stdlib"      // register the pgx PostgreSQL driver
-	// _ "github.com/lib/pq"                   // register the libpq PostgreSQL driver
-	// _ "github.com/snowflakedb/gosnowflake"  // register the Snowflake driver
 	_ "github.com/vertica/vertica-sql-go" // register the Vertica driver
-
-	"k8s.io/klog/v2"
+	log "github.com/sirupsen/logrus"
 )
 
 // OpenConnection extracts the driver name from the DSN (expected as the URI scheme), adjusts it where necessary (e.g.
@@ -35,18 +28,6 @@ func OpenConnection(ctx context.Context, logContext, dsn string, maxConns, maxId
 		return nil, fmt.Errorf("missing driver in data source name. Expected format `<driver>://<dsn>`")
 	}
 	driver := dsn[:idx]
-
-	// Adjust DSN, where necessary.
-	// switch driver {
-	// case "mysql":
-	// 	dsn = strings.TrimPrefix(dsn, "mysql://")
-	// case "clickhouse":
-	// 	dsn = "tcp://" + strings.TrimPrefix(dsn, "clickhouse://")
-	// case "snowflake":
-	// 	dsn = strings.TrimPrefix(dsn, "snowflake://")
-	// case "pgx":
-	// 	dsn = "postgres://" + strings.TrimPrefix(dsn, "pgx://")
-	// }
 
 	// Open the DB handle in a separate goroutine so we can terminate early if the context closes.
 	var (
@@ -71,11 +52,11 @@ func OpenConnection(ctx context.Context, logContext, dsn string, maxConns, maxId
 	conn.SetMaxOpenConns(maxConns)
 	conn.SetConnMaxLifetime(maxConnLifetime)
 
-	if klog.V(1).Enabled() {
+	
 		if len(logContext) > 0 {
 			logContext = fmt.Sprintf("[%s] ", logContext)
-		}
-		klog.Infof("%sDatabase handle successfully opened with '%s' driver", logContext, driver)
+		
+		log.Infof("%sDatabase handle successfully opened with '%s' driver", logContext, driver)
 	}
 	return conn, nil
 }

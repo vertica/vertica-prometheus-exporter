@@ -6,7 +6,7 @@ RUN make build
 
 FROM golang:1.18.5-alpine3.16 AS final
 WORKDIR /bin
-COPY --from=builder /bin/vertica-exporter/vertica-exporter  ./vertica-exporter
-COPY --from=builder /bin/vertica-exporter/examples  ./examples
+COPY --from=builder /bin/vertica-exporter/cmd/vertica_exporter  ./
+# COPY --from=builder /bin/vertica-exporter/examples  ./examples
 EXPOSE 9968
 ENTRYPOINT [ "vertica-exporter" ]

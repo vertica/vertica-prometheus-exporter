@@ -12,7 +12,7 @@ import (
 	"github.com/vertica/vertica-exporter/config"
 	"github.com/vertica/vertica-exporter/errors"
 	log "github.com/sirupsen/logrus"
-	// "k8s.io/klog/v2"
+
 )
 
 // Collector is a self-contained group of SQL queries and metric families to collect from a specific database. It is

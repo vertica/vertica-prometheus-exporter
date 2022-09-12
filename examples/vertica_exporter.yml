@@ -13,19 +13,24 @@ global:
   # If 0, connections are not closed due to a connection's age.
   max_connection_lifetime: 5m
 
+ 
+
 # The target to monitor and the collectors to execute on it.
 target:
   # Data source name always has a URI schema that matches the driver name. In some cases (e.g. MySQL)
   # the schema gets dropped or replaced to match the driver expected DSN format.
-  data_source_name: 'vertica://dbadmin:@localhost:5433/VMart'
+  data_source_name: 'vertica://simplify3xuser:simplify3xu@172.16.122.30:5433/VMart?connection_load_balance=1&backup_server_node=172.16.122.28:5433,172.16.122.29:5433'
 
   # Collectors (referenced by name) to execute on the target.
-  collectors: [vertica_base_gauges,vertica_base_graphs]
+  collectors: [vertica_base_graphs ,vertica_base_gauges]
 
 # Collector files specifies a list of globs. One collector definition is read from each matching file.
 collector_files: 
+# - "*.collector.yml"
 - "*.collector.yml"
 
 Log: 
-  retention_day:  15 # In days
-  max_log_filesize:  500 # In megabytes 
+  retention_day:  15 # Any integer value which represnets days .
+  max_log_filesize:  500 # Any integer value which represnets  megabytes 
+
+

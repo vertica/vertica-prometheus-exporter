@@ -15,7 +15,7 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/prometheus/common/version"
-	// "k8s.io/klog/v2"
+
 	log "github.com/sirupsen/logrus"
 	// "gopkg.in/natefinch/lumberjack.v2"
 )
@@ -30,7 +30,7 @@ var (
 	listenAddress = flag.String("web.listen-address", ":9968", "Address to listen on for web interface and telemetry")
 	metricsPath   = flag.String("web.metrics-path", "/metrics", "Path under which to expose metrics")
 	enableReload  = flag.Bool("web.enable-reload", false, "Enable reload collector data handler")
-	configFile    = flag.String("config.file", "examples/vertica_exporter.yml", "vertica Exporter configuration filename")
+	configFile    = flag.String("config.file", "metrices/vertica_exporter.yml", "vertica Exporter configuration filename")
 )
 
 func init() {
@@ -72,7 +72,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("Error creating exporter: %s", err)
 	}
-	
+	SetupLogger(*configFile)
 	// Setup and start webserver.
 	http.HandleFunc("/healthz", func(w http.ResponseWriter, r *http.Request) { http.Error(w, "OK", http.StatusOK) })
 	http.HandleFunc("/", HomeHandlerFunc(*metricsPath))
@@ -86,7 +86,7 @@ func main() {
 		http.HandleFunc("/reload", reloadCollectors(exporter))
 	}
 	log.Infof("Listening on %s", *listenAddress)
-	SetupLogger(*configFile)
+	//SetupLogger(*configFile)
 	log.Fatal(http.ListenAndServe(*listenAddress, nil))
 	// SetupLogger()
 

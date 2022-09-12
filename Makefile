@@ -43,6 +43,8 @@ vet:
 build: promu
 	@echo ">> building binaries"
 	@$(PROMU) build --prefix $(PREFIX)
+	@ls
+	@mv  ./vertica-exporter ./cmd/vertica_exporter/
 	
 
 # tarball: promu

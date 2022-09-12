@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"github.com/vertica/vertica-exporter/config"
 	"github.com/vertica/vertica-exporter/errors"
-	// "k8s.io/klog/v2"
+
 	log "github.com/sirupsen/logrus"
 )
 

@@ -1,5 +1,4 @@
 collector_name: vertica_base_graphs
-# min_interval: 10s
 metrics:
   - metric_name: vertica_connections_per_node
     type: gauge

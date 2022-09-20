@@ -15,7 +15,7 @@ const (
     {{ define "page" -}}
       <html>
       <head>
-        <title>Prometheus SQL Exporter</title>
+        <title>Prometheus Vertica Exporter</title>
         <style type="text/css">
           body { margin: 0; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.42857143; color: #333; background-color: #fff; }
           .navbar { display: flex; background-color: #222; margin: 0; border-width: 0 0 1px; border-style: solid; border-color: #080808; }
@@ -45,7 +45,7 @@ const (
     {{- end }}
 
     {{ define "content.home" -}}
-      <p>This is a <a href="{{ .DocsURL }}">Prometheus SQL Exporter</a> instance.
+      <p>This is a <a href="{{ .DocsURL }}">Prometheus Vertica Exporter</a> instance.
         You are probably looking for its <a href="{{ .MetricsPath }}">metrics</a> handler.</p>
     {{- end }}
 

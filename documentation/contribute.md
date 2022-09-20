@@ -45,9 +45,13 @@ Step 4: Get the test suite running
 vertica-exporter comes with a test suite of its own, in the Tests directory of the code base. It’s our policy to make sure all tests always pass.
 We appreciate any and all contributions to the test suite! These tests use a Golang module: testing. You might want to check out the testing documentation for more details.
 Syntax tests do simple syntax testing of individual metrices and configs, which do not require database connection. Examples of running tests:
-# Run all test :
+
+Run all test :
+
 $ cd /Tests
+
 $ go test .
+
 The Github Actions CI workflow committed as part of the project will automatically run test suite through different go versions. These CI tests must pass before any PR will be considered. This CI workflow can be run on your forked repository after you are enabling Github Actions on your fork.
 
 Step 5: Implement your fix or feature

@@ -13,7 +13,6 @@ import (
 	"gopkg.in/yaml.v2"
 )
 
-
 func WalkMatch(root, pattern string) ([]string, error) {
 	var matches []string
 	err := filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
@@ -38,7 +37,7 @@ func WalkMatch(root, pattern string) ([]string, error) {
 
 // TestExporter function is checking vertica_exporter.yml file
 func TestExporter(t *testing.T) {
-	yfile, err1 := ioutil.ReadFile("../examples/vertica_exporter.yml")
+	yfile, err1 := ioutil.ReadFile("../cmd/vertica_exporter/metrices/vertica_exporter.yml")
 
 	if err1 != nil {
 		fmt.Println(fmt.Errorf("read: %w", err1))
@@ -134,9 +133,8 @@ func TestExporter(t *testing.T) {
 
 }
 
-
 func TestSamp(t *testing.T) {
-	var path = "../examples/"
+	var path = "../cmd/vertica_exporter/metrices/"
 	files, err := WalkMatch(path, "*.collector.yml")
 	uniquemetric := []string{}
 	sfile, err2 := ioutil.ReadFile("sample.yml")
@@ -258,20 +256,17 @@ func TestSamp(t *testing.T) {
 		}
 	}
 	DuplicateMetricCheck(uniquemetric)
-	
-	
 
 }
 
-func DuplicateMetricCheck(v []string){
+func DuplicateMetricCheck(v []string) {
 	uniqueMap := make(map[string]bool)
 	for _, v := range v {
 		if _, exists := uniqueMap[v]; !exists {
 			uniqueMap[v] = true
-		}else{
+		} else {
 			log.Fatal("Duplicate Metric Found:", v)
 		}
-		
-		
+
 	}
 }

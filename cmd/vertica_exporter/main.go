@@ -101,7 +101,6 @@ func reloadCollectors(e vertica_exporter.Exporter) func(http.ResponseWriter, *ht
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 		}
 
-		// FIXME: Should be t.Collectors() instead of config.Collectors
 		target, err := vertica_exporter.NewTarget("", "", string(config.Target.DSN), config.Collectors, nil, config.Globals)
 		if err != nil {
 			log.Errorf("Error creating a new target - %v", err)

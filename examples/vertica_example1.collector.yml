@@ -1,4 +1,4 @@
-collector_name: vertica_base_graphs
+collector_name: example1
 metrics:
   - metric_name: vertica_connections_per_node
     type: gauge

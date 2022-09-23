@@ -1,4 +1,4 @@
-collector_name: vertica_base_gauges
+collector_name: example
 # min_interval: 0s
 metrics:
   - metric_name: vertica_license_size

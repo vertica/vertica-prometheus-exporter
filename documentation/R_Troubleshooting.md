@@ -3,6 +3,7 @@
 Unused Columns
 --------------------
 If you see these in the exporter output they are warnings.
+```
 W0817 16:15:51.296708   96868 query.go:150] [collector="vertica_base_EON_Mode", query="vertica_s3_performance"] Extra column "end_time" returned by query
 W0817 16:15:51.296759   96868 query.go:150] [collector="vertica_base_EON_Mode", query="vertica_s3_performance"] Extra column "s3ops" returned by query
 W0817 16:15:51.296778   96868 query.go:150] [collector="vertica_base_EON_Mode", query="vertica_s3_performance"] Extra column "s3errs" returned by query
@@ -13,9 +14,10 @@ W0817 16:15:51.296850   96868 query.go:150] [collector="vertica_base_EON_Mode", 
 W0817 16:15:51.296868   96868 query.go:150] [collector="vertica_base_EON_Mode", query="vertica_s3_performance"] Extra column "bytesrecvd" returned by query
 W0817 16:15:51.305122   96868 query.go:150] [collector="vertica_base_EON_Mode", query="vertica_depot_evictions_by_minute"] Extra column "YMDHM" returned by query
 W0817 16:15:51.306289   96868 query.go:150] [collector="vertica_base_EON_Mode", query="vertica_depot_fetches_by_minute"] Extra column "YMDHM" returned by query
-
+```
 Root cause is typically due to a query object being defined and not all columns in the query being used in queryref objects. E.g.the query below only ha sone metric using it in a single value queryref. So all the other columns in the query are flagged as extras not used. To fix this one would change the query object to only select columns that will have metrics that queryrefthem.
 
+```yml
   - metric_name: vertica_data_writes_per_hour
     type: counter
     help: 'S3 Data Writes (puts)'
@@ -32,7 +34,7 @@ Root cause is typically due to a query object being defined and not all columns 
         from udfs_ops_per_hour
         where filesystem='S3'
         order by node_name,end_time desc;
+```
 
---------------------
 
 --------------------

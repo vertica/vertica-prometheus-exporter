@@ -1,62 +1,58 @@
-Examples
+### Configurations :
 
-Configurations
 Global Configurations
+```yml
 global:
-### Scrape timeouts ensure that:
-  ###    (i)  scraping completes in reasonable time and
-  ###    (ii) slow queries are canceled early when the database is already under heavy load
-  ###  Prometheus informs targets of its own scrape timeout (via the "X-Prometheus-Scrape-Timeout-Seconds" request header)
-  ###  so the actual timeout is computed as:
-  ###    min(scrape_timeout, X-Prometheus-Scrape-Timeout-Seconds - scrape_timeout_offset)
-  ### 
-  ###  If scrape_timeout <= 0, no timeout is set unless Prometheus provides one. The default is 10s.
-  ### scrape_timeout: 10s
-  ###  Subtracted from Prometheus' scrape_timeout to give us some headroom and prevent Prometheus from timing out first.
-  ### 
-  ###  Must be strictly positive. The default is 500ms.
+# Scrape timeouts ensure that:
+  #    (i)  scraping completes in reasonable time and
+  #    (ii) slow queries are canceled early when the database is already under heavy load
+  #  Prometheus informs targets of its own scrape timeout (via the "X-Prometheus-Scrape-Timeout-Seconds" request header)
+  #  so the actual timeout is computed as:
+  #    min(scrape_timeout, X-Prometheus-Scrape-Timeout-Seconds - scrape_timeout_offset)
+  # 
+  #  If scrape_timeout <= 0, no timeout is set unless Prometheus provides one. The default is 10s.
+   scrape_timeout: 10s
+  #  Subtracted from Prometheus' scrape_timeout to give us some headroom and prevent Prometheus from timing out first.
+  # 
+  #  Must be strictly positive. The default is 500ms.
   scrape_timeout_offset: 500ms
-  ###  Minimum interval between collector runs: by default (0s) collectors are executed on every scrape.
+  #  Minimum interval between collector runs: by default (0s) collectors are executed on every scrape.
   min_interval: 10s
-   ###  Maximum number of open connections to any one target. Metric queries will run concurrently on multiple connections,
-  ###  as will concurrent scrapes.
-  ### 
-  ###  If max_connections <= 0, then there is no limit on the number of open connections. The default is 3.
+   Maximum number of open connections to any one target. Metric queries will run concurrently on multiple connections,
+    as will concurrent scrapes.
+   
+   If max_connections <= 0, then there is no limit on the number of open connections. The default is 3.
   max_connections: 3
-  ### Maximum number of idle connections to any one target. Unless you use very long collection intervals, this should
-  ### always be the same as max_connections.
-  ### 
-  ### If max_idle_connections <= 0, no idle connections are retained. The default is 3.
+   Maximum number of idle connections to any one target. Unless you use very long collection intervals, this should
+   always be the same as max_connections.
+  
+   If max_idle_connections <= 0, no idle connections are retained. The default is 3.
   max_idle_connections: 3
-  ### Maximum number of maximum amount of time a connection may be reused. Expired connections may be closed lazily before reuse.
-  ### If 0, connections are not closed due to a connection's age.
+  Maximum number of maximum amount of time a connection may be reused. Expired connections may be closed lazily before reuse.
+  If 0, connections are not closed due to a connection's age.
   max_connection_lifetime: 5m
 
- 
-
-## The target to monitor and the collectors to execute on it.
+# The target to monitor and the collectors to execute on it.
 target:
-  ### Data source name always has a URI schema that matches the driver name. In some cases (e.g. vertica)
-  ### the schema gets dropped or replaced to match the driver expected DSN format.
-  data_source_name: 'vertica://simplify3xuser:simplify3xu@172.16.122.30:5433/VMart?connection_load_balance=1&backup_server_node=172.16.122.28:5433,172.16.122.29:5433' #vertica environment variable
-  ### data_source_name: 'vertica://dbadmin:@vertica_docker:5433/VMart' #github auto test configration
-  ### data_source_name: 'vertica://dbadmin:@localhost:5433/VMart' #localhost auto test configration
+   Data source name always has a URI schema that matches the driver name. In some cases (e.g. vertica)
+   the schema gets dropped or replaced to match the driver expected DSN format.
+    data_source_name: 'vertica://<username>:<userpwd>@<exporterhostip>:5433/<databasename>'
 
-  ### Collectors (referenced by name) to execute on the target.
+  # Collectors (referenced by name) to execute on the target.
   collectors: [vertica_base_graphs ,vertica_base_gauges]
 
-### Collector files specifies a list of globs. One collector definition is read from each matching file.
+# Collector files specifies a list of globs. One collector definition is read from each matching file.
 collector_files: 
-### - "*.collector.yml"
 - "*.collector.yml"
-
 Log:
-### Any integer value which represents days . 
+# Any integer value which represents days . 
   retention_day:  1 
-### Any integer value which represents log file size in  megabytes 
+# Any integer value which represents log file size in  megabytes 
   max_log_filesize:  1 
 
+```
 Vertica Base Gauge Configurations
+```yml
 collector_name: vertica_base_gauges
 ### min_interval: 0s
 metrics:
@@ -203,9 +199,11 @@ queries:
          select count(*) as down 
          from nodes 
          where node_state!='UP' and node_state!='Standby';
+```
 
-Vertica Base Graph Configurations
-collector_name: vertica_base_graphs
+Vertica Base example Configurations
+```yml
+collector_name: vertica_example1
 metrics:
   - metric_name: vertica_connections_per_node
     type: counter
@@ -301,3 +299,4 @@ queries:
           max(io_written_kbytes_per_second) as io_write_kbps
        from system_resource_usage 
        group by node_name;
+```

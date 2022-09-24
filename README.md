@@ -1,4 +1,4 @@
-# Prometheus vertica Exporter [![Go](https://github.com/vertica/vertica-exporter/actions/workflows/build.yml/badge.svg)](https://github.com/vertica/vertica-exporter/actions/workflows/build.yml)[![Go Report Card](https://goreportcard.com/badge/github.com/vertica/vertica-exporter)](https://goreportcard.com/report/github.com/vertica/vertica-exporter/) ![Downloads](https://img.shields.io/github/downloads/vertica/vertica-exporter/total.svg)
+# Prometheus vertica Exporter [![Go](https://github.com/vertica/vertica-exporter/actions/workflows/build.yml/badge.svg)](https://github.com/vertica/vertica-exporter/actions/workflows/build.yml) [![Go Report Card](https://goreportcard.com/badge/github.com/vertica/vertica-exporter)](https://goreportcard.com/report/github.com/vertica/vertica-exporter/) ![Downloads](https://img.shields.io/github/downloads/vertica/vertica-exporter/total.svg)
 
 
 This is a permanent fork of Database agnostic Vertica exporter for Prometheus created by burningalchemist. 

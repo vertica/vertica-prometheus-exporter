@@ -1,4 +1,4 @@
-Firstly, I appreciate you thinking about contributing to vertica-exporter so that it can continue to evolve.
+Firstly, we appreciate you thinking about contributing to vertica-exporter so that it can continue to evolve.
 This document will guide you through the contribution process. There are several ways you can help:
 
  - [Bug Reports](#bug-reports)

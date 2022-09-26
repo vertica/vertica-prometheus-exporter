@@ -1,22 +1,21 @@
 ### WHEN TO USE: 
 
-Use cases for – 
+Comparison of available tools – 
 
-- Built in MC – all metrics chosen for value to user, static set so can’t customize UI is canned and can’t mod 
+- Vertica Management Console – Comes with Vertica but requires seperate install. All metrics available are chosen by Vertica for value to user. It's a static set so user can’t customize the metrics available or how displayed.  
 
-- Built in https/metrics – all metrics chosen for value to user, can toggle entire set as on or off, static set so can’t customize. Doesn’t scrape system/dc tables uses in memory, so low overhead. Outputs to Prometheus format usable by many graphing tools 
+- Grafana plugin – Requires Grafana with Vertica datasource installed and configured. The data source does a direct connection to Vertica to get metrics. There is no  persistent retention and it runs queries based on the defined Grafana panel interval. Queries and dashboards fully customizable so user chooses what they want to look at and how. Supports tables with string values. Requires Vertica SQL and Grafana skills  
 
-- Grafana plugin – direct to Vertica so no persistent retention and runs queries each interval, query set and dashboards fully customizable so user chooses what they want to look at but requires SQL and Grafana skills  
-
-- Prometheus exporter – scrapes from exporter and can feed to monitoring tools like Grafana. Requires exporter/Prometheus/Grafana servers to run. Query set (collections) and dashboards fully customizable so user chooses what they want to look at but requires SQL, Prometheus metric tag skills, and Grafana skills. Most nerdy of the bunch from a stack and setup/configuration standpoint. 
+- Prometheus exporter – Requires Prometheus and vertica-exporter. Prometheus is configured to use the vertica-exporter as a target and initiates scrapes from it. The exporter connects to Vertica, runs the metrics queries, and returns them to Prometheus in a known format. The exporter has the ability to cache metrics if desired, which can help minimize the scrapes it does to the Vertica database. The Prometheus metrics can be used by any tool that supports Prometheus format, e.g. Grafana. Collectors (sets of metrics queries) are fully customizable so user chooses what they want to look at. Requires Vertica SQL and Prometheus skills, plus whatever evisualization tool is being used skills.  
 
 ### LOAD BALANCE AND FAIL SAFE: 
 
-Activate connection_load_balance  and backup_server_node  via the data source name in the vertica_exporter.yml file for best distributed connections and fail safety in event the primary Vertica node goes down. 
+Activate connection_load_balance  and backup_server_node  via the data source name in the vertica_exporter.yml file for best distributed connections and fail safety in event the primary Vertica node goes down. See the Vertica documentaiton for more details on these ttwo features.
 
-  *data_source_name: 'vertica://dbadmin:@10.20.43.235:5433/VMart?connection_load_balance=1&backup_server_node=10.20.43.236:5433,10.20.43.237:5433'*
+  *data_source_name: 'vertica://dbadmin:@nn.nn.nn.235:5433/VMart?connection_load_balance=1&backup_server_node=nn.nn.nn.236:5433,nn.nn.nn.237:5433'*
+  
 
-#### STARTUP ORDER: 
+### STARTUP ORDER: 
 
 - First start the vertica-exporter. Depending on your deployment It should say listening at the end of console output, end of Logfile/logfile.log, or end of nohup.out. 
 
@@ -46,11 +45,11 @@ Once you build the vertica_exporter binary you can move it to any location you w
 - Your Logfile dir must be under the binary’s directory. The binary will create the Logfile dir and the logfile.log in it if they don’t exist. 
  
 
-### Docker build: 
+**Docker build** 
 
 To be added. Note same as above, but possible to use -v to bind dirs. external to container 
 
-*MINIMIZE QUERY IMPACT on VERTICA* 
+### MINIMIZE QUERY IMPACT on VERTICA 
 
 There is interval control at several levels (end tool such as Grafana, Prometheus, and the exporter). Make sure to set the intervals for the best efficiency. Don’t collect slow changing values frequently. Maybe group collections by rate of change and frequency of scrape. See the min_intervals section for more details. 
 

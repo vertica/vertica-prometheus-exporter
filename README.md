@@ -17,7 +17,7 @@ Per the Prometheus philosophy, scrapes are synchronous (metrics are collected on
 
 To keep our data safe, we need to monitor the status of the database. What we needed was more of a general approach that would allow us to export from VERTICA to Prometheus. It allows for very flexible configuration and the proper recording rules, and Grafana dashboards proved very helpful.  
 
-The core concept of this exporter is based on the idea that a proper VERTICA query can easily be mapped onto a set of labels and one or more numbers that make up a valid Prometheus metric.
+The core concept of this exporter is based on the idea that a proper Vertica query can easily be mapped onto a set of labels and one or more numbers that make up a valid Prometheus metric.
 
 ## Usage
 

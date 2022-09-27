@@ -182,17 +182,4 @@ queries:
     values: [io_write_kbps]
     query_ref: vertica_system_resources
 
-queries:
-  - query_name: vertica_system_resources
-    query: |
-       select  
-          node_name,
-          max(average_cpu_usage_percent) as avg_cpu_usage_pct,
-          max(average_memory_usage_percent) as avg_mem_usage_pct,
-          max(net_rx_kbytes_per_second) as net_rx_kbps,
-          max(net_tx_kbytes_per_second) as net_tx_kbps,
-          max(io_read_kbytes_per_second) as io_read_kbps,
-          max(io_written_kbytes_per_second) as io_write_kbps
-       from system_resource_usage 
-       group by node_name;
 ```

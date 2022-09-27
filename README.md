@@ -1,11 +1,11 @@
-# Prometheus vertica Exporter [![Go](https://github.com/vertica/vertica-exporter/actions/workflows/build.yml/badge.svg)](https://github.com/vertica/vertica-exporter/actions/workflows/build.yml)[![Go Report Card](https://goreportcard.com/badge/github.com/vertica/vertica-exporter)](https://goreportcard.com/report/github.com/vertica/vertica-exporter/) ![Downloads](https://img.shields.io/github/downloads/vertica/vertica-exporter/total.svg)
+# Prometheus vertica prometheus exporter [![Go](https://github.com/vertica/vertica-prometheus-exporter/actions/workflows/build.yml/badge.svg)](https://github.com/vertica/vertica-prometheus-exporter/actions/workflows/build.yml)[![Go Report Card](https://goreportcard.com/badge/github.com/vertica/vertica-prometheus-exporter)](https://goreportcard.com/report/github.com/vertica/vertica-prometheus-exporter/) ![Downloads](https://img.shields.io/github/downloads/vertica/vertica-prometheus-exporter/total.svg)
 
 
-This is a permanent fork of Database agnostic Vertica exporter for Prometheus created by burningalchemist. 
+This is a permanent fork of Database agnostic vertica prometheus exporter for Prometheus created by burningalchemist. 
 
 ## Overview
 
-Vertica Exporter is a configuration-driven exporter that exposes metrics gathered from Vertica Database for use by the Prometheus monitoring system. A Go driver is required to monitor the binary after rebuilding it with the DBMS driver.
+vertica prometheus exporter is a configuration-driven exporter that exposes metrics gathered from Vertica Database for use by the Prometheus monitoring system. A Go driver is required to monitor the binary after rebuilding it with the DBMS driver.
 
 
 In the configuration, the entire definitions of metrics and the queries are collected. Queries are grouped into collectors -- logical groups of queries, e.g., query stats or I/O stats, mapped to the metrics they populate. Collectors may be DBMS-specific or custom, deployment specific. This means you can quickly and easily set up custom collectors to measure data quality, whatever that might mean in your specific case.
@@ -21,24 +21,24 @@ The core concept of this exporter is based on the idea that a proper VERTICA que
 
 ## Usage
 
-Get Prometheus Vertica Exporter, either as a packaged release, as a Docker image, or build it yourself:
+Get Prometheus vertica prometheus exporter, either as a packaged release, as a Docker image, or build it yourself:
 
 ### Package release :
 
 
 ```shell
-$ go install github.com/vertica/vertica-exporter/
+$ go install github.com/vertica/vertica-prometheus-exporter/
 ```
 then run it from the command line:
 ```shell
-$ vertica_exporter
+$ vertica_prometheus_exporter
 ```
 Use the -help flag to get help information.
 ```shell
-$ ./vertica_exporter -help
-Usage of ./vertica_exporter:
+$ ./vertica_prometheus_exporter -help
+Usage of ./vertica_prometheus_exporter:
   -config.file string
-     Vertica Exporter configuration file name.(default "vertica_exporter.yml")
+     vertica prometheus exporter configuration file name.(default "vertica_prometheus_exporter.yml")
   -web.listen-address string
       Address to listen on for web interface and telemetry. (default ":9968")
   -web.metrics-path string
@@ -50,11 +50,11 @@ Usage of ./vertica_exporter:
 to run the exporter using docker , fork the repo and follow the steps below :
 
 ```shell
-$ docker build -t "vertica-exporter:latest" .
+$ docker build -t "vertica-prometheus-exporter:latest" .
 ```
 
 ```shell
-$ docker run -d -p 9968:9968 vertica-exporter:latest
+$ docker run -d -p 9968:9968 vertica-prometheus-exporter:latest
 ```
 more information about docker build can be found in documentation directory .
 
@@ -62,15 +62,15 @@ more information about docker build can be found in documentation directory .
 
 To build the project yourself  follow the below steps [ only for linux machines ] :
 
-this will create a binary file in ***cmd/vertica_exporter/***
+this will create a binary file in ***cmd/vertica_prometheus_exporter/***
 ```shell
 $ make build
 ```
 ```shell
-$ cd cmd/vertica_exporter
+$ cd cmd/vertica_prometheus_exporter/vertica-prometheus-exporter
 ```
 ```shell
-$ ./vertica-exporter
+$ ./vertica-prometheus-exporter
 ```
 
 ### Run it directly :
@@ -78,7 +78,7 @@ $ ./vertica-exporter
 To run the exporter directly :
 
 ```shell
-$ cd cmd/vertica_exporter
+$ cd cmd/vertica_prometheus_exporter
 ```
 ```shell
 $ go run .
@@ -86,11 +86,11 @@ $ go run .
 
 ## Configuration
 
-Vertica Exporter is deployed alongside the DB server it collects metrics from. If both the exporter and the DB server are on the same host, they will share the same failure domain: they will usually be either both up and running or both down. When the database is unreachable, /metrics responds with HTTP code 500 Internal Server Error, causing Prometheus to record up=0 for that scrape. Only metrics defined by collectors are exported on the /metrics endpoint. Vertica Exporter process metrics are exported at /vertica_exporter_metrics .
+vertica prometheus exporter is deployed alongside the DB server it collects metrics from. If both the exporter and the DB server are on the same host, they will share the same failure domain: they will usually be either both up and running or both down. When the database is unreachable, /metrics responds with HTTP code 500 Internal Server Error, causing Prometheus to record up=0 for that scrape. Only metrics defined by collectors are exported on the /metrics endpoint. vertica prometheus exporter process metrics are exported at /vertica_prometheus_exporter_metrics .
 
 The configuration examples listed here only cover the core elements. For a comprehensive and comprehensively documented configuration file check out `documentation/configuration.md`. You will find ready to use "standard" DBMS-specific collector definitions in the examples directory. You may contribute your own collector definitions and metric additions if you think they could be more widely useful, even if they are merely different takes on already covered DBMSs.
 
-**`./vertica_exporter.yml`**
+**`./vertica_prometheus_exporter.yml`**
 
 ```yaml
 global:

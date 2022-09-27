@@ -1,4 +1,4 @@
-package vertica_exporter
+package vertica_prometheus_exporter
 
 import (
 	"fmt"
@@ -6,8 +6,8 @@ import (
 
 	"github.com/prometheus/client_golang/prometheus"
 	dto "github.com/prometheus/client_model/go"
-	"github.com/vertica/vertica-exporter/config"
-	"github.com/vertica/vertica-exporter/errors"
+	"github.com/vertica/vertica-prometheus-exporter/config"
+	"github.com/vertica/vertica-prometheus-exporter/errors"
 	"google.golang.org/protobuf/proto"
 )
 

@@ -1,4 +1,4 @@
-Firstly, we appreciate you thinking about contributing to vertica-exporter so that it can continue to evolve.
+Firstly, we appreciate you thinking about contributing to vertica-prometheus-exporter so that it can continue to evolve.
 This document will guide you through the contribution process. There are several ways you can help:
 
  - [Bug Reports](#bug-reports)
@@ -7,14 +7,14 @@ This document will guide you through the contribution process. There are several
 
 # Bug Reports
 
-If you find a bug, submit an [issue](https://github.com/vertica/vertica-exporter/issues) with a complete and reproducible bug report. If the issue can't be reproduced, it will be closed. If you opened an issue, but figured out the answer later on your own, comment on the issue to let people know, then close the issue.
+If you find a bug, submit an [issue](https://github.com/vertica/vertica-prometheus-exporter/issues) with a complete and reproducible bug report. If the issue can't be reproduced, it will be closed. If you opened an issue, but figured out the answer later on your own, comment on the issue to let people know, then close the issue.
 
 For issues (e.g. security related issues) that are **not suitable** to be reported publicly on the GitHub issue system, report your issues to [Vertica open source team](mailto:vertica-opensrc@microfocus.com) directly or file a case with Vertica support if you have a support account.
 
 # Feature Requests
 
-Feel free to share your ideas for how to improve *vertica-exporter*. We’re always open to suggestions.
-You can open an [issue](https://github.com/vertica/vertica-exporter/issues)
+Feel free to share your ideas for how to improve *vertica-prometheus-exporter*. We’re always open to suggestions.
+You can open an [issue](https://github.com/vertica/vertica-prometheus-exporter/issues)
 with details describing what feature(s) you'd like added or changed.
 
 If you would like to implement the feature yourself, open an issue to ask before working on it. Once approved, please refer to the [Code Contributions](#code-contributions) section.
@@ -22,16 +22,16 @@ If you would like to implement the feature yourself, open an issue to ask before
 # Code Contributions
 
 ## Step 1: Fork
-Fork the project [on Github](https://github.com/vertica/vertica-exporter)  and check out your copy locally.
+Fork the project [on Github](https://github.com/vertica/vertica-prometheus-exporter)  and check out your copy locally.
 ```shell
-git clone git@github.com:YOURUSERNAME/vertica-exporter.git
-cd vertica-exporter
+git clone git@github.com:YOURUSERNAME/vertica-prometheus-exporter.git
+cd vertica-prometheus-exporter
 ```
 Your GitHub repository **YOURUSERNAME/vertica-exporte**r will be called "origin" in Git. 
-You should also set up **vertica/vertica-exporter** as an "upstream" remote.
+You should also set up **vertica/vertica-prometheus-exporter** as an "upstream" remote.
 
 ```shell
-git remote add upstream git@github.com:vertica/vertica-exporter.git
+git remote add upstream git@github.com:vertica/vertica-prometheus-exporter.git
 git fetch upstream
 ```
 ### Configure Git for the first time
@@ -59,7 +59,7 @@ go get.
 
 ## Step 4: Get the test suite running
 
-*vertica-exporter* comes with a test suite of its own, in the Tests directory of the code base. It’s our policy to make sure all tests always pass.
+*vertica-prometheus-exporter* comes with a test suite of its own, in the Tests directory of the code base. It’s our policy to make sure all tests always pass.
 We appreciate any and all contributions to the test suite! These tests use a Golang module: testing. You might want to check out the testing documentation for more details.
 
 Syntax tests do simple syntax testing of individual metrices and configs, which do not require database connection. Examples of running tests:
@@ -116,7 +116,7 @@ You can publish your work on GitHub just by doing:
 $ git push origin my-fix-branch
 ```
 When you go to your GitHub page, you will notice commits made on your local branch is pushed to the remote repository.
-When upstream (vertica/vertica-exporter) has changed, you should **rebase** your work. The rebase command creates a linear history by moving your local commits onto the tip of the upstream commits.
+When upstream (vertica/vertica-prometheus-exporter) has changed, you should **rebase** your work. The rebase command creates a linear history by moving your local commits onto the tip of the upstream commits.
 
 You can rebase your branch locally and force-push to your GitHub repository by doing:
 
@@ -129,13 +129,13 @@ git push -f origin my-fix-branch
 
 ## Step 7: Make a Pull Request
 
-When you think your work is ready to be pulled into vertica-exporter, you should create a pull request (PR) at GitHub.
+When you think your work is ready to be pulled into vertica-prometheus-exporter, you should create a pull request (PR) at GitHub.
 A good pull request means:
 
 - commits with one logical change in each
 - well-formed messages for each commit
 - documentation and tests, if needed
-- Go to https://github.com/YOURUSERNAME/vertica-exporter  and [make a Pull Request](https://help.github.com/articles/creating-a-pull-request/) to vertica:master.
+- Go to https://github.com/YOURUSERNAME/vertica-prometheus-exporter  and [make a Pull Request](https://help.github.com/articles/creating-a-pull-request/) to vertica:master.
 
 ### Sign the CLA
 

@@ -1,4 +1,4 @@
-package vertica_exporter
+package vertica_prometheus_exporter
 
 import (
 	"context"
@@ -7,8 +7,8 @@ import (
 	"strings"
 	"time"
 
-	_ "github.com/vertica/vertica-sql-go" // register the Vertica driver
 	log "github.com/sirupsen/logrus"
+	_ "github.com/vertica/vertica-sql-go" // register the Vertica driver
 )
 
 // OpenConnection extracts the driver name from the DSN (expected as the URI scheme), adjusts it where necessary (e.g.
@@ -52,10 +52,9 @@ func OpenConnection(ctx context.Context, logContext, dsn string, maxConns, maxId
 	conn.SetMaxOpenConns(maxConns)
 	conn.SetConnMaxLifetime(maxConnLifetime)
 
-	
-		if len(logContext) > 0 {
-			logContext = fmt.Sprintf("[%s] ", logContext)
-		
+	if len(logContext) > 0 {
+		logContext = fmt.Sprintf("[%s] ", logContext)
+
 		log.Infof("%sDatabase handle successfully opened with '%s' driver", logContext, driver)
 	}
 	return conn, nil

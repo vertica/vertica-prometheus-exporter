@@ -1,11 +1,12 @@
-package vertica_exporter
+package vertica_prometheus_exporter
 
 import (
 	"context"
 	"database/sql"
 	"fmt"
-	"github.com/vertica/vertica-exporter/config"
-	"github.com/vertica/vertica-exporter/errors"
+
+	"github.com/vertica/vertica-prometheus-exporter/config"
+	"github.com/vertica/vertica-prometheus-exporter/errors"
 
 	log "github.com/sirupsen/logrus"
 )

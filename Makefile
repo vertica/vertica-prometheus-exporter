@@ -18,7 +18,7 @@ pkgs    = $(shell $(GO) list ./... | grep -v /vendor/)
 
 PREFIX              ?= $(shell pwd)
 BIN_DIR             ?= $(shell pwd)
-DOCKER_IMAGE_NAME   ?= vertica-exporter
+DOCKER_IMAGE_NAME   ?= vertica-prometheus-exporter
 DOCKER_IMAGE_TAG    ?= $(subst /,-,$(shell git rev-parse --abbrev-ref HEAD))
 
 
@@ -37,7 +37,7 @@ format:
 build: promu
 	@echo ">> building binaries"
 	@$(PROMU) build --prefix $(PREFIX)
-	@mv  ./vertica-exporter ./cmd/vertica_exporter/
+	@mv  ./vertica-prometheus-exporter ./cmd/vertica_promethues_exporter
 	
 
 promu:

@@ -1,16 +1,17 @@
-package vertica_exporter
+package vertica_prometheus_exporter
 
 import (
 	"context"
 	"errors"
 	"flag"
 	"fmt"
-	"github.com/prometheus/client_golang/prometheus"
-	dto "github.com/prometheus/client_model/go"
-	"github.com/vertica/vertica-exporter/config"
-	"google.golang.org/protobuf/proto"
 	"os"
 	"sync"
+
+	"github.com/prometheus/client_golang/prometheus"
+	dto "github.com/prometheus/client_model/go"
+	"github.com/vertica/vertica-prometheus-exporter/config"
+	"google.golang.org/protobuf/proto"
 )
 
 const envDsnOverride = "SQLEXPORTER_TARGET_DSN"

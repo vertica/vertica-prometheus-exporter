@@ -1,4 +1,4 @@
-module github.com/vertica/vertica-exporter
+module github.com/vertica/vertica-prometheus-exporter
 
 go 1.18
 

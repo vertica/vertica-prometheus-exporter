@@ -43,18 +43,18 @@ jobs:
           done;
           echo "Vertica is up"
 
-    - name: Set up a vertica-exporter
+    - name: Set up a vertica-prometheus-exporter
       timeout-minutes: 15
       run: |
-          docker build . -t vertica_exporter
-          docker run -d -i -p 9968:9968 -itd --network=vertica  --name vertica_exporter vertica_exporter:latest
-          docker logs vertica_exporter 
+          docker build . -t vertica_prometheus_exporter
+          docker run -d -i -p 9968:9968 -itd --network=vertica  --name vertica_prometheus_exporter vertica_prometheus_exporter:latest
+          docker logs vertica_prometheus_exporter 
           echo "Vertica exporter started successfully..."
           docker ps
     - name: curl data using exporter from vertica database
       timeout-minutes: 15
       run: |
-          echo "getting data using vertica-exporter from vertica database..."
+          echo "getting data using vertica-prometheus-exporter from vertica database..."
           curl --location --request GET 'http://localhost:9968/metrics'
           
       

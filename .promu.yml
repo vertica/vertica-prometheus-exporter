@@ -3,12 +3,12 @@ go:
     version: 1.15.1
     cgo: false
 repository:
-    path: github.com/vertica/vertica-exporter
+    path: github.com/vertica/vertica-prometheus-exporter/vertica-prometheus-exporter
 build:
     prefix: .
     binaries:
-        - name: vertica-exporter
-          path: ./cmd/vertica_exporter
+        - name: vertica-prometheus-exporter
+          path: ./cmd/vertica_prometheus_exporter
     flags: -a -tags netgo
     ldflags: |
         -s

@@ -1,4 +1,4 @@
-package vertica_exporter
+package vertica_prometheus_exporter
 
 import (
 	"context"
@@ -9,10 +9,9 @@ import (
 	"time"
 
 	dto "github.com/prometheus/client_model/go"
-	"github.com/vertica/vertica-exporter/config"
-	"github.com/vertica/vertica-exporter/errors"
 	log "github.com/sirupsen/logrus"
-
+	"github.com/vertica/vertica-prometheus-exporter/config"
+	"github.com/vertica/vertica-prometheus-exporter/errors"
 )
 
 // Collector is a self-contained group of SQL queries and metric families to collect from a specific database. It is

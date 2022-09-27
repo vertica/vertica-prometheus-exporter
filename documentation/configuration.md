@@ -51,9 +51,9 @@ Log:
   max_log_filesize:  1 
 
 ```
-Vertica Base Gauge Configurations
+Vertica Base example Configurations
 ```yml
-collector_name: vertica_base_gauges
+collector_name: example
 ### min_interval: 0s
 metrics:
    - metric_name: vertica_license_size
@@ -95,113 +95,9 @@ metrics:
          from nodes 
          where node_state!='UP' and node_state!='Standby';
 
-Vertica Base Graph Configurations
-collector_name: vertica_base_graphs
-metrics:
-  - metric_name: vertica_connections_per_node
-    type: counter
-    help: 'Connections per node'
-    key_labels:
-       - node_name
-    values: [ttlconnspn]
-    query: |
-         select /*+ LABEL(exporter_vertica_total_database_connections) */ node_name,count(*) as ttlconnspn 
-         from sessions
-         group by node_name
-         order by node_name;
-  - metric_name: vertica_query_requests_transactions_count_per_node
-    type: counter
-    help: 'Running transactions per node'
-    key_labels:
-       - node_name
-    values: [total]
-    query: |
-       SELECT /*+ LABEL(exporter_vertica_query_requests_transactions_count_per_node) */
-       node_name , count(*) total
-       FROM transactions
-       WHERE start_timestamp between date_trunc('minute',sysdate) - '1 minutes'::interval and date_trunc('minute',sysdate) - '1 milliseconds'::interval
-       GROUP BY node_name;
-  - metric_name: vertica_cpu_usage_pct
-    type: counter
-    help: 'vertica cpu usage percentage'
-    key_labels: 
-       - node_name
-    values: [avg_cpu_usage_pct]
-    query_ref: vertica_system_resources
-  - metric_name: vertica_mem_usage_pct
-    type: counter
-    help: 'vertica memory usage percentage'
-    key_labels:
-       - node_name
-    values: [avg_mem_usage_pct]
-    query_ref: vertica_system_resources
-  - metric_name: vertica_net_rx_kbytespersec
-    type: counter
-    help: 'Vertica Network Receive kbps'
-    key_labels:
-       - node_name
-    values: [net_rx_kbps]
-    query_ref: vertica_system_resources
-  - metric_name: vertica_net_tx_kbytespersec
-    type: counter
-    help: 'Vertica Network Transmit kbps'
-    key_labels:
-       - node_name
-    values: [net_tx_kbps]
-    query_ref: vertica_system_resources
-  - metric_name: vertica_io_read_kbytespersec
-    type: counter
-    help: 'Vertica IO Read kbps'
-    key_labels:
-       - node_name
-    values: [io_read_kbps]
-    query_ref: vertica_system_resources
-  - metric_name: vertica_io_write_kbytespersec
-    type: counter
-    help: 'Vertica IO Writes kbps'
-    key_labels:
-       - node_name
-    values: [io_write_kbps]
-    query_ref: vertica_system_resources
-
-queries:
-  - query_name: vertica_system_resources
-    query: |
-       select  
-          node_name,
-          max(average_cpu_usage_percent) as avg_cpu_usage_pct,
-          max(average_memory_usage_percent) as avg_mem_usage_pct,
-          max(net_rx_kbytes_per_second) as net_rx_kbps,
-          max(net_tx_kbytes_per_second) as net_tx_kbps,
-          max(io_read_kbytes_per_second) as io_read_kbps,
-          max(io_/*+ LABEL(exporter_vertica_total_database_size) */ (database_size_bytes/1000000)::INTEGER as ttldbsz
-         from license_audits where audited_data='Total'
-         order by audit_end_timestamp desc limit 1;
-   - metric_name: vertica_total_database_rows
-     type: gauge
-     help: 'Total Rows in Database from projection_storage table.'
-     values: [ttlrows]
-     query: |
-         select /*+ LABEL(exporter_vertica_total_projection_rows) */ sum(row_count) as ttlrows 
-         from projection_storage;
-   - metric_name: vertica_total_database_connections
-     type: gauge
-     help: 'Total Database Connections from sessions table.'
-     values: [ttlconns]
-     query: |
-         select /*+ LABEL(exporter_vertica_total_database_connections) */ count(*) as ttlconns 
-         from sessions;
-   - metric_name: vertica_state_not_up_or_standby
-     type: gauge
-     help: 'Nodes with state of other than UP or STANDBY.'
-     values: [down]
-     query: |
-         select count(*) as down 
-         from nodes 
-         where node_state!='UP' and node_state!='Standby';
 ```
 
-Vertica Base example Configurations
+Vertica Base example1 Configurations
 ```yml
 collector_name: vertica_example1
 metrics:

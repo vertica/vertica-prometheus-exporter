@@ -45,6 +45,7 @@ https://github.com/prometheus/prometheus/issues/2227
 
 Return values are integer:
 
+```
 dbadmin=> \d mvaltesti
                                   List of Fields by Tables
  Schema |   Table   | Column | Type | Size | Default | Not Null | Primary Key | Foreign Key
@@ -52,6 +53,7 @@ dbadmin=> \d mvaltesti
  public | mvaltesti | c1     | int  |    8 |         | f        | f           |
  public | mvaltesti | c2     | int  |    8 |         | f        | f           |
  public | mvaltesti | c3     | int  |    8 |         | f        | f           |
+```
 
 collector_name: vertica_base_tables
 metrics:
@@ -75,6 +77,7 @@ INFO[2022-09-19T13:48:51-04:00] returned_columns="[c1 c2 c3]"collector="vertica_
 
 Return values are Non integer:
 
+```
 dbadmin=> \d mvaltest
                                      List of Fields by Tables
  Schema |  Table   | Column |    Type     | Size | Default | Not Null | Primary Key | Foreign Key
@@ -82,6 +85,7 @@ dbadmin=> \d mvaltest
  public | mvaltest | c1     | varchar(10) |   10 |         | f        | f           |
  public | mvaltest | c2     | varchar(10) |   10 |         | f        | f           |
  public | mvaltest | c3     | varchar(10) |   10 |         | f        | f           |
+```
 
 collector_name: vertica_base_tables
 metrics:

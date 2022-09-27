@@ -1,0 +1,29 @@
+collector_name: vertica_osstats
+metrics:
+  - metric_name: vertica_cpu_usage_pct
+    type: counter
+    help: 'vertica cpu usage percentage'
+    key_labels: 
+       - node_name
+    values: [avg_cpu_usage_pct]
+    query_ref: vertica_system_resources
+  - metric_name: vertica_mem__usage_pct
+    type: counter
+    help: 'vertica memory usage percentage'
+    key_labels:
+       - node_name
+    values: [avg_mem_usage_pct]
+    query_ref: vertica_system_resources
+
+queries:
+  - query_name: vertica_system_resources
+    query: |
+       select  
+          node_name,
+          max(average_cpu_usage_percent) as avg_cpu_usage_pct,
+          max(average_memory_usage_percent) as avg_mem_usage_pct,
+          max(net_rx_kbytes_per_second) as net_rx_kbs,
+          max(net_tx_kbytes_per_second) as net_tx_kbs
+       from system_resource_usage 
+       group by node_name;
+       

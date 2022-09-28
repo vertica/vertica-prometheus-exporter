@@ -10,14 +10,14 @@ Comparison of available tools –
 
 ### LOAD BALANCE AND FAIL SAFE: 
 
-Activate connection_load_balance  and backup_server_node  via the data source name in the vertica_prometheus_exporter.yml file for best distributed connections and fail safety in event the primary Vertica node goes down. See the Vertica documentaiton for more details on these ttwo features.
+Activate connection_load_balance  and backup_server_node  via the data source name in the vertica-prometheus-exporter.yml file for best distributed connections and fail safety in event the primary Vertica node goes down. See the Vertica documentaiton for more details on these ttwo features.
 
   *data_source_name: 'vertica://dbadmin:@nn.nn.nn.235:5433/VMart?connection_load_balance=1&backup_server_node=nn.nn.nn.236:5433,nn.nn.nn.237:5433'*
   
 
 ### STARTUP ORDER: 
 
-- First start the vertica-prometheus-exporter. Depending on your deployment It should say listening at the end of console output, end of Logfile/logfile.log, or end of nohup.out. 
+- First start the vertica-prometheus-exporter. Depending on your deployment It should say listening at the end of console output, end of logfile/logfile.log, or end of nohup.out. 
 
 - Wait a minute and then start Prometheus.  It should say listening at the end of console output or end of nohup.out. 
 
@@ -38,11 +38,11 @@ vertica_query_requests_transactions_count_per_node{node_name="v_vmart_node0003"}
 
 **Non Docker Linux Build** 
 
-Once you build the vertica_prometheus_exporter binary you can move it to any location you want but the following dependencies exist: 
+Once you build the vertica-prometheus-exporter binary you can move it to any location you want but the following dependencies exist: 
 - You have to launch the binary from the directory where it exists 
 - You have to have a metrices dir under the binary’s directory that contains the collector yml files 
-- You can have the vertica_prometheus_exporter.yml file anywhere you like as the –config-file parameter to starting the binary can be a fully qualified path to it. 
-- Your Logfile dir must be under the binary’s directory. The binary will create the Logfile dir and the logfile.log in it if they don’t exist. 
+- You can have the vertica-prometheus-exporter.yml file anywhere you like as the –config-file parameter to starting the binary can be a fully qualified path to it. 
+- Your logfile dir must be under the binary’s directory. The binary will create the logfile dir and the logfile.log in it if they don’t exist. 
  
 
 **Docker build** 
@@ -50,14 +50,14 @@ Once you build the vertica_prometheus_exporter binary you can move it to any loc
 To be added. Note same as above, but possible to use -v to bind dirs. external to container 
  # make a local filesystem metrices directory (make sure to set perms to RWX for user who will run the docker container)
  mkdir metrices
- # make a local filesystem Logfile directory (make sure to set perms to RWX for user who will run the docker container)
- mkdir Logfile
+ # make a local filesystem logfile directory (make sure to set perms to RWX for user who will run the docker container)
+ mkdir logfile
  # cp the yml files from the vertica-prometheus-exporter tree to the local metrices dir
- cp vertica-prometheus-exporter/cmd/vertica_prometheus_exporter/metrices/* ./metrices
+ cp vertica-prometheus-exporter/cmd/vertica-prometheus-exporter/metrices/* ./metrices
  # edit the vertica config file to set data source name and adjust any knobs desired
- vi vertica_prometheus_exporter.yml
+ vi vertica-prometheus-exporter.yml
  # start the container using the -v bind for mapping the internal docker paths to the local file system paths (exmaple here locals are under dbadmin's home dir)
- docker container run -d --name vexporter -p 9968:9968 -v /home/dbadmin/metrices:/bin/metrices -v /home/dbadmin/Logfile:/bin/Logfile vertica-prometheus-exporter
+ docker container run -d --name vexporter -p 9968:9968 -v /home/dbadmin/metrices:/bin/metrices -v /home/dbadmin/logfile:/bin/logfile vertica-prometheus-exporter
 
 ### MINIMIZE QUERY IMPACT on VERTICA 
 
@@ -74,7 +74,7 @@ Prometheus by default retains 15 days of metric data. See the Prometheus documen
 
 ### EXPORTER STORAGE 
 
-To exporter has a relatively small footprint, but it does produce a logfile that can grow over time. In the vertica_prometheus_exporter.yml file we’ve provided two knobs to manage how large the log file will get. There are knobs to define number of days retained and max file size. 
+To exporter has a relatively small footprint, but it does produce a logfile that can grow over time. In the vertica-prometheus-exporter.yml file we’ve provided two knobs to manage how large the log file will get. There are knobs to define number of days retained and max file size. 
 ```yml
 Log: 
   retention_day:  15 
@@ -83,17 +83,17 @@ Log:
 
 ### CLEARTEXT PASSWORD 
 
-To prevent passing the database password in cleartext across the lan we’ve used a secret to store it. The password will still be clear text in the vertica_prometheus_exporter.yml so that file should have an access mask to only allow the user running the exporter to read it.  
+To prevent passing the database password in cleartext across the lan we’ve used a secret to store it. The password will still be clear text in the vertica-prometheus-exporter.yml so that file should have an access mask to only allow the user running the exporter to read it.  
 
 ### COLLECTOR FILE PLACEMENT 
 
-To prevent false console/log output by the Exporter, only put collector yml files in the metrices directory that are associated with collectors you specify in the vertica_prometheus_exporter.yml config file. Alternatively, if you want to keep a superset of collectors but change which you use at different times, then instead of the collector_files value specifying a glob (*.collector.yml) , list the yml files individually (vertica_base_graphs,vertica_base_gauges)..  
+To prevent false console/log output by the Exporter, only put collector yml files in the metrices directory that are associated with collectors you specify in the vertica-prometheus-exporter.yml config file. Alternatively, if you want to keep a superset of collectors but change which you use at different times, then instead of the collector_files value specifying a glob (*.collector.yml) , list the yml files individually (vertica_base_graphs,vertica_base_gauges)..  
 
 If yml files not associated with the collectors: value exist in the collector files dir the console output will imply all collectors were loaded. 
 
 ### Example: 
 
-If we have vertica_base_gauges.yml and vertica_base_graphs.yml in my yml dir, but in my vertica_prometheus_exporter.yml config file we only specify the graphs and we use the glob, the exporter start output says it loaded the gauges and graphs. You can verify in Prometheus that it in fact only loaded the graphs as specified. 
+If we have vertica_base_gauges.yml and vertica_base_graphs.yml in my yml dir, but in my vertica-prometheus-exporter.yml config file we only specify the graphs and we use the glob, the exporter start output says it loaded the gauges and graphs. You can verify in Prometheus that it in fact only loaded the graphs as specified. 
 
 Vertica_export.yml extract 
 
@@ -123,7 +123,7 @@ The min_interval knob determines the lifespan of the internal collector objects.
 
 There is a global min_interval setting in the vertica.yml file. This governs the min_interval for all active collectors. Each collector file can have it’s own min_interval setting, allowing you to control how frequently a Prometheus request actually causes a scrape against Vertica. 
 
-`[dbadmin@vertica-node metrices]$ head vertica_prometheus_exporter.yml `
+`[dbadmin@vertica-node metrices]$ head vertica-prometheus-exporter.yml `
 ```
 global: 
   scrape_timeout_offset: 500ms 

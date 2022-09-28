@@ -35,6 +35,7 @@ target:
   # Data source name always has a URI schema that matches the driver name. In some cases (e.g. vertica)
   # the schema gets dropped or replaced to match the driver expected DSN format.
   data_source_name: 'vertica://<username>:<userpwd>@<exporterhostip>:5433/<databasename>' 
+  #data_source_name: 'vertica://simplify3xuser:simplify3xu@10.20.43.235:5433/VMart?connection_load_balance=1&backup_server_node=10.20.43.236:5433,10.20.43.237:5433'
 
   # Collectors (referenced by name) to execute on the target.
   collectors: [example ,example1]

@@ -42,7 +42,7 @@ $ docker run -p 9968:9968 vertica-prometheus-exporter:latest
 ```
 ```
 I0829 15:39:32.385084       1 main.go:63] Starting vertica prometheus exporter (version=, branch=, revision=) (go=go1.19, user=, date=)
-I0829 15:39:32.385449       1 config.go:22] Loading configuration from examples/vertica_prometheus_exporter.yml
+I0829 15:39:32.385449       1 config.go:22] Loading configuration from examples/vertica-prometheus-exporter.yml
 I0829 15:39:32.387365       1 config.go:148] Loaded collector "vertica_base_gauges" from examples/vertica_base_gauges.collector.yml
 I0829 15:39:32.388104       1 config.go:148] Loaded collector "vertica_base_graphs" from examples/vertica_base_graphs.collector.yml
 (0xa6c680,0xc000292900)

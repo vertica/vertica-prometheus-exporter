@@ -35,9 +35,9 @@ func WalkMatch(root, pattern string) ([]string, error) {
 	return matches, nil
 }
 
-// TestExporter function is checking vertica_prometheus_exporter.yml file
+// TestExporter function is checking vertica-prometheus-exporter.yml file
 func TestExporter(t *testing.T) {
-	yfile, err1 := ioutil.ReadFile("../cmd/vertica_prometheus_exporter/metrices/vertica_prometheus_exporter.yml")
+	yfile, err1 := ioutil.ReadFile("../cmd/vertica-prometheus-exporter/metrices/vertica-prometheus-exporter.yml")
 
 	if err1 != nil {
 		fmt.Println(fmt.Errorf("read: %w", err1))
@@ -134,7 +134,7 @@ func TestExporter(t *testing.T) {
 }
 
 func TestSamp(t *testing.T) {
-	var path = "../cmd/vertica_prometheus_exporter/metrices/"
+	var path = "../cmd/vertica-prometheus-exporter/metrices/"
 	files, err := WalkMatch(path, "*.collector.yml")
 	uniquemetric := []string{}
 	sfile, err2 := ioutil.ReadFile("sample.yml")

@@ -9,12 +9,11 @@ import (
 
 	_ "net/http/pprof"
 
-	vertica_prometheus_exporter "github.com/vertica/vertica-prometheus-exporter"
-
 	_ "github.com/kardianos/minwinsvc"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/prometheus/common/version"
+	vertica_prometheus_exporter "github.com/vertica/vertica-prometheus-exporter"
 
 	log "github.com/sirupsen/logrus"
 	// "gopkg.in/natefinch/lumberjack.v2"
@@ -30,7 +29,7 @@ var (
 	listenAddress = flag.String("web.listen-address", ":9968", "Address to listen on for web interface and telemetry")
 	metricsPath   = flag.String("web.metrics-path", "/metrics", "Path under which to expose metrics")
 	enableReload  = flag.Bool("web.enable-reload", false, "Enable reload collector data handler")
-	configFile    = flag.String("config.file", "metrices/vertica_prometheus_exporter.yml", "vertica Exporter configuration filename")
+	configFile    = flag.String("config.file", "metrices/vertica-prometheus-exporter.yml", "Vertica Prometheus Exporter configuration filename")
 )
 
 func init() {
@@ -62,7 +61,7 @@ func main() {
 	flag.Parse()
 
 	if *showVersion {
-		fmt.Println(version.Print("vertica_prometheus_exporter"))
+		fmt.Println(version.Print("vertica-prometheus-exporter"))
 		os.Exit(0)
 	}
 
@@ -79,7 +78,7 @@ func main() {
 	http.HandleFunc("/config", ConfigHandlerFunc(*metricsPath, exporter))
 	http.Handle(*metricsPath, promhttp.InstrumentMetricHandler(prometheus.DefaultRegisterer, ExporterHandlerFor(exporter)))
 	// Expose exporter metrics separately, for debugging purposes.
-	http.Handle("/vertica_prometheus_exporter_metrics", promhttp.HandlerFor(prometheus.DefaultGatherer, promhttp.HandlerOpts{}))
+	http.Handle("/vertica-prometheus-exporter-metrics", promhttp.HandlerFor(prometheus.DefaultGatherer, promhttp.HandlerOpts{}))
 
 	// Expose refresh handler to reload query collections
 	if *enableReload {

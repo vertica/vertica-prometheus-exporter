@@ -31,7 +31,7 @@ jobs:
       timeout-minutes: 15
       run: |
           docker network create -d bridge vertica
-          docker pull vertica/vertica-ce:12.0.0-0
+          docker pull vertica/vertica-ce:latest
           docker run -d -p 5433:5433 -p 5444:5444 \
             -itd --network=vertica \
             --name vertica_docker \
@@ -47,7 +47,7 @@ jobs:
       timeout-minutes: 15
       run: |
           docker build . -t vertica-prometheus-exporter
-          docker run -d -i -p 9968:9968 -itd --network=vertica  --name vertica-prometheus-exporter vertica-prometheus-exporter:latest
+          docker run -d -i -p 9968:9968 -itd --network=vertica --name vertica-prometheus-exporter vertica-prometheus-exporter:latest
           docker logs vertica-prometheus-exporter 
           echo "Vertica exporter started successfully..."
           docker ps

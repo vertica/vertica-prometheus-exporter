@@ -98,7 +98,7 @@ The configuration examples listed here only cover the core elements. For a compr
 global:
   # Subtracted from Prometheus' scrape_timeout to give us some headroom and prevent Prometheus from
   # timing out first.
-   scrape_timeout: 10s
+  scrape_timeout: 10s
   # Minimum interval between collector runs: by default (0s) collectors are executed on every scrape.
   min_interval: 10s
   # Maximum number of open connections to any one target. Metric queries will run concurrently on
@@ -111,12 +111,12 @@ global:
 
 # The target to monitor and the collectors to execute on it.
 target:
-    # Data source name always has a URI schema that matches the driver name.
-    # the schema gets dropped or replaced to match the driver expected DSN format.
-    data_source_name: 'vertica://<username>:<userpwd>@<exporterhostip>:5433/<databasename>' 
-    
-    # Collectors (referenced by name) to execute on the target.
-    collectors: [ example ,example1 ]
+  # Data source name always has a URI schema that matches the driver name.
+  # the schema gets dropped or replaced to match the driver expected DSN format.
+  data_source_name: 'vertica://<username>:<userpwd>@<exporterhostip>:5433/<databasename>' 
+  
+  # Collectors (referenced by name) to execute on the target.
+  collectors: [ example ,example1 ]
 
 # Collector definition files.
 collector_files: 

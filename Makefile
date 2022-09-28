@@ -17,10 +17,12 @@ PROMU  := $(GOPATH)/bin/promu
 pkgs    = $(shell $(GO) list ./... | grep -v /vendor/)
 
 PREFIX              ?= $(shell pwd)
-BIN_DIR             ?= $(shell pwd)
+OUTPREFIX           ?= $(shell pwd)/cmd/vertica-prometheus-exporter/
+BIN_DIR             ?= $(shell pwd)/cmd/vertica-prometheus-exporter/
 DOCKER_IMAGE_NAME   ?= vertica-prometheus-exporter
 DOCKER_IMAGE_TAG    ?= $(subst /,-,$(shell git rev-parse --abbrev-ref HEAD))
 
+VERSION := v0.1.0
 
 all: format test build
 
@@ -36,14 +38,17 @@ format:
 
 build: promu
 	@echo ">> building binaries"
-	@$(PROMU) build --prefix $(PREFIX)
-	@mv  ./vertica-prometheus-exporter ./cmd/vertica-prometheus-exporter/
-	
+	@$(PROMU) build --prefix $(OUTPREFIX)
+#	@mv  vertica-prometheus-exporter cmd/vertica-prometheus-exporter/
+
+tarball: promu
+	@echo ">> building release tarball"
+	@$(PROMU) tarball --prefix $(OUTPREFIX) $(BIN_DIR)
 
 promu:
+	@echo $(VERSION) > VERSION
 	@GOOS=$(shell uname -s | tr A-Z a-z) \
 		GOARCH=$(subst x86_64,amd64,$(patsubst i%86,386,$(shell uname -m))) \
 		$(GO) install github.com/prometheus/promu@v0.13.0
 
-
-.PHONY: all format build test promu
+.PHONY: all format build test promu tarball

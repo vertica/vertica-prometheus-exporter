@@ -1,11 +1,11 @@
 # Vertica Prometheus Exporter [![Go](https://github.com/vertica/vertica-prometheus-exporter/actions/workflows/build.yml/badge.svg)](https://github.com/vertica/vertica-prometheus-exporter/actions/workflows/build.yml) [![Go Report Card](https://goreportcard.com/badge/github.com/vertica/vertica-prometheus-exporter)](https://goreportcard.com/report/github.com/vertica/vertica-prometheus-exporter/) [![Github All Releases](https://img.shields.io/github/downloads/vertica/vertica-prometheus-exporter/total.svg)]()
 
 
-This is a permanent fork of the github database agnostic sql-exporter created by burningalchemist (https://github.com/burningalchemist/sql_exporter). We used it as a base to create a Vertica specific exporter tailored to our customers' needs.  
+This is a permanent fork of the [sql_exporter](https://github.com/burningalchemist/sql_exporter) by burningalchemist. We used that as a base to create a Vertica specific exporter tailored to the needs of our customers.  
 
 ## Overview
 
-The Vertica Prometheus Exporter is a configuration-driven exporter that exposes metrics gathered from a Vertica database for use by the Prometheus monitoring system. It is written in GO lang and uses the Vertica-sql-go driver (https://github.com/vertica/vertica-sql-go) to talk to the Vertica database.
+The Vertica Prometheus Exporter is a configuration-driven exporter that exposes metrics gathered from a Vertica database for use by the Prometheus monitoring system. It is written in GO lang and uses the [Vertica-sql-go driver](https://github.com/vertica/vertica-sql-go) to talk to the Vertica database.
 
 
 In the configuration, the entire definitions of metrics and the queries are collected. Queries are grouped into collectors -- logical groups of queries, e.g., query stats or I/O stats, mapped to the metrics they populate. Collectors may be DBMS-specific or custom, deployment specific. This means you can quickly and easily set up custom collectors to measure data quality, whatever that might mean in your specific case.

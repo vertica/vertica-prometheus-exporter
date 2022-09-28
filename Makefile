@@ -37,7 +37,7 @@ format:
 build: promu
 	@echo ">> building binaries"
 	@$(PROMU) build --prefix $(PREFIX)
-	@mv  ./vertica-prometheus-exporter ./cmd/vertica_promethues_exporter
+	@mv  ./vertica-prometheus-exporter ./cmd/vertica_prometheus_exporter/
 	
 
 promu:

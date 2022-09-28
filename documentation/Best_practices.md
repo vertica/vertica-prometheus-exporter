@@ -48,6 +48,16 @@ Once you build the vertica_prometheus_exporter binary you can move it to any loc
 **Docker build** 
 
 To be added. Note same as above, but possible to use -v to bind dirs. external to container 
+ # make a local filesystem metrices directory (make sure to set perms to RWX for user who will run the docker container)
+ mkdir metrices
+ # make a local filesystem Logfile directory (make sure to set perms to RWX for user who will run the docker container)
+ mkdir Logfile
+ # cp the yml files from the vertica-prometheus-exporter tree to the local metrices dir
+ cp vertica-prometheus-exporter/cmd/vertica_prometheus_exporter/metrices/* ./metrices
+ # edit the vertica config file to set data source name and adjust any knobs desired
+ vi vertica_prometheus_exporter.yml
+ # start the container using the -v bind for mapping the internal docker paths to the local file system paths (exmaple here locals are under dbadmin's home dir)
+ docker container run -d --name vexporter -p 9968:9968 -v /home/dbadmin/metrices:/bin/metrices -v /home/dbadmin/Logfile:/bin/Logfile vertica-prometheus-exporter
 
 ### MINIMIZE QUERY IMPACT on VERTICA 
 

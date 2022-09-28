@@ -27,7 +27,7 @@ Get Prometheus vertica prometheus exporter, either as a packaged release, as a D
 
 
 ```shell
-$ go install github.com/vertica/vertica-prometheus-exporter/cmd/vertica_prometheus_exporter@latest
+$ go install github.com/vertica/vertica-prometheus-exporter/cmd/vertica-prometheus-exporter@latest
 ```
 then run it from the command line, given ~/go/bin is in your PATH:
 ```shell

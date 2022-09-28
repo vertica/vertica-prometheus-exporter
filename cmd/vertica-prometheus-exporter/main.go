@@ -43,6 +43,7 @@ func init() {
 }
 
 func main() {
+	
 	if os.Getenv(envDebug) != "" {
 		runtime.SetBlockProfileRate(1)
 		runtime.SetMutexProfileFraction(1)

@@ -67,7 +67,7 @@ this will create a binary file in ***cmd/vertica_prometheus_exporter/***
 $ make build
 ```
 ```shell
-$ cd cmd/vertica_prometheus_exporter/vertica-prometheus-exporter
+$ cd cmd/vertica_prometheus_exporter
 ```
 ```shell
 $ ./vertica-prometheus-exporter

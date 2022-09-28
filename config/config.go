@@ -35,21 +35,18 @@ func Load(configFile string) (*Config, error) {
 	return &c, nil
 }
 
-
 //
 // Top-level config
 //
 
 // Config is a collection of jobs and collectors.
 type Config struct {
-	Globals        *GlobalConfig      `yaml:"global"`
-	CollectorFiles []string           `yaml:"collector_files,omitempty"`
-	Target         *TargetConfig      `yaml:"target,omitempty"`
-	Jobs           []*JobConfig       `yaml:"jobs,omitempty"`
-	Collectors     []*CollectorConfig `yaml:"collectors,omitempty"`
-	Log      		 map[string]interface{}       `yaml:"Log"`
-
-	
+	Globals        *GlobalConfig          `yaml:"global"`
+	CollectorFiles []string               `yaml:"collector_files,omitempty"`
+	Target         *TargetConfig          `yaml:"target,omitempty"`
+	Jobs           []*JobConfig           `yaml:"jobs,omitempty"`
+	Collectors     []*CollectorConfig     `yaml:"collectors,omitempty"`
+	Log            map[string]interface{} `yaml:"Log"`
 
 	configFile string
 
@@ -169,7 +166,6 @@ type GlobalConfig struct {
 	XXX map[string]interface{} `yaml:",inline" json:"-"`
 }
 
-
 // UnmarshalYAML implements the yaml.Unmarshaler interface for GlobalConfig.
 func (g *GlobalConfig) UnmarshalYAML(unmarshal func(interface{}) error) error {
 	// Default to running the queries on every scrape.
@@ -275,8 +271,9 @@ func (j *JobConfig) UnmarshalYAML(unmarshal func(interface{}) error) error {
 	return checkOverflow(j.XXX, "job")
 }
 
-//lint:ignore U1000 - it's unused so far
 // checkLabelCollisions checks for label collisions between StaticConfig labels and Metric labels.
+//
+//lint:ignore U1000 - it's unused so far
 func (j *JobConfig) checkLabelCollisions() error {
 	sclabels := make(map[string]interface{})
 	for _, s := range j.StaticConfigs {

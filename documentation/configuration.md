@@ -99,7 +99,7 @@ metrics:
 
 Vertica Base example1 Configurations
 ```yml
-collector_name: vertica_example1
+collector_name: vertica-example1
 metrics:
   - metric_name: vertica_connections_per_node
     type: counter

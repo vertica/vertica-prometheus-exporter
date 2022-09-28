@@ -27,7 +27,7 @@ all: format test build
 
 test:
 	@echo ">> running tests"
-	@$(GO) test -short -race $(PREFIX)/Test
+	@$(GO) test -short -race $(PREFIX)/test
 
 format:
 	@echo ">> formatting code"
@@ -37,7 +37,7 @@ format:
 build: promu
 	@echo ">> building binaries"
 	@$(PROMU) build --prefix $(PREFIX)
-	@mv  ./vertica-prometheus-exporter ./cmd/vertica_prometheus_exporter/
+	@mv  ./vertica-prometheus-exporter ./cmd/vertica-prometheus-exporter/
 	
 
 promu:
@@ -46,4 +46,4 @@ promu:
 		$(GO) install github.com/prometheus/promu@v0.13.0
 
 
-.PHONY: all style format build test vet tarball docker promu
+.PHONY: all format build test promu

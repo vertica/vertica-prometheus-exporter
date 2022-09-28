@@ -11,10 +11,10 @@ import (
 )
 
 // Logging function to log to the file
-// it will take max file size and retention_day from vertica_prometheus_exporter.yml file .
+// it will take max file size and retention_day from vertica-prometheus-exporter.yml file .
 
 func SetupLogger(configFile string) {
-	yfile, err1 := ioutil.ReadFile("metrices/vertica_prometheus_exporter.yml")
+	yfile, err1 := ioutil.ReadFile("metrices/vertica-prometheus-exporter.yml")
 	if err1 != nil {
 		log.Fatal(err1)
 	}
@@ -42,7 +42,7 @@ func SetupLogger(configFile string) {
 	}
 
 	lumberjackLogger := &lumberjack.Logger{
-		Filename:   "./Logfile/logfile.log",
+		Filename:   "./logfile/logfile.log",
 		MaxSize:    maxFilesize, // megabytes
 		MaxBackups: 3,
 		MaxAge:     Rdays, //days

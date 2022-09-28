@@ -33,7 +33,7 @@ const (
       </head>
       <body>
         <div class="navbar">
-          <div class="navbar-header"><a href="/">Prometheus SQL Exporter {{ .Version }}</a></div>
+          <div class="navbar-header"><a href="/">Prometheus Vertica Exporter {{ .Version }}</a></div>
           <div><a href="{{ .MetricsPath }}">Metrics</a></div>
           <div><a href="/config">Configuration</a></div>
           <div><a href="/debug/pprof">Profiling</a></div>

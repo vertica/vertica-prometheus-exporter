@@ -66,7 +66,7 @@ Syntax tests do simple syntax testing of individual metrices and configs, which 
 
 Run all test :
 ```shell
-$ cd /Tests
+$ cd /tests
 ```
 ```shell
 $ go test .

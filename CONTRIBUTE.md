@@ -62,7 +62,7 @@ go get.
 *vertica-prometheus-exporter* comes with a test suite of its own, in the Tests directory of the code base. It’s our policy to make sure all tests always pass.
 We appreciate any and all contributions to the test suite! These tests use a Golang module: testing. You might want to check out the testing documentation for more details.
 
-Syntax tests do simple syntax testing of individual metrices and configs, which do not require database connection. Examples of running tests:
+Syntax tests do simple syntax testing of individual metrics and configs, which do not require database connection. Examples of running tests:
 
 Run all test :
 ```shell

@@ -42,7 +42,7 @@ Usage of ./vertica-prometheus-exporter:
   -config.enable-ping
         Enable ping for targets (default true)
   -config.file string
-        Vertica Prometheus Exporter configuration filename (default "metrices/vertica-prometheus-exporter.yml")
+        Vertica Prometheus Exporter configuration filename (default "metrics/vertica-prometheus-exporter.yml")
   -version
         Print version information
     [...]

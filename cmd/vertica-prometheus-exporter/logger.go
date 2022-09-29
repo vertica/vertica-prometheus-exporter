@@ -42,7 +42,7 @@ func SetupLogger(configFile string) {
 	}
 
 	lumberjackLogger := &lumberjack.Logger{
-		Filename:   "./logfile/logfile.log",
+		Filename:   "./logfile/vertica-prometheus-exporter.log",
 		MaxSize:    maxFilesize, // megabytes
 		MaxBackups: 3,
 		MaxAge:     Rdays, //days

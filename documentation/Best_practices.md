@@ -17,7 +17,7 @@ Activate connection_load_balance  and backup_server_node  via the data source na
 
 ### STARTUP ORDER: 
 
-- First start the vertica-prometheus-exporter. Depending on your deployment It should say listening at the end of console output, end of logfile/logfile.log, or end of nohup.out. 
+- First start the vertica-prometheus-exporter. Depending on your deployment It should say listening at the end of console output, end of logfile/vertica-prometheus-exporter.log, or end of nohup.out. 
 
 - Wait a minute and then start Prometheus.  It should say listening at the end of console output or end of nohup.out. 
 
@@ -42,7 +42,7 @@ Once you build the vertica-prometheus-exporter binary you can move it to any loc
 - You have to launch the binary from the directory where it exists 
 - You have to have a metrices dir under the binary’s directory that contains the collector yml files 
 - You can have the vertica-prometheus-exporter.yml file anywhere you like as the –config-file parameter to starting the binary can be a fully qualified path to it. 
-- Your logfile dir must be under the binary’s directory. The binary will create the logfile dir and the logfile.log in it if they don’t exist. 
+- Your logfile dir must be under the binary’s directory. The binary will create the logfile dir and the vertica-prometheus-exporter.log in it if they don’t exist. 
  
 
 **Docker build** 

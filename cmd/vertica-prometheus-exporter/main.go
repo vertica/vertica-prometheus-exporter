@@ -29,7 +29,7 @@ var (
 	listenAddress = flag.String("web.listen-address", ":9968", "Address to listen on for web interface and telemetry")
 	metricsPath   = flag.String("web.metrics-path", "/metrics", "Path under which to expose metrics")
 	enableReload  = flag.Bool("web.enable-reload", false, "Enable reload collector data handler")
-	configFile    = flag.String("config.file", "metrices/vertica-prometheus-exporter.yml", "Vertica Prometheus Exporter configuration filename")
+	configFile    = flag.String("config.file", "metrics/vertica-prometheus-exporter.yml", "Vertica Prometheus Exporter configuration filename")
 )
 
 func init() {

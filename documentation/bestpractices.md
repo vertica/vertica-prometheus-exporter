@@ -40,7 +40,7 @@ vertica_query_requests_transactions_count_per_node{node_name="v_vmart_node0003"}
 
 Once you build the vertica-prometheus-exporter binary you can move it to any location you want but the following dependencies exist: 
 - You have to launch the binary from the directory where it exists 
-- You have to have a metrices dir under the binary’s directory that contains the collector yml files 
+- You have to have a metrics dir under the binary’s directory that contains the collector yml files 
 - You can have the vertica-prometheus-exporter.yml file anywhere you like as the –config-file parameter to starting the binary can be a fully qualified path to it. 
 - Your logfile dir must be under the binary’s directory. The binary will create the logfile dir and the vertica-prometheus-exporter.log in it if they don’t exist. 
  
@@ -48,16 +48,16 @@ Once you build the vertica-prometheus-exporter binary you can move it to any loc
 **Docker build** 
 
 To be added. Note same as above, but possible to use -v to bind dirs. external to container 
- # make a local filesystem metrices directory (make sure to set perms to RWX for user who will run the docker container)
- mkdir metrices
+ # make a local filesystem metrics directory (make sure to set perms to RWX for user who will run the docker container)
+ mkdir metrics
  # make a local filesystem logfile directory (make sure to set perms to RWX for user who will run the docker container)
  mkdir logfile
- # cp the yml files from the vertica-prometheus-exporter tree to the local metrices dir
- cp vertica-prometheus-exporter/cmd/vertica-prometheus-exporter/metrices/* ./metrices
+ # cp the yml files from the vertica-prometheus-exporter tree to the local metrics dir
+ cp vertica-prometheus-exporter/cmd/vertica-prometheus-exporter/metrics/* ./metrics
  # edit the vertica config file to set data source name and adjust any knobs desired
  vi vertica-prometheus-exporter.yml
  # start the container using the -v bind for mapping the internal docker paths to the local file system paths (exmaple here locals are under dbadmin's home dir)
- docker container run -d --name vexporter -p 9968:9968 -v /home/dbadmin/metrices:/bin/metrices -v /home/dbadmin/logfile:/bin/logfile vertica-prometheus-exporter
+ docker container run -d --name vexporter -p 9968:9968 -v /home/dbadmin/metrics:/bin/metrics -v /home/dbadmin/logfile:/bin/logfile vertica-prometheus-exporter
 
 ### MINIMIZE QUERY IMPACT on VERTICA 
 
@@ -87,7 +87,7 @@ To prevent passing the database password in cleartext across the lan we’ve use
 
 ### COLLECTOR FILE PLACEMENT 
 
-To prevent false console/log output by the Exporter, only put collector yml files in the metrices directory that are associated with collectors you specify in the vertica-prometheus-exporter.yml config file. Alternatively, if you want to keep a superset of collectors but change which you use at different times, then instead of the collector_files value specifying a glob (*.collector.yml) , list the yml files individually (vertica_base_graphs,vertica_base_gauges)..  
+To prevent false console/log output by the Exporter, only put collector yml files in the metrics directory that are associated with collectors you specify in the vertica-prometheus-exporter.yml config file. Alternatively, if you want to keep a superset of collectors but change which you use at different times, then instead of the collector_files value specifying a glob (*.collector.yml) , list the yml files individually (vertica_base_graphs,vertica_base_gauges)..  
 
 If yml files not associated with the collectors: value exist in the collector files dir the console output will imply all collectors were loaded. 
 
@@ -123,18 +123,18 @@ The min_interval knob determines the lifespan of the internal collector objects.
 
 There is a global min_interval setting in the vertica.yml file. This governs the min_interval for all active collectors. Each collector file can have it’s own min_interval setting, allowing you to control how frequently a Prometheus request actually causes a scrape against Vertica. 
 
-`[dbadmin@vertica-node metrices]$ head vertica-prometheus-exporter.yml `
+`[dbadmin@vertica-node metrics]$ head vertica-prometheus-exporter.yml `
 ```
 global: 
   scrape_timeout_offset: 500ms 
   min_interval: 10s 
 ```
-`[dbadmin@vertica-node metrices]$ head vertica_base_graphs.collector.yml`
+`[dbadmin@vertica-node metrics]$ head vertica_base_graphs.collector.yml`
 ```
 collector_name: vertica_base_graphs 
 min_interval: 75s 
 ```
-`[dbadmin@vertica-node metrices]$ head vertica_base_gauges.collector.yml`
+`[dbadmin@vertica-node metrics]$ head vertica_base_gauges.collector.yml`
 ```
 collector_name: vertica_base_gauges 
 min_interval: 0s 

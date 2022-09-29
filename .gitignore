@@ -1,2 +1,3 @@
 cmd/vertica-prometheus-exporter/vertica-prometheus-exporter
 cmd/vertica-prometheus-exporter/vertica-prometheus-exporter*.tar.gz
+cmd/vertica-prometheus-exporter/logfile/vertica-prometheus-exporter.log

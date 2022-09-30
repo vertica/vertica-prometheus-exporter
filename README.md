@@ -13,39 +13,57 @@ Per the Prometheus philosophy, scrapes are synchronous (metrics are collected on
 
 ## List of Features
 
-Multiple release formats to choose from
-``` 
- running go install to build and install the binary
- downloading a tarball that is a minimal footprint with a Linux amd64 binary and the necessary files to run
- git clone or download zip and build your own binary exporter
- git clone and do a docker build to create a docker container exporter
-```
-Configuration and collector file knobs
-There are several configuraiton file (global) and collector file (override global) knobs the end use can adjust to meet their needs regarding things like log retention, database connections, and metrics caching.
+**Multiple release formats to choose from**
+ 
+ 1. downloading a tarball that is a minimal footprint with a Linux amd64 binary plus the example and documentation files
+ 2. running go install to build and install just the binary
+ 3. git clone or download/uncompress the repo zip and build your own binary exporter
+ 4. git clone or download/uncompress the repo zip and do a docker build to create a docker image of the exporter
 
-Multiple collector files
-Using multiple collector files allows you to create logical metrics groupings based on type or characteristics of the data being fetched. You can quickly and easily set up custom collectors to measure database health, database usage, resource usage, etc. Basically you can tailor it to collect metrics on whatever you feel is important to monitor.
+**Configuration and collector file knobs** - There are several configuration file (global) and collector file (override global) knobs the end use can adjust to meet their needs regarding things like log retention, database connections, and metrics caching.
 
-Optimized docker container size
-The docker build creates an optimized container that has a small footprint for easy transfer and deployment across the network.
+**Multiple collector files** - Using multiple collector files allows you to create logical metrics groupings based on type or characteristics of the data being fetched. You can quickly and easily set up custom collectors to measure database health, database usage, resource usage, etc. Basically you can tailor it to collect metrics on whatever you feel is important to monitor.
 
-Documentation and Examples
-We are supplying several documents beyond this README file to help users get the most out of the exporter. There are some example collector files that can be used to get started and then be built upon to suit your needs. There are also documents on docker builds, configuration, troubleshooting, and tips and techniques.
+**Optimized docker container size** - The docker build creates an optimized container that has a small footprint for easy transfer and deployment across the network.
+
+**Documentation and Examples** - We are supplying several documents beyond this README file to help users get the most out of the exporter. There are some example collector files that can be used to get started and then be built upon to suit your needs. There are also documents on docker builds, configuration, troubleshooting, and tips and techniques.
 
 
 ## Usage
 
-Get Prometheus vertica prometheus exporter, either as a packaged release, as a Docker image, or build it yourself:
+Get Prometheus vertica prometheus exporter, either as a tarball, packaged release, build it yourself, or build a docker image. All releases use the same basic directory layout. The binary expects there to be a metrics dir below it with the desired collector files (supplied examples or your own). It will create the logfile directory for the exporter log if it doesn't exist.
 
-### Package release :
+A note about the supplied example collector files. The example collector files all query Vertica's system tables. So the user that you use in your data_source_name must be the dbadmin or a user that has sysmonitor as it's default role. We recommend you create a user specifically for the exporter and give it the sysmonitor default role. This gives the user ability to select system and data collector tables but none of the other dbadmin capabilities. See the Vertica documentaiton for more details on the sysmonitor role.
 
+### Package releases :
+#### Tarball
+
+Under the repo release latest Downloads tab you will find assets including a tarball and two forms of the source. The tarball will have a name like vertica-prometheus-exporter-vn.n.n-linux-amd64.tar.gz. 
+
+```
+Download the tarball and uncompress it. You will end up with a directory containing the vertica-prometheus-exporter binary, 
+LICENSE file, README.md file, a metrics dir with the config and example yml files, and a documentation directory with additional 
+documentation files.
+```
+```
+Modify the data_source_name in the metrics/vertica-prometheus-exporter.yml config file to point to your Vertica database 
+```
+```
+cd to the directory with the binary and run 
+$ ./vertica-prometheus-exporter --config.file metrices/vertica-prometheus-exporter.yml
+```
+
+#### GO Install
+
+A prerequisite for this install is that you have GO installed and in your PATH. This method will install just the vertica-prometheus-exporter binary in your ~/go/bin directory. You will need to download any configuration, example, and documentation files separately.
 
 ```shell
 $ go install github.com/vertica/vertica-prometheus-exporter/cmd/vertica-prometheus-exporter@latest
 ```
 then run it from the command line, given ~/go/bin is in your PATH:
 ```shell
-$ vertica-prometheus-exporter
+$ run "./vertica-prometheus-exporter --config.file metrices/vertica-prometheus-exporter.yml"
+```
 ```
 Use the -help flag to get help information.
 ```shell
@@ -61,6 +79,7 @@ Usage of ./vertica-prometheus-exporter:
         Print version information
     [...]
 ```
+
 ### Docker Image :
 
 To run the exporter using docker , fork the repo and follow the steps below :

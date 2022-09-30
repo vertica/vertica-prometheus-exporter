@@ -5,19 +5,33 @@ This is a permanent fork of the [sql_exporter](https://github.com/burningalchemi
 
 ## Overview
 
-The Vertica Prometheus Exporter is a configuration-driven exporter that exposes metrics gathered from a Vertica database for use by the Prometheus monitoring system. It is written in GO lang and uses the [Vertica-sql-go driver](https://github.com/vertica/vertica-sql-go) to talk to the Vertica database.
+The Vertica Prometheus Exporter is a configuration-driven exporter that exposes metrics gathered from a Vertica database for use by the Prometheus monitoring system, and tools that support Prometheus as a data source. One example would be Grafana. The exporter is written in the GO programming language and uses the [Vertica-sql-go driver](https://github.com/vertica/vertica-sql-go) to talk to the Vertica database.
 
-
-In the configuration, the entire definitions of metrics and the queries are collected. Queries are grouped into collectors -- logical groups of queries, e.g., query stats or I/O stats, mapped to the metrics they populate. Collectors may be DBMS-specific or custom, deployment specific. This means you can quickly and easily set up custom collectors to measure data quality, whatever that might mean in your specific case.
+The core concept of this exporter is based on the idea that a proper Vertica query can easily be mapped onto a set of labels and one or more numberic values that make up a valid Prometheus metric.
 
 Per the Prometheus philosophy, scrapes are synchronous (metrics are collected on every /metric poll) but to keep the load at reasonable levels, minimum collection intervals may optionally be set per collector, producing cached metrics when queried more frequently than the configured interval.
 
-
 ## List of Features
 
-To keep our data safe, we need to monitor the status of the database. What we needed was more of a general approach that would allow us to export from VERTICA to Prometheus. It allows for very flexible configuration and the proper recording rules, and Grafana dashboards proved very helpful.  
+Multiple release formats to choose from
+``` 
+ running go install to build and install the binary
+ downloading a tarball that is a minimal footprint with a Linux amd64 binary and the necessary files to run
+ git clone or download zip and build your own binary exporter
+ git clone and do a docker build to create a docker container exporter
+```
+Configuration and collector file knobs
+There are several configuraiton file (global) and collector file (override global) knobs the end use can adjust to meet their needs regarding things like log retention, database connections, and metrics caching.
 
-The core concept of this exporter is based on the idea that a proper VERTICA query can easily be mapped onto a set of labels and one or more numbers that make up a valid Prometheus metric.
+Multiple collector files
+Using multiple collector files allows you to create logical metrics groupings based on type or characteristics of the data being fetched. You can quickly and easily set up custom collectors to measure database health, database usage, resource usage, etc. Basically you can tailor it to collect metrics on whatever you feel is important to monitor.
+
+Optimized docker container size
+The docker build creates an optimized container that has a small footprint for easy transfer and deployment across the network.
+
+Documentation and Examples
+We are supplying several documents beyond this README file to help users get the most out of the exporter. There are some example collector files that can be used to get started and then be built upon to suit your needs. There are also documents on docker builds, configuration, troubleshooting, and tips and techniques.
+
 
 ## Usage
 

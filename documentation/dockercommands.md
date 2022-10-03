@@ -1,8 +1,8 @@
 This file covers some basic docker commands that may be helpful during the pre-build, build, and post build of a docker image.
 
 Requirements:
-GO must be installed and in PATH
-Docker must be installed.
+- GO must be installed and in PATH
+- Docker must be installed.
 
 ### Docker Version
 ```shell
@@ -87,7 +87,7 @@ golang                              1.18.5-alpine3.16   bacc2f10e6e1   7 weeks a
 ### Docker Run (basic)
 This is the most basic run command. 
 ```shell
-$ docker run -p 9968:9968 -itd vertica-prometheus-exporter:latest --name vexporter 
+$ docker run -p 9968:9968 -itd vertica-prometheus-exporter:latest --name vpexporter 
 ```
 ```
 I0829 15:39:32.385084       1 main.go:63] Starting vertica prometheus exporter (version=, branch=, revision=) (go=go1.19, user=, date=)
@@ -101,7 +101,7 @@ You can use Docker ls to confirm the container started. Note the size is only 33
 ```shell
 [dbadmin@vertica-node vertica-prometheus-exporter]$ docker container ls -s
 CONTAINER ID   IMAGE                         COMMAND                  CREATED         STATUS         PORTS                                       NAMES       SIZE
-fa743fa2e512   vertica-prometheus-exporter   "vertica-prometheus-…"   5 minutes ago   Up 5 minutes   0.0.0.0:9968->9968/tcp, :::9968->9968/tcp   vexporter   66B (virtual 338MB)
+fa743fa2e512   vertica-prometheus-exporter   "vertica-prometheus-…"   5 minutes ago   Up 5 minutes   0.0.0.0:9968->9968/tcp, :::9968->9968/tcp   vpexporter   66B (virtual 338MB)
 ```
 
 ### Docker interactive mode
@@ -115,4 +115,4 @@ vertica-example.collector.yml    vertica-example1.collector.yml   vertica-promet
    28 root      0:00 grep export
 ```
 
-**For additional details on running the exporter in a docker container see the tipsandtechniques.md in the documentaiton directory**
+**For additional details on running the exporter in a docker container see the tipsandtechniques.md in the documentation directory**

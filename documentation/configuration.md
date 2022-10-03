@@ -1,6 +1,12 @@
 ### Configurations :
+## Configuration General
+Vertica Prometheus Exporter is typically installed on a non Vertica host so they don't share the same failure domain. In this way the exporter can report a Vertica database side failure.
 
-Global Configurations
+Only metrics defined by collectors in the metrics directory and listed in the config file's collectors list are exported on the /metrics endpoint. 
+
+Exporter collector file location is important. It must be in the metrics directory under where the binary is run. See the tipsandtechniques file locations section for more details. 
+
+## Global Configuration settings
 ```yml
 global:
 # Scrape timeouts ensure that:
@@ -51,7 +57,7 @@ Log:
   max_log_filesize:  1 
 
 ```
-Vertica Base example Configurations
+## vertica-base-example.collector.yml configuration
 ```yml
 collector_name: example
 ### min_interval: 0s
@@ -97,7 +103,7 @@ metrics:
 
 ```
 
-Vertica Base example1 Configurations
+## vertica-base-example1.collector.yml configuration
 ```yml
 collector_name: vertica-example1
 metrics:

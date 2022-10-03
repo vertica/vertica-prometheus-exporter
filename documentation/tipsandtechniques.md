@@ -33,15 +33,16 @@ vertica_query_requests_transactions_count_per_node{node_name="v_vmart_node0003"}
 ```
 
 ### FILE LOCATIONS 
-**Non Docker Linux Build** 
+**Non Docker Linux Build**
+ 
 Once you build the vertica-prometheus-exporter binary you can move it to any location you want but the following dependencies exist: 
-- You have to launch the binary from the directory where it exists 
+- You have to launch the binary from the directory where it exists
 - You have to have a metrics dir under the binary’s directory that contains the collector yml files 
 - You can have the vertica-prometheus-exporter.yml file anywhere you like as the –config-file parameter to starting the binary can be a fully qualified path to it. 
 - Your logfile dir must be under the binary’s directory. The binary will create the logfile dir and the vertica-prometheus-exporter.log in it if they don’t exist. 
  
 **Docker build** 
-Note same as above, but possible to use -v to bind dirs. external to container 
+
 Make a local filesystem metrics directory (make sure to set perms to RWX for user who will run the docker container)
 ```shell
 mkdir metrics
@@ -58,9 +59,9 @@ Edit the vertica config file to set data source name and adjust any knobs desire
 ```shell
 vi vertica-prometheus-exporter.yml
 ```
-Start the container using the -v bind for mapping the internal docker paths to the local file system paths (exmaple here locals are under dbadmin's home dir)
+Start the container using the -v bind for mapping the internal docker paths to the local file system paths (Example here local dir is under dbadmin's home dir)
 ```shell
-docker container run -d --name vexporter -p 9968:9968 -v /home/dbadmin/metrics:/bin/metrics -v /home/dbadmin/logfile:/bin/logfile vertica-prometheus-exporter
+docker container run -d --name vpexporter -p 9968:9968 -v /home/dbadmin/metrics:/bin/metrics -v /home/dbadmin/logfile:/bin/logfile vertica-prometheus-exporter
 ```
 
 ### MINIMIZE QUERY IMPACT on VERTICA 
@@ -89,17 +90,17 @@ To prevent the clear text database password from showing n logs or command histo
 ### COLLECTOR FILE PLACEMENT 
 To prevent false console/log output by the exporter, only put collector yml files in the metrics directory that are associated with collectors you specify in the vertica-prometheus-exporter.yml config file. Alternatively, if you want to keep a superset of collectors but change which you use at different times, then instead of the collector_files value specifying a glob list the yml files individually, e.g. (vertica_base_example.collector.yml,vertica_base_example2.collector.yml).  
 
-If yml files not associated with the collectors: value exist in the collector files dir the console output will imply all collectors were loaded. 
+If yml files not associated with the ```collectors:``` value exist in the collector files directory, the console output will imply all collectors were loaded. 
 
-### Example: 
+#### Example: 
 
 If we have vertica_base_example.collector.yml and vertica_base_example1.collector.yml in my yml dir, but in my vertica-prometheus-exporter.yml config file we only specify the example file and we use the glob, the exporter start output says it loaded the example and example1 files. You can verify in Prometheus that it in fact only loaded the example as specified. 
 
-vertica_prometheus-exporter.yml extract 
+vertica_prometheus-exporter.yml extract:
 
 **Collectors (referenced by name) to execute on the target.** 
 ```  
-  collectors: [vertica_base_example] 
+collectors: [vertica_base_example] 
 ```
 **Collector files specifies a list of globs. One collector definition is read from each matching file.**
 ```
@@ -119,11 +120,11 @@ I0902 11:35:26.049919  140624 main.go:82] Listening on :9968
 ```
 
 ### PORT NUMBER in DOCKER
-As noted in the rEAD.md the port number the exporter listens on is registered with Prometheus. In a Docker environment you can use the Docker -p argument to assign an alternate port if desired. The exporter will still liste on 9968 internally but the container can listen on a different port as a Prometheus target.
+As noted in the README.md the port number the exporter listens on is registered with Prometheus. In a Docker environment you can use the Docker -p argument to assign an alternate port if desired. The exporter will still liste on 9968 internally but the container can listen on a different port as a Prometheus target.
 
 In the example below we've started the container telling it to proxy the internal port 9968 to external port 9970.
 ```
-[dbadmin@vertica-node ~]$ docker container run -d --name vexporter -p 9970:9968 -v /home/dbadmin/metrics:/bin/metrics -v /home/dbadmin/logfile:/bin/logfile vertica-prometheus-exporter
+[dbadmin@vertica-node ~]$ docker container run -d --name vpexporter -p 9970:9968 -v /home/dbadmin/metrics:/bin/metrics -v /home/dbadmin/logfile:/bin/logfile vertica-prometheus-exporter
 ```
 And this shows the docker container is proxying the port to 9970
 ```
@@ -136,7 +137,7 @@ Now you can set your Prometheus config file target to port 9970
 - targets: ["10.20.71.180:9970"]
 ```
      
-### vertica prometheus exporter min_interval EXPLAINED 
+### Vertica Prometheus Exporter min_interval EXPLAINED 
 The min_interval knob determines the lifespan of the internal collector objects. A collector with min_interval=0s will open, scrape Vertica, and close. A collector with min_interval=60s will open, scrape Vertica, and remain open as a temporary cache. Subsequent requests for that collector from Prometheus prior to the min_interval will get cached results from the exporter and not scrape Vertica. A request for that collector from Prometheus which occurs after the min_interval is reached will get a new collector, fresh scrape of Vertica, and again live for the duration of min_interval. 
 
 There is a global min_interval setting in the vertica.yml file. This governs the min_interval for all active collectors. Each collector file can have it’s own min_interval setting, allowing you to control how frequently a Prometheus request actually causes a scrape against Vertica. 

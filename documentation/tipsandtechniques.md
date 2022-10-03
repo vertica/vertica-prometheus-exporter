@@ -2,15 +2,15 @@
 
 Comparison of available tools – 
 
-- Vertica Management Console – Comes with Vertica but requires seperate install. All metrics available are chosen by Vertica for value to user. It's a static set so user can’t customize the metrics available or how displayed.  
+- Vertica Management Console – Comes with Vertica but requires seperate install. All metrics available are chosen by Vertica for value to user. It's a static set so user can’t customize the metrics available or how they are displayed.  
 
-- Grafana plugin – Requires Grafana with Vertica datasource installed and configured. The data source does a direct connection to Vertica to get metrics. There is no  persistent retention and it runs queries based on the defined Grafana panel interval. Queries and dashboards fully customizable so user chooses what they want to look at and how. Supports tables with string values. Requires Vertica SQL and Grafana skills  
+- Grafana plugin – Requires Grafana with Vertica datasource installed and configured. The data source does a direct connection to Vertica to get metrics. There is no  persistent retention and it runs queries based on the defined Grafana panel interval. Queries and dashboards fully customizable so user chooses what they want to look at and how. Supports tables with string values. Requires Vertica SQL and Grafana skills.
 
-- Prometheus exporter – Requires Prometheus and vertica-prometheus-exporter. Prometheus is configured to use the vertica-prometheus-exporter as a target and initiates scrapes from it. The exporter connects to Vertica, runs the metrics queries, and returns them to Prometheus in a known format. The exporter has the ability to cache metrics if desired, which can help minimize the scrapes it does to the Vertica database. The Prometheus metrics can be used by any tool that supports Prometheus format, e.g. Grafana. Collectors (sets of metrics queries) are fully customizable so user chooses what they want to look at. Requires Vertica SQL and Prometheus skills, plus whatever evisualization tool is being used skills.  
+- Prometheus exporter – Requires Prometheus and vertica-prometheus-exporter. Prometheus is configured to use the vertica-prometheus-exporter as a target and initiates scrapes from it. The exporter connects to Vertica, runs the metrics queries, and returns them to Prometheus in a known format. The exporter has the ability to cache metrics if desired, which can help minimize the scrapes it does to the Vertica database. The Prometheus metrics can be used by any tool that supports Prometheus format, e.g. Grafana. Collectors (sets of metrics queries) are fully customizable so user chooses what they want to look at. Requires Vertica SQL and Prometheus skills, plus whatever visualization tool is being used skills.  
 
 ### LOAD BALANCE AND FAIL SAFE: 
 
-Activate connection_load_balance  and backup_server_node  via the data source name in the vertica-prometheus-exporter.yml file for best distributed connections and fail safety in event the primary Vertica node goes down. See the Vertica documentaiton for more details on these ttwo features.
+Activate connection_load_balance  and backup_server_node  via the data source name in the vertica-prometheus-exporter.yml file for best distributed connections and fail safety in event the primary Vertica node goes down. See the Vertica documentation for more details on these two features.
 
   *data_source_name: 'vertica://dbadmin:@nn.nn.nn.235:5433/VMart?connection_load_balance=1&backup_server_node=nn.nn.nn.236:5433,nn.nn.nn.237:5433'*
   
@@ -21,7 +21,7 @@ Activate connection_load_balance  and backup_server_node  via the data source na
 
 - Wait a minute and then start Prometheus.  It should say listening at the end of console output or end of nohup.out. 
 
-- Now go to the Prometheus http interface (http://<prometheusserverip>:9090/targets. If the status of the vertica-export says Down or Unknown wait 30 seconds or so then refresh.. Repeat until it says Up. Now you can view the metrics  
+- Now go to the Prometheus http interface (http://<prometheusserverip>:9090/targets. If the status of the vertica-exporter says Down or Unknown wait 30 seconds or so then refresh. Repeat until it says UP. Now you can view the metrics. 
 
 ### NAMES: 
 
@@ -48,16 +48,26 @@ Once you build the vertica-prometheus-exporter binary you can move it to any loc
 **Docker build** 
 
 To be added. Note same as above, but possible to use -v to bind dirs. external to container 
- # make a local filesystem metrics directory (make sure to set perms to RWX for user who will run the docker container)
- mkdir metrics
- # make a local filesystem logfile directory (make sure to set perms to RWX for user who will run the docker container)
- mkdir logfile
- # cp the yml files from the vertica-prometheus-exporter tree to the local metrics dir
- cp vertica-prometheus-exporter/cmd/vertica-prometheus-exporter/metrics/* ./metrics
- # edit the vertica config file to set data source name and adjust any knobs desired
- vi vertica-prometheus-exporter.yml
- # start the container using the -v bind for mapping the internal docker paths to the local file system paths (exmaple here locals are under dbadmin's home dir)
- docker container run -d --name vexporter -p 9968:9968 -v /home/dbadmin/metrics:/bin/metrics -v /home/dbadmin/logfile:/bin/logfile vertica-prometheus-exporter
+Make a local filesystem metrics directory (make sure to set perms to RWX for user who will run the docker container)
+```
+mkdir metrics
+```
+Make a local filesystem logfile directory (make sure to set perms to RWX for user who will run the docker container)
+```
+mkdir logfile
+```
+Copy the yml files from the vertica-prometheus-exporter tree to the local metrics dir
+```
+cp vertica-prometheus-exporter/cmd/vertica-prometheus-exporter/metrics/* ./metrics
+```
+Edit the vertica config file to set data source name and adjust any knobs desired
+```
+vi vertica-prometheus-exporter.yml
+```
+Start the container using the -v bind for mapping the internal docker paths to the local file system paths (exmaple here locals are under dbadmin's home dir)
+```
+docker container run -d --name vexporter -p 9968:9968 -v /home/dbadmin/metrics:/bin/metrics -v /home/dbadmin/logfile:/bin/logfile vertica-prometheus-exporter
+```
 
 ### MINIMIZE QUERY IMPACT on VERTICA 
 

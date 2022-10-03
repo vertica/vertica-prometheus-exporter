@@ -1,7 +1,7 @@
 This file covers some basic docker commands that may be helpful during the pre-build, build, and post build of a docker image.
 
 Requirements:
-GO muust be installed and in PATH
+GO must be installed and in PATH
 Docker must be installed.
 
 ### Docker Version
@@ -72,7 +72,7 @@ Removing intermediate container 86aeb70a007c
 Successfully built ce1c8ef4308a
 Successfully tagged vertica-prometheus-exporter:latest
 ```
-You can use Docker ls to confirm the build. Note in the ls it gave it a name of gallant-jennings because we didn't pass --name
+You can use Docker ls to confirm the build.
 
 ```shell
 $ docker image ls
@@ -87,7 +87,7 @@ golang                              1.18.5-alpine3.16   bacc2f10e6e1   7 weeks a
 ### Docker Run (basic)
 This is the most basic run command. 
 ```shell
-$ docker run -p 9968:9968 vertica-prometheus-exporter:latest
+$ docker run -p 9968:9968 -itd vertica-prometheus-exporter:latest --name vexporter 
 ```
 ```
 I0829 15:39:32.385084       1 main.go:63] Starting vertica prometheus exporter (version=, branch=, revision=) (go=go1.19, user=, date=)
@@ -97,7 +97,7 @@ I0829 15:39:32.388104       1 config.go:148] Loaded collector "vertica_base_grap
 (0xa6c680,0xc000292900)
 I0829 15:39:32.388541       1 main.go:82] Listening on :9968
 ```
-You can use Docker ls to confirm the container started. Note the size is only 338MB. The build is optimized for a small footprint
+You can use Docker ls to confirm the container started. Note the size is only 338MB. The build is optimized for a small footprint.
 ```shell
 [dbadmin@vertica-node vertica-prometheus-exporter]$ docker container ls -s
 CONTAINER ID   IMAGE                         COMMAND                  CREATED         STATUS         PORTS                                       NAMES       SIZE
@@ -107,7 +107,7 @@ fa743fa2e512   vertica-prometheus-exporter   "vertica-prometheus-…"   5 minute
 ### Docker interactive mode
 Once the container is running you can enter it in interactive mode. It has the ash shell built in that supports most basic Linux commands.
 ```
-[dbadmin@vertica-node ~]$  docker exec -it vexporter  /bin/ash
+[dbadmin@vertica-node ~]$  docker exec -it vexporter /bin/ash
 /bin # ls metrics
 vertica-example.collector.yml    vertica-example1.collector.yml   vertica-prometheus-exporter.yml
 /bin # ps -ef | grep export

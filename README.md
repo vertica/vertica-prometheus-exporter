@@ -37,6 +37,31 @@ A note about the supplied example collector files. The example collector files a
 
 The vertica--prometheus-exporter is registered with [Prometheus](https://github.com/prometheus/prometheus/wiki/Default-port-allocations) and is coded to run on port 9968. That port number should not be changed unless it's to avoid a conflict with another product that can't be changed.
 
+Use the -help flag to get help information.
+```shell
+$ ./vertica-prometheus-exporter -help
+Usage of ./vertica-prometheus-exporter:
+  -config.data-source-name string
+        Data source name to override the value in the configuration file with.
+  -config.enable-ping
+        Enable ping for targets (default true)
+  -config.file string
+        Vertica Prometheus Exporter configuration filename (default "metrics/vertica-prometheus-exporter.yml")
+  -version
+        Print version information
+    [...]
+```
+
+Use the -version flag to get version information.
+```shell
+[dbadmin@vertica-node vertica-prometheus-exporter]$ cmd/vertica-prometheus-exporter/vertica-prometheus-exporter -version
+vertica-prometheus-exporter, version v0.1.0 (branch: main, revision: 64240a7fab864d806592d1f24acbc94cda75e9cf)
+  build user:       dbadmin@vertica-node
+  build date:       20220929-21:11:02
+  go version:       go1.18.4
+  platform:         linux/amd64
+```
+
 ## Package releases
 ### GO Install (binary only)
 
@@ -89,33 +114,6 @@ Modify the data_source_name in the cmd/vertica-prometheus-exporter/metrics/verti
 ```shell
 cd to the cmd/vertica-prometheus-exporter directory with the binary and run 
 $ ./vertica-prometheus-exporter --config.file metrices/vertica-prometheus-exporter.yml
-```
-
-### Exporter Help and Version
-
-Use the -help flag to get help information.
-```shell
-$ ./vertica-prometheus-exporter -help
-Usage of ./vertica-prometheus-exporter:
-  -config.data-source-name string
-        Data source name to override the value in the configuration file with.
-  -config.enable-ping
-        Enable ping for targets (default true)
-  -config.file string
-        Vertica Prometheus Exporter configuration filename (default "metrics/vertica-prometheus-exporter.yml")
-  -version
-        Print version information
-    [...]
-```
-
-Use the -version flag to get version information.
-```shell
-[dbadmin@vertica-node vertica-prometheus-exporter]$ cmd/vertica-prometheus-exporter/vertica-prometheus-exporter -version
-vertica-prometheus-exporter, version v0.1.0 (branch: main, revision: 64240a7fab864d806592d1f24acbc94cda75e9cf)
-  build user:       dbadmin@vertica-node
-  build date:       20220929-21:11:02
-  go version:       go1.18.4
-  platform:         linux/amd64
 ```
 
 ### Docker Image (full source distribution)

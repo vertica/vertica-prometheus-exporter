@@ -36,24 +36,7 @@ Get Prometheus vertica prometheus exporter, either as a tarball, packaged releas
 A note about the supplied example collector files. The example collector files all query Vertica's system tables. So the user that you use in your data_source_name must be the dbadmin or a user that has sysmonitor as it's default role. We recommend you create a user specifically for the exporter and give it the sysmonitor default role. This gives the user ability to select system and data collector tables but none of the other dbadmin capabilities. See the Vertica documentaiton for more details on the sysmonitor role.
 
 ### Package releases :
-#### Tarball
-
-Under the repo release latest Downloads tab you will find assets including a tarball and two forms of the source. The tarball will have a name like vertica-prometheus-exporter-vn.n.n-linux-amd64.tar.gz. 
-
-```
-Download the tarball and uncompress it. You will end up with a directory containing the vertica-prometheus-exporter binary, 
-LICENSE file, README.md file, a metrics dir with the config and example yml files, and a documentation directory with additional 
-documentation files.
-```
-```
-Modify the data_source_name in the metrics/vertica-prometheus-exporter.yml config file to point to your Vertica database 
-```
-```
-cd to the directory with the binary and run 
-$ ./vertica-prometheus-exporter --config.file metrices/vertica-prometheus-exporter.yml
-```
-
-#### GO Install
+#### GO Install (binary only)
 
 A prerequisite for this install is that you have GO installed and in your PATH. This method will install just the vertica-prometheus-exporter binary in your ~/go/bin directory. You will need to download any configuration, example, and documentation files separately.
 
@@ -62,7 +45,7 @@ $ go install github.com/vertica/vertica-prometheus-exporter/cmd/vertica-promethe
 ```
 then run it from the command line, given ~/go/bin is in your PATH:
 ```shell
-$ run "./vertica-prometheus-exporter --config.file metrices/vertica-prometheus-exporter.yml"
+$ run "./vertica-prometheus-exporter -help"
 ```
 ```
 Use the -help flag to get help information.
@@ -79,10 +62,55 @@ Usage of ./vertica-prometheus-exporter:
         Print version information
     [...]
 ```
+You will need a configuraiton file and at least one collector file to go any further.
+```
+Create a metrics dir under whereever you are going to permanently keep the binary. Copy the vertica-prometheus-exporter.yml
+config file and at least one example collector file into the metrics directory.
+```
+```
+Modify the data_source_name in the metrics/vertica-prometheus-exporter.yml config file to point to your Vertica database. 
+Also modify the collectors list to match the example you chose.
+```
+```
+cd to the directory with the binary and run 
+$ ./vertica-prometheus-exporter --config.file metrices/vertica-prometheus-exporter.yml
+```
 
-### Docker Image :
+#### Tarball (binary, license, examples, documentation)
 
-To run the exporter using docker , fork the repo and follow the steps below :
+Under the repo release latest Downloads tab you will find assets including a tarball and two forms of the source. The tarball will have a name like vertica-prometheus-exporter-vn.n.n-linux-amd64.tar.gz. 
+
+Download the tarball and uncompress it. You will end up with a directory containing the vertica-prometheus-exporter binary, 
+LICENSE file, README.md file, a metrics dir with the config and example yml files, and a documentation directory with additional 
+documentation files.
+
+```
+Modify the data_source_name in the metrics/vertica-prometheus-exporter.yml config file to point to your Vertica database 
+```
+```
+cd to the directory with the binary and run 
+$ ./vertica-prometheus-exporter --config.file metrices/vertica-prometheus-exporter.yml
+```
+
+### Build it yourself (full source distribution)
+
+To build the project yourself, git clone or zip download/uncompress the repo, and then follow the below steps [ only for linux machines ] :
+
+this will create a binary file in ***cmd/vertica-prometheus-exporter/***
+```shell
+$ make build
+```
+```
+Modify the data_source_name in the cmd/vertica-prometheus-exporter/metrics/vertica-prometheus-exporter.yml config file to point to your Vertica database 
+```
+```shell
+cd to the cmd/vertica-prometheus-exporter directory with the binary and run 
+$ ./vertica-prometheus-exporter --config.file metrices/vertica-prometheus-exporter.yml
+```
+
+### Docker Image (full source distribution)
+
+To run the exporter using docker, git clone or zip download/uncompress the repo, and then follow the steps below :
 
 ```shell
 $ docker build -t "vertica-prometheus-exporter:latest" .
@@ -92,32 +120,6 @@ $ docker build -t "vertica-prometheus-exporter:latest" .
 $ docker run -d -i -p 9968:9968 -itd --network=vertica  --name vertica-prometheus-exporter vertica-prometheus-exporter:latest
 ```
 More information about docker build can be found in documentation directory.
-
-### Build it yourself :
-
-To build the project yourself  follow the below steps [ only for linux machines ] :
-
-this will create a binary file in ***cmd/vertica-prometheus-exporter/***
-```shell
-$ make build
-```
-```shell
-$ cd cmd/vertica-prometheus-exporter
-```
-```shell
-$ ./vertica-prometheus-exporter
-```
-
-### Run it directly :
-
-To run the exporter directly :
-
-```shell
-$ cd cmd/vertica-prometheus-exporter
-```
-```shell
-$ go run .
-```
 
 ## Configuration
 

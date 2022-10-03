@@ -14,10 +14,10 @@ Per the Prometheus philosophy, scrapes are synchronous (metrics are collected on
 ## List of Features
 
 **Multiple release formats to choose from**
- 1. downloading a tarball that is a minimal footprint with a Linux amd64 binary plus the example and documentation files
- 2. running go install to build and install just the binary
- 3. git clone or download/uncompress the repo zip and build your own binary exporter
- 4. git clone or download/uncompress the repo zip and do a docker build to create a docker image of the exporter
+ 1. running go install to build and install just the binary
+ 2. downloading a tarball that is a minimal footprint with a Linux amd64 binary plus the example and documentation files
+ 3. git clone or download/uncompress the repo zip and build your own exporter binary
+ 4. git clone or download/uncompress the repo zip and do a docker build to create an exporter docker image
 
 **Configuration and collector file knobs** - There are several configuration file (global) and collector file (override global) knobs the end use can adjust to meet their needs regarding things like log retention, database connections, and metrics caching.
 

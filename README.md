@@ -1,7 +1,7 @@
 # Vertica Prometheus Exporter [![Go](https://github.com/vertica/vertica-prometheus-exporter/actions/workflows/build.yml/badge.svg)](https://github.com/vertica/vertica-prometheus-exporter/actions/workflows/build.yml) [![Go Report Card](https://goreportcard.com/badge/github.com/vertica/vertica-prometheus-exporter)](https://goreportcard.com/report/github.com/vertica/vertica-prometheus-exporter/) [![Github All Releases](https://img.shields.io/github/downloads/vertica/vertica-prometheus-exporter/total.svg)]()
 
 
-This is a permanent fork of the [sql_exporter](https://github.com/burningalchemist/sql_exporter) by burningalchemist. We used that as a base to create a Vertica specific exporter tailored to the needs of our customers.  
+This is a permanent fork of the [sql_exporter](https://github.com/burningalchemist/sql_exporter) by burningalchemist. We used that as a base to create a Vertica specific exporter tailored to the needs of our customers. There were some breaking changes planned, e.g. different logger and removal of non Vertica database support, that made it impractical to just branch toe code. 
 
 ## Overview
 
@@ -14,7 +14,6 @@ Per the Prometheus philosophy, scrapes are synchronous (metrics are collected on
 ## List of Features
 
 **Multiple release formats to choose from**
- 
  1. downloading a tarball that is a minimal footprint with a Linux amd64 binary plus the example and documentation files
  2. running go install to build and install just the binary
  3. git clone or download/uncompress the repo zip and build your own binary exporter
@@ -28,6 +27,7 @@ Per the Prometheus philosophy, scrapes are synchronous (metrics are collected on
 
 **Documentation and Examples** - We are supplying several documents beyond this README file to help users get the most out of the exporter. There are some example collector files that can be used to get started and then be built upon to suit your needs. There are also documents on docker builds, configuration, troubleshooting, and tips and techniques.
 
+**Open Source Contributors** - This project is open source and allows contributors. Users are encouraged to submit code for fixes and/or enhancements. Additionally users can contribute metrics collector files they've developed that they feel might benefit the Vertica community. Hopefully this will result in a growing collection of metrics that can be used by all to get the most value from the exporter.
 
 ## Usage
 
@@ -35,32 +35,15 @@ Get Prometheus vertica prometheus exporter, either as a tarball, packaged releas
 
 A note about the supplied example collector files. The example collector files all query Vertica's system tables. So the user that you use in your data_source_name must be the dbadmin or a user that has sysmonitor as it's default role. We recommend you create a user specifically for the exporter and give it the sysmonitor default role. This gives the user ability to select system and data collector tables but none of the other dbadmin capabilities. See the Vertica documentaiton for more details on the sysmonitor role.
 
-### Package releases :
-#### GO Install (binary only)
+The vertica--prometheus-exporter is registered with [Prometheus](https://github.com/prometheus/prometheus/wiki/Default-port-allocations) and is coded to run on port 9968. That port number should not be changed unless it's to avoid a conflict with another product that can't be changed.
+
+## Package releases
+### GO Install (binary only)
 
 A prerequisite for this install is that you have GO installed and in your PATH. This method will install just the vertica-prometheus-exporter binary in your ~/go/bin directory. You will need to download any configuration, example, and documentation files separately.
 
 ```shell
 $ go install github.com/vertica/vertica-prometheus-exporter/cmd/vertica-prometheus-exporter@latest
-```
-then run it from the command line, given ~/go/bin is in your PATH:
-```shell
-$ run "./vertica-prometheus-exporter -help"
-```
-```
-Use the -help flag to get help information.
-```shell
-$ ./vertica-prometheus-exporter -help
-Usage of ./vertica-prometheus-exporter:
-  -config.data-source-name string
-        Data source name to override the value in the configuration file with.
-  -config.enable-ping
-        Enable ping for targets (default true)
-  -config.file string
-        Vertica Prometheus Exporter configuration filename (default "metrics/vertica-prometheus-exporter.yml")
-  -version
-        Print version information
-    [...]
 ```
 You will need a configuraiton file and at least one collector file to go any further.
 ```
@@ -76,7 +59,7 @@ cd to the directory with the binary and run
 $ ./vertica-prometheus-exporter --config.file metrices/vertica-prometheus-exporter.yml
 ```
 
-#### Tarball (binary, license, examples, documentation)
+### Tarball (binary, license, examples, documentation)
 
 Under the repo release latest Downloads tab you will find assets including a tarball and two forms of the source. The tarball will have a name like vertica-prometheus-exporter-vn.n.n-linux-amd64.tar.gz. 
 
@@ -108,6 +91,33 @@ cd to the cmd/vertica-prometheus-exporter directory with the binary and run
 $ ./vertica-prometheus-exporter --config.file metrices/vertica-prometheus-exporter.yml
 ```
 
+### Exporter Help and Version
+
+Use the -help flag to get help information.
+```shell
+$ ./vertica-prometheus-exporter -help
+Usage of ./vertica-prometheus-exporter:
+  -config.data-source-name string
+        Data source name to override the value in the configuration file with.
+  -config.enable-ping
+        Enable ping for targets (default true)
+  -config.file string
+        Vertica Prometheus Exporter configuration filename (default "metrics/vertica-prometheus-exporter.yml")
+  -version
+        Print version information
+    [...]
+```
+
+Use the -version flag to get version information.
+```shell
+[dbadmin@vertica-node vertica-prometheus-exporter]$ cmd/vertica-prometheus-exporter/vertica-prometheus-exporter -version
+vertica-prometheus-exporter, version v0.1.0 (branch: main, revision: 64240a7fab864d806592d1f24acbc94cda75e9cf)
+  build user:       dbadmin@vertica-node
+  build date:       20220929-21:11:02
+  go version:       go1.18.4
+  platform:         linux/amd64
+```
+
 ### Docker Image (full source distribution)
 
 To run the exporter using docker, git clone or zip download/uncompress the repo, and then follow the steps below :
@@ -119,17 +129,18 @@ $ docker build -t "vertica-prometheus-exporter:latest" .
 ```shell
 $ docker run -d -i -p 9968:9968 -itd --network=vertica  --name vertica-prometheus-exporter vertica-prometheus-exporter:latest
 ```
-More information about docker build can be found in documentation directory.
+**More information about docker build and usage can be found in documentation directory.**
 
-## Configuration
+## Configuration and Example Collector Files
 
-Vertica Prometheus Exporter is deployed alongside the DB server it collects metrics from. If both the exporter and the DB server are on the same host, they will share the same failure domain: they will usually be either both up and running or both down. When the database is unreachable, /metrics responds with HTTP code 500 Internal Server Error, causing Prometheus to record up=0 for that scrape. Only metrics defined by collectors are exported on the /metrics endpoint. vertica prometheus exporter process metrics are exported at /vertica-prometheus-exporter-metrics .
+We supply a default exporter configuration file and example files in two places. They are in the cmd/vertica-prometheus-exporter/metrics directory and in the examples directory. The ones in the metrics directory are prepackaged in the tarball and the source used for build it and docker images. They can be used as is with only the data_source_name change noted under package releases. They can also be modified for learning or extending the starter metrics sets. The examples copies are duplicates and considered the originals in case you need to revert back to them for some reason. It's also a convenient place to store work in progress collector files or alternate configuration files.
 
-The configuration examples listed here only cover the core elements. For a comprehensive and comprehensively documented configuration file check out `documentation/configuration.md`. You will find ready to use "standard" DBMS-specific collector definitions in the examples directory. You may contribute your own collector definitions and metric additions if you think they could be more widely useful, even if they are merely different takes on already covered DBMSs.
+The configuration and collector examples below are extracts that cover the core elements. 
 
-**`./vertica-prometheus-exporter.yml`**
+###The exporter configuration file vertica-prometheus-exporter.yml
 
-```yaml
+**The global settings section to adjust scrape and connection settings**
+```
 global:
   # Subtracted from Prometheus' scrape_timeout to give us some headroom and prevent Prometheus from
   # timing out first.
@@ -143,39 +154,44 @@ global:
   max_idle_connections: 3
   # Maximum amount of time a connection may be reused to any one target. Infinite by default.
   max_connection_lifetime: 5m
+```
 
-# The target to monitor and the collectors to execute on it.
+**The target settings section to adjust data_source_name for your Vertica database**.
+```
 target:
   # Data source name always has a URI schema that matches the driver name.
   # the schema gets dropped or replaced to match the driver expected DSN format.
   data_source_name: 'vertica://<username>:<userpwd>@<exporterhostip>:5433/<databasename>' 
-  
+```
+
+**The collectors section defining the collector name list and filenames**
+```
   # Collectors (referenced by name) to execute on the target.
   collectors: [ example ,example1 ]
 
 # Collector definition files.
 collector_files: 
 - "*.collector.yml"
+```
 
+**The log settings section to adjust retention by days and/or size**
+```
 Log:
 # Any integer value which represents days . 
   retention_day:  1 
 # Any integer value which represents log file size in  megabytes 
   max_log_filesize:  1 
-  
 ```
 
 ### Collectors
 
-Collectors may be defined inline, in the exporter configuration file, under `collectors`, or they may be defined in
-separate files and referenced in the exporter configuration by name, making them easy to share and reuse.
+Collectors may be defined inline, in the exporter configuration file, under `collectors`, or they may be defined in separate files and referenced in the exporter configuration by name, making them easy to share and reuse. We recommend separate files as they are easier to debug and put in and out of service.
 
-The collector definition below generates gauge metrics for finding out  `vertica_connections_per_node`.
+The collector definition below generates gauge metrics for finding out  `vertica_connections_per_node`. The collectors are written in YAML and have pretty strict formatting rules.
 
-**`./vertica-example1.collector.yml`**
+**vertica-example1.collector.yml**
 
 ```yaml
-# This collector will be referenced in the exporter configuration as `pricing_data_freshness`.
 collector_name: example1
 
 metrics:
@@ -192,5 +208,5 @@ metrics:
         ORDER BY node_name;
 ```
 
+**For more detailed information on the configuration file and example collector files see the configurations.md file in the documentation directory**
 
-**Exporter is registered with Prometheus and is coded to run on port 9968. That port number should not be changed unless it's to avoid a conflict with another product that can't be changed.**

@@ -1,7 +1,7 @@
 # Vertica Prometheus Exporter [![Go](https://github.com/vertica/vertica-prometheus-exporter/actions/workflows/build.yml/badge.svg)](https://github.com/vertica/vertica-prometheus-exporter/actions/workflows/build.yml) [![Go Report Card](https://goreportcard.com/badge/github.com/vertica/vertica-prometheus-exporter)](https://goreportcard.com/report/github.com/vertica/vertica-prometheus-exporter/) [![Github All Releases](https://img.shields.io/github/downloads/vertica/vertica-prometheus-exporter/total.svg)]()
 
 
-This is a permanent fork of the [sql_exporter](https://github.com/burningalchemist/sql_exporter) by burningalchemist. We used that as a base to create a Vertica specific exporter tailored to the needs of our customers. There were some breaking changes planned, e.g. different logger and removal of non Vertica database support, that made it impractical to just branch toe code. 
+This is a permanent fork of the [sql_exporter](https://github.com/burningalchemist/sql_exporter) by burningalchemist. We used that as a base to create a Vertica specific exporter tailored to the needs of our customers. There were some breaking changes planned, e.g. different logger and removal of non Vertica database support, that made it impractical to just branch the code. 
 
 ## Overview
 
@@ -27,15 +27,15 @@ Per the Prometheus philosophy, scrapes are synchronous (metrics are collected on
 
 **Documentation and Examples** - We are supplying several documents beyond this README file to help users get the most out of the exporter. There are some example collector files that can be used to get started and then be built upon to suit your needs. There are also documents on docker builds, configuration, troubleshooting, and tips and techniques.
 
-**Open Source Contributors** - This project is open source and allows contributors. Users are encouraged to submit code for fixes and/or enhancements. Additionally users can contribute metrics collector files they've developed that they feel might benefit the Vertica community. Hopefully this will result in a growing collection of metrics that can be used by all to get the most value from the exporter.
+**Open Source Contributors** - This project is open source and allows contributors. Users are encouraged to submit code for fixes and/or enhancements. Additionally, users can contribute metrics collector files they've developed that they feel might benefit the Vertica community. Hopefully this will result in a growing collection of metrics that can be used by all to get the most value from the exporter.
 
 ## Usage
 
-Get Prometheus vertica prometheus exporter, either as a tarball, packaged release, build it yourself, or build a docker image. All releases use the same basic directory layout. The binary expects there to be a metrics dir below it with the desired collector files (supplied examples or your own). It will create the logfile directory for the exporter log if it doesn't exist.
+Get Vertica Prometheus Exporter, either as a tarball, packaged release, build it yourself, or build a docker image. All releases use the same basic directory layout. The binary expects there to be a metrics dir below it with the desired collector files (supplied examples or your own). It will create the logfile directory for the exporter log if it doesn't exist.
 
-A note about the supplied example collector files. The example collector files all query Vertica's system tables. So the user that you use in your data_source_name must be the dbadmin or a user that has sysmonitor as it's default role. We recommend you create a user specifically for the exporter and give it the sysmonitor default role. This gives the user ability to select system and data collector tables but none of the other dbadmin capabilities. See the Vertica documentaiton for more details on the sysmonitor role.
+A note about the supplied example collector files. The example collector files all query Vertica's system tables. So the user that you use in your data_source_name must be the dbadmin or a user that has sysmonitor as it's default role. We recommend you create a user specifically for the exporter and give it the sysmonitor default role. This gives the user ability to select system and data collector tables but none of the other dbadmin capabilities. See the Vertica documentation for more details on the sysmonitor role.
 
-The vertica--prometheus-exporter is registered with [Prometheus](https://github.com/prometheus/prometheus/wiki/Default-port-allocations) and is coded to run on port 9968. That port number should not be changed unless it's to avoid a conflict with another product that can't be changed.
+The vertica-prometheus-exporter is registered with [Prometheus](https://github.com/prometheus/prometheus/wiki/Default-port-allocations) and is coded to run on port 9968. That port number should not be changed unless it's to avoid a conflict with another product that can't be changed.
 
 Use the -help flag to get help information.
 ```shell
@@ -131,11 +131,11 @@ $ docker run -d -i -p 9968:9968 -itd --network=vertica  --name vertica-prometheu
 
 ## Configuration and Example Collector Files
 
-We supply a default exporter configuration file and example files in two places. They are in the cmd/vertica-prometheus-exporter/metrics directory and in the examples directory. The ones in the metrics directory are prepackaged in the tarball and the source used for build it and docker images. They can be used as is with only the data_source_name change noted under package releases. They can also be modified for learning or extending the starter metrics sets. The examples copies are duplicates and considered the originals in case you need to revert back to them for some reason. It's also a convenient place to store work in progress collector files or alternate configuration files.
+We supply a default exporter configuration file and example collector files in two places. They are in the cmd/vertica-prometheus-exporter/metrics directory and in the examples directory. The ones in the metrics directory are prepackaged in the tarball and the source used for build it and docker images. They can be used as is with only the data_source_name change noted under package releases. They can also be modified for learning or extending the starter metrics sets. The examples copies are duplicates and considered the originals in case you need to revert back to them for some reason. It's also a convenient place to store work in progress collector files or alternate configuration files.
 
 The configuration and collector examples below are extracts that cover the core elements. 
 
-###The exporter configuration file vertica-prometheus-exporter.yml
+### The exporter configuration file - vertica-prometheus-exporter.yml
 
 **The global settings section to adjust scrape and connection settings**
 ```
@@ -164,7 +164,7 @@ target:
 
 **The collectors section defining the collector name list and filenames**
 ```
-  # Collectors (referenced by name) to execute on the target.
+# Collectors (referenced by name) to execute on the target.
   collectors: [ example ,example1 ]
 
 # Collector definition files.

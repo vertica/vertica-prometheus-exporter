@@ -45,7 +45,6 @@ Once you build the vertica-prometheus-exporter binary you can move it to any loc
 - You can have the vertica-prometheus-exporter.yml file anywhere you like as the –config-file parameter to starting the binary can be a fully qualified path to it. 
 - Your logfile dir must be under the binary’s directory. The binary will create the logfile dir and the vertica-prometheus-exporter.log in it if they don’t exist. 
  
-
 **Docker build** 
 Note same as above, but possible to use -v to bind dirs. external to container 
 Make a local filesystem metrics directory (make sure to set perms to RWX for user who will run the docker container)
@@ -70,46 +69,42 @@ docker container run -d --name vexporter -p 9968:9968 -v /home/dbadmin/metrics:/
 ```
 
 ### MINIMIZE QUERY IMPACT on VERTICA 
-
 There is interval control at several levels (end tool such as Grafana, Prometheus, and the exporter). Make sure to set the intervals for the best efficiency. Don’t collect slow changing values frequently. Maybe group collections by rate of change and frequency of scrape. See the min_intervals section for more details. 
 
 You can set the exporter max_connections to set how many concurrent connections a metrics scrape will establish. There is no pooling, all connections end as soon as their task is complete. The number of connections will dictate the duration of the metric scrape, but could impact normal operations if set too high. Find a balance between time and resources. 
 
-If planning on rendering several metrics from the same table use a query object asking for all columns desired and then queryrefs to get those columns into individual panels. This will issue one query vs several each interval refresh. 
+If planning on rendering several metrics from the same table use a query object asking for all columns desired and then queryrefs to get those columns into individual panels. This will issue one query to gather all columns vs several queries. 
 
 ### PROMETHEUS STORAGE 
-
-Prometheus by default retains 15 days of metric data. See the Prometheus documentation for location of the database, how to adjust the retention values for size and/or time, and best practices. This is just to note to raise awareness that the more metrics you have the vertica prometheus exporter capture the larger the Prometheus database will become. It should be monitored and space issues resolved. 
+Prometheus by default retains 15 days of time series metric data. See the Prometheus documentation for location of the database, how to adjust the retention values for size and/or time, and best practices. This is just to raise awareness that the more time series metrics you have the exporter capture the larger the Prometheus database will become. It should be monitored and space issues resolved. 
 
 
 ### EXPORTER STORAGE 
-
-To exporter has a relatively small footprint, but it does produce a logfile that can grow over time. In the vertica-prometheus-exporter.yml file we’ve provided two knobs to manage how large the log file will get. There are knobs to define number of days retained and max file size. 
+The exporter has a relatively small footprint, but it does produce a logfile that can grow over time. In the vertica-prometheus-exporter.yml file we’ve provided two knobs to manage the log files. There are knobs to define number of days retained and max file size. 
 ```yml
 Log: 
   retention_day:  15 
   max_log_filesize:  500 # in megabytes 
 ```
+Also, if the log file reaches the max size within a single day that log will be zipped and a new log will be started. This further helps keep the log files under control without much user monitoring.
 
 ### CLEARTEXT PASSWORD 
-
-To prevent passing the database password in cleartext across the lan we’ve used a secret to store it. The password will still be clear text in the vertica-prometheus-exporter.yml so that file should have an access mask to only allow the user running the exporter to read it.  
+To prevent the clear text database password from showing n logs or command history we’ve used a GO secret datatype to store it. The password will still be clear text in the vertica-prometheus-exporter.yml so that file should have an access mask to only allow the user running the exporter to read it.  
 
 ### COLLECTOR FILE PLACEMENT 
-
-To prevent false console/log output by the Exporter, only put collector yml files in the metrics directory that are associated with collectors you specify in the vertica-prometheus-exporter.yml config file. Alternatively, if you want to keep a superset of collectors but change which you use at different times, then instead of the collector_files value specifying a glob (*.collector.yml) , list the yml files individually (vertica_base_graphs,vertica_base_gauges)..  
+To prevent false console/log output by the exporter, only put collector yml files in the metrics directory that are associated with collectors you specify in the vertica-prometheus-exporter.yml config file. Alternatively, if you want to keep a superset of collectors but change which you use at different times, then instead of the collector_files value specifying a glob list the yml files individually, e.g. (vertica_base_example.collector.yml,vertica_base_example2.collector.yml).  
 
 If yml files not associated with the collectors: value exist in the collector files dir the console output will imply all collectors were loaded. 
 
 ### Example: 
 
-If we have vertica_base_gauges.yml and vertica_base_graphs.yml in my yml dir, but in my vertica-prometheus-exporter.yml config file we only specify the graphs and we use the glob, the exporter start output says it loaded the gauges and graphs. You can verify in Prometheus that it in fact only loaded the graphs as specified. 
+If we have vertica_base_example.collector.yml and vertica_base_example1.collector.yml in my yml dir, but in my vertica-prometheus-exporter.yml config file we only specify the example file and we use the glob, the exporter start output says it loaded the example and example1 files. You can verify in Prometheus that it in fact only loaded the example as specified. 
 
-Vertica_export.yml extract 
+vertica_prometheus-exporter.yml extract 
 
 **Collectors (referenced by name) to execute on the target.** 
 ```  
-  collectors: [vertica_base_graphs] 
+  collectors: [vertica_base_example] 
 ```
 **Collector files specifies a list of globs. One collector definition is read from each matching file.**
 ```
@@ -118,7 +113,7 @@ collector_files:
 ```
 Exporter startup output 
 
-`./vertica-prometheus-exporter --config.file vertica.yml` 
+`./vertica-prometheus-exporter --config.file vertica-prometheus-exporter.yml` 
 ```
 I0902 11:35:26.047056  140624 main.go:63] Starting vertica prometheus exporter (version=, branch=, revision=) (go=go1.18.4, user=, date=) 
 I0902 11:35:26.047267  140624 config.go:22] Loading configuration from vertica.yml 

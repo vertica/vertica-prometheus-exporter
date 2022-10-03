@@ -17,15 +17,10 @@ Here's an example of them added to the basic data_source_name string
   
 ### STARTUP ORDER: 
 Typically you will want to start the exporter prior to Prometheus. This way you can verify it's listening on the port prior to starting Prometheus which will ping that port. The startup order would be similar ot below.
-```
+
 - First start the vertica-prometheus-exporter. Depending on your deployment It should say listening at the end of console output, end of logfile/vertica-prometheus-exporter.log, or end of nohup.out. 
-```
-```
 - Wait a minute and then start Prometheus.  It should say listening at the end of console output or end of nohup.out. 
-```
-```
 - Now go to the Prometheus http interface (http://<prometheusserverip>:9090/targets. If the status of the vertica-exporter says Down or Unknown wait 30 seconds or so then refresh. Repeat until it says UP. Now you can view the metrics. 
-```
 
 ### NAMES: 
 Keep your metric names for metrics where node_name is a label short. The combination of the metric name plus the long Vertica node path can result in truncation in the Grafana panels or force you to make them wider than planned. 
@@ -48,23 +43,23 @@ Once you build the vertica-prometheus-exporter binary you can move it to any loc
 **Docker build** 
 Note same as above, but possible to use -v to bind dirs. external to container 
 Make a local filesystem metrics directory (make sure to set perms to RWX for user who will run the docker container)
-```
+```shell
 mkdir metrics
 ```
 Make a local filesystem logfile directory (make sure to set perms to RWX for user who will run the docker container)
-```
+```shell
 mkdir logfile
 ```
 Copy the yml files from the vertica-prometheus-exporter tree to the local metrics dir
-```
+```shell
 cp vertica-prometheus-exporter/cmd/vertica-prometheus-exporter/metrics/* ./metrics
 ```
 Edit the vertica config file to set data source name and adjust any knobs desired
-```
+```shell
 vi vertica-prometheus-exporter.yml
 ```
 Start the container using the -v bind for mapping the internal docker paths to the local file system paths (exmaple here locals are under dbadmin's home dir)
-```
+```shell
 docker container run -d --name vexporter -p 9968:9968 -v /home/dbadmin/metrics:/bin/metrics -v /home/dbadmin/logfile:/bin/logfile vertica-prometheus-exporter
 ```
 

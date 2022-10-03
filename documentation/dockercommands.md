@@ -5,7 +5,7 @@ GO must be installed and in PATH
 Docker must be installed.
 
 ### Docker Version
-```
+```shell
 [dbadmin@vertica-node ~]$ docker version
 Client: Docker Engine - Community
  Version:           20.10.18
@@ -106,7 +106,7 @@ fa743fa2e512   vertica-prometheus-exporter   "vertica-prometheus-…"   5 minute
 
 ### Docker interactive mode
 Once the container is running you can enter it in interactive mode. It has the ash shell built in that supports most basic Linux commands.
-```
+```shell
 [dbadmin@vertica-node ~]$  docker exec -it vexporter /bin/ash
 /bin # ls metrics
 vertica-example.collector.yml    vertica-example1.collector.yml   vertica-prometheus-exporter.yml

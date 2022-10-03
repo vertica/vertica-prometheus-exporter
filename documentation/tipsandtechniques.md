@@ -122,8 +122,26 @@ I0902 11:35:26.049597  140624 config.go:148] Loaded collector "vertica_base_grap
 (0xa4df40,0xc000194c80) 
 I0902 11:35:26.049919  140624 main.go:82] Listening on :9968 
 ```
-### vertica prometheus exporter min_interval EXPLAINED 
 
+### PORT NUMBER in DOCKER
+As noted in the rEAD.md the port number the exporter listens on is registered with Prometheus. In a Docker environment you can use the Docker -p argument to assign an alternate port if desired. The exporter will still liste on 9968 internally but the container can listen on a different port as a Prometheus target.
+
+In the example below we've started the container telling it to proxy the internal port 9968 to external port 9970.
+```
+[dbadmin@vertica-node ~]$ docker container run -d --name vexporter -p 9970:9968 -v /home/dbadmin/metrics:/bin/metrics -v /home/dbadmin/logfile:/bin/logfile vertica-prometheus-exporter
+```
+And this shows the docker container is proxying the port to 9970
+```
+[sudo] password for dbadmin:
+tcp        0      0 0.0.0.0:9970            0.0.0.0:*               LISTEN      232008/docker-proxy
+tcp6       0      0 :::9970                 :::*                    LISTEN      232015/docker-proxy
+```
+Now you can set your Prometheus config file target to port 9970
+```
+- targets: ["10.20.71.180:9970"]
+```
+     
+### vertica prometheus exporter min_interval EXPLAINED 
 The min_interval knob determines the lifespan of the internal collector objects. A collector with min_interval=0s will open, scrape Vertica, and close. A collector with min_interval=60s will open, scrape Vertica, and remain open as a temporary cache. Subsequent requests for that collector from Prometheus prior to the min_interval will get cached results from the exporter and not scrape Vertica. A request for that collector from Prometheus which occurs after the min_interval is reached will get a new collector, fresh scrape of Vertica, and again live for the duration of min_interval. 
 
 There is a global min_interval setting in the vertica.yml file. This governs the min_interval for all active collectors. Each collector file can have it’s own min_interval setting, allowing you to control how frequently a Prometheus request actually causes a scrape against Vertica. 

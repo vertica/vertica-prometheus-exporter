@@ -67,16 +67,15 @@ A prerequisite for this install is that you have GO installed and in your PATH. 
 $ go install github.com/vertica/vertica-prometheus-exporter/cmd/vertica-prometheus-exporter@latest
 ```
 You will need a configuraiton file and at least one collector file to go any further.
-```
+
 Create a metrics dir under whereever you are going to permanently keep the binary. Copy the vertica-prometheus-exporter.yml
 config file and at least one example collector file into the metrics directory.
-```
-```
+
 Modify the data_source_name in the metrics/vertica-prometheus-exporter.yml config file to point to your Vertica database. 
 Also modify the collectors list to match the example you chose.
-```
-```
+
 cd to the directory with the binary and run 
+```shell
 $ ./vertica-prometheus-exporter --config.file metrices/vertica-prometheus-exporter.yml
 ```
 
@@ -87,11 +86,10 @@ Download the tarball and uncompress it. You will end up with a directory contain
 LICENSE file, README.md file, a metrics dir with the config and example yml files, and a documentation directory with additional 
 documentation files.
 
-```
 Modify the data_source_name in the metrics/vertica-prometheus-exporter.yml config file to point to your Vertica database 
-```
-```
+
 cd to the directory with the binary and run 
+```shell
 $ ./vertica-prometheus-exporter --config.file metrices/vertica-prometheus-exporter.yml
 ```
 
@@ -104,11 +102,11 @@ To build the project yourself, git clone or zip download/uncompress the repo, an
 $ make build
 ```
 The build will create a binary file in ***cmd/vertica-prometheus-exporter/***
-```
+
 Modify the data_source_name in the cmd/vertica-prometheus-exporter/metrics/vertica-prometheus-exporter.yml config file to point to your Vertica database 
-```
-```shell
+
 cd to the cmd/vertica-prometheus-exporter directory with the binary and run 
+```shell
 $ ./vertica-prometheus-exporter --config.file metrices/vertica-prometheus-exporter.yml
 ```
 

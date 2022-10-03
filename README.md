@@ -200,6 +200,7 @@ metrics:
         GROUP BY node_name
         ORDER BY node_name;
 ```
-
-**For more detailed information on the configuration file and example collector files see the configurations.md file in the documentation directory**
+> **Tip**
+>
+> For more detailed information on the configuration file and example collector files see the configurations.md file in the documentation directory
 

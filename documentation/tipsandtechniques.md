@@ -1,30 +1,33 @@
-### WHEN TO USE: 
+### AVAILABLE TOOLS COMPARISON: 
+This is a high level comparison of available monitoring tools. Hopefully it will allow you to decide which is best suited for your use case.
 
-Comparison of available tools – 
+- Vertica Management Console – Comes with Vertica but requires seperate install. All metrics available are chosen by Vertica. It's a static set so the user can’t customize the metrics available or how they are displayed.  
 
-- Vertica Management Console – Comes with Vertica but requires seperate install. All metrics available are chosen by Vertica for value to user. It's a static set so user can’t customize the metrics available or how they are displayed.  
+- Grafana plugin – Requires Grafana with Vertica datasource be installed and configured. The data source does a direct connection to Vertica to get metrics. There is no caching of results. It runs queries based on the defined Grafana panel intervals. Queries and dashboards are fully customizable so the user is free to choose what metrics they want to look at, how they are visualized, and frequency of refresh. The Grafana datasource supports tables with string values. Requires Vertica SQL and Grafana skills.
 
-- Grafana plugin – Requires Grafana with Vertica datasource installed and configured. The data source does a direct connection to Vertica to get metrics. There is no  persistent retention and it runs queries based on the defined Grafana panel interval. Queries and dashboards fully customizable so user chooses what they want to look at and how. Supports tables with string values. Requires Vertica SQL and Grafana skills.
-
-- Prometheus exporter – Requires Prometheus and vertica-prometheus-exporter. Prometheus is configured to use the vertica-prometheus-exporter as a target and initiates scrapes from it. The exporter connects to Vertica, runs the metrics queries, and returns them to Prometheus in a known format. The exporter has the ability to cache metrics if desired, which can help minimize the scrapes it does to the Vertica database. The Prometheus metrics can be used by any tool that supports Prometheus format, e.g. Grafana. Collectors (sets of metrics queries) are fully customizable so user chooses what they want to look at. Requires Vertica SQL and Prometheus skills, plus whatever visualization tool is being used skills.  
+- Prometheus exporter – Requires Prometheus and vertica-prometheus-exporter. Prometheus is configured to use the vertica-prometheus-exporter as a target and initiates scrapes from it. The exporter connects to Vertica, runs the metrics queries, and returns them to Prometheus in a known format. The exporter has the ability to cache metrics if desired, which can help minimize the scrapes it does to the Vertica database. The Prometheus metrics can be used by any tool that supports Prometheus format, e.g. Grafana. Collectors (sets of metrics queries) are fully customizable so the user is free to choose what metrics they want to look at, how they are visualized, and frequency of refresh. They support collector level cache settings. Note that Prometheus doesn't support metric string values, so you can't render a table for non numeric data. Requires Vertica SQL and Prometheus skills, plus whatever visualization tool is being used skills.  
 
 ### LOAD BALANCE AND FAIL SAFE: 
+You can add Vertica native connection_load_balance and backup_server_node parameters via the data source name in the vertica-prometheus-exporter.yml file for best distributed connections and fail safety in event the primary Vertica node goes down. See the Vertica documentation for more details on these two features.
 
-Activate connection_load_balance  and backup_server_node  via the data source name in the vertica-prometheus-exporter.yml file for best distributed connections and fail safety in event the primary Vertica node goes down. See the Vertica documentation for more details on these two features.
-
+Here's an example of them added to the basic data_source_name string
+```
   *data_source_name: 'vertica://dbadmin:@nn.nn.nn.235:5433/VMart?connection_load_balance=1&backup_server_node=nn.nn.nn.236:5433,nn.nn.nn.237:5433'*
+```
   
-
 ### STARTUP ORDER: 
-
+Typically you will want to start the exporter prior to Prometheus. This way you can verify it's listening on the port prior to starting Prometheus which will ping that port. The startup order would be similar ot below.
+```
 - First start the vertica-prometheus-exporter. Depending on your deployment It should say listening at the end of console output, end of logfile/vertica-prometheus-exporter.log, or end of nohup.out. 
-
+```
+```
 - Wait a minute and then start Prometheus.  It should say listening at the end of console output or end of nohup.out. 
-
+```
+```
 - Now go to the Prometheus http interface (http://<prometheusserverip>:9090/targets. If the status of the vertica-exporter says Down or Unknown wait 30 seconds or so then refresh. Repeat until it says UP. Now you can view the metrics. 
+```
 
 ### NAMES: 
-
 Keep your metric names for metrics where node_name is a label short. The combination of the metric name plus the long Vertica node path can result in truncation in the Grafana panels or force you to make them wider than planned. 
 
 **TYPE vertica_query_requests_transactions_count_per_node counter** 
@@ -35,9 +38,7 @@ vertica_query_requests_transactions_count_per_node{node_name="v_vmart_node0003"}
 ```
 
 ### FILE LOCATIONS 
-
 **Non Docker Linux Build** 
-
 Once you build the vertica-prometheus-exporter binary you can move it to any location you want but the following dependencies exist: 
 - You have to launch the binary from the directory where it exists 
 - You have to have a metrics dir under the binary’s directory that contains the collector yml files 
@@ -46,8 +47,7 @@ Once you build the vertica-prometheus-exporter binary you can move it to any loc
  
 
 **Docker build** 
-
-To be added. Note same as above, but possible to use -v to bind dirs. external to container 
+Note same as above, but possible to use -v to bind dirs. external to container 
 Make a local filesystem metrics directory (make sure to set perms to RWX for user who will run the docker container)
 ```
 mkdir metrics

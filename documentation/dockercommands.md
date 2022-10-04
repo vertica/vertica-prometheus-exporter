@@ -35,7 +35,7 @@ Server: Docker Engine - Community
   Version:          0.19.0
   GitCommit:        de40ad0
 ```
-###  DOCKER PRUNE
+###  Docker Prune
 Can be used to clear out all containers, images, etc. 
 ```shell
 $ docker system prune -a

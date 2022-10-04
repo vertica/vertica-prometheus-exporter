@@ -143,7 +143,7 @@ Now you can set your Prometheus config file target to port 9970
 ### Vertica Prometheus Exporter min_interval EXPLAINED 
 The min_interval knob determines the lifespan of the internal collector objects. A collector with min_interval=0s will open, scrape Vertica, and close. A collector with min_interval=60s will open, scrape Vertica, and remain open as a temporary cache. Subsequent requests for that collector from Prometheus prior to the min_interval will get cached results from the exporter and not scrape Vertica. A request for that collector from Prometheus which occurs after the min_interval is reached will get a new collector, fresh scrape of Vertica, and again live for the duration of min_interval. 
 
-There is a global min_interval setting in the vertica.yml file. This governs the min_interval for all active collectors. Each collector file can have it’s own min_interval setting, allowing you to control how frequently a Prometheus request actually causes a scrape against Vertica. 
+There is a global min_interval setting in the vertica-prometheus-exporter.yml file. This governs the min_interval for all active collectors. Each collector file can have it’s own min_interval setting, allowing you to control how frequently a Prometheus request actually causes a scrape against Vertica. 
 
 `[dbadmin@vertica-node metrics]$ head vertica-prometheus-exporter.yml `
 ```

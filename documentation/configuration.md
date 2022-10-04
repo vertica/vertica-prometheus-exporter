@@ -4,9 +4,10 @@ Vertica Prometheus Exporter is typically installed on a non Vertica host so they
 
 Only metrics defined by collectors in the metrics directory and listed in the config file's collectors list are exported on the /metrics endpoint. 
 
-Exporter collector file location is important. It must be in the metrics directory under where the binary is run. See the tipsandtechniques file locations section for more details. 
+The collector file location is important. They must be in the metrics directory under where the binary is run. See the tipsandtechniques file locations section for more details. 
 
-## Global Configuration settings
+## vertica-prometheus-exporter global configuration settings
+**Note the min_interval is set to 10 seconds. Collector files can have their own min_interval settings that override the global setting**
 ```yml
 global:
 # Scrape timeouts ensure that:
@@ -58,6 +59,7 @@ Log:
 
 ```
 ## vertica-base-example.collector.yml configuration
+**Note in this file that all metrics issue their own query, and all queries return a single numeric value result.**
 ```yml
 collector_name: example
 ### min_interval: 0s
@@ -104,6 +106,7 @@ metrics:
 ```
 
 ## vertica-base-example1.collector.yml configuration
+**Note in this file that some metrics have their own queries and some reference different values returned by the single query at the end.**
 ```yml
 collector_name: vertica-example1
 metrics:

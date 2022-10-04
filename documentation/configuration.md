@@ -1,6 +1,13 @@
 ### Configurations :
+## Configuration General
+Vertica Prometheus Exporter is typically installed on a non Vertica host so they don't share the same failure domain. In this way the exporter can report a Vertica database side failure.
 
-Global Configurations
+Only metrics defined by collectors in the metrics directory and listed in the config file's collectors list are exported on the /metrics endpoint. 
+
+The collector file location is important. They must be in the metrics directory under where the binary is run. See the tipsandtechniques file locations section for more details. 
+
+## vertica-prometheus-exporter global configuration settings
+**Note the min_interval is set to 10 seconds. Collector files can have their own min_interval settings that override the global setting**
 ```yml
 global:
 # Scrape timeouts ensure that:
@@ -11,34 +18,34 @@ global:
   #    min(scrape_timeout, X-Prometheus-Scrape-Timeout-Seconds - scrape_timeout_offset)
   # 
   #  If scrape_timeout <= 0, no timeout is set unless Prometheus provides one. The default is 10s.
-   scrape_timeout: 10s
+  scrape_timeout: 10s
   #  Subtracted from Prometheus' scrape_timeout to give us some headroom and prevent Prometheus from timing out first.
   # 
   #  Must be strictly positive. The default is 500ms.
   scrape_timeout_offset: 500ms
   #  Minimum interval between collector runs: by default (0s) collectors are executed on every scrape.
   min_interval: 10s
-   Maximum number of open connections to any one target. Metric queries will run concurrently on multiple connections,
-    as will concurrent scrapes.
+  #  Maximum number of open connections to any one target. Metric queries will run concurrently on multiple connections,
+  #  as will concurrent scrapes.
    
-   If max_connections <= 0, then there is no limit on the number of open connections. The default is 3.
+  #  If max_connections <= 0, then there is no limit on the number of open connections. The default is 3.
   max_connections: 3
-   Maximum number of idle connections to any one target. Unless you use very long collection intervals, this should
-   always be the same as max_connections.
+  #  Maximum number of idle connections to any one target. Unless you use very long collection intervals, this should
+  #  always be the same as max_connections.
   
-   If max_idle_connections <= 0, no idle connections are retained. The default is 3.
+  #  If max_idle_connections <= 0, no idle connections are retained. The default is 3.
   max_idle_connections: 3
-  Maximum number of maximum amount of time a connection may be reused. Expired connections may be closed lazily before reuse.
-  If 0, connections are not closed due to a connection's age.
+  #  Maximum number of maximum amount of time a connection may be reused. Expired connections may be closed lazily before reuse.
+  #  If 0, connections are not closed due to a connection's age.
   max_connection_lifetime: 5m
 
 # The target to monitor and the collectors to execute on it.
 target:
-   Data source name always has a URI schema that matches the driver name. In some cases (e.g. vertica)
-   the schema gets dropped or replaced to match the driver expected DSN format.
-    data_source_name: 'vertica://<username>:<userpwd>@<exporterhostip>:5433/<databasename>'
+  #  Data source name always has a URI schema that matches the driver name. In some cases (e.g. vertica)
+  #  the schema gets dropped or replaced to match the driver expected DSN format.
+  data_source_name: 'vertica://<username>:<userpwd>@<exporterhostip>:5433/<databasename>'
 
-  # Collectors (referenced by name) to execute on the target.
+  #  Collectors (referenced by name) to execute on the target.
   collectors: [vertica_base_graphs ,vertica_base_gauges]
 
 # Collector files specifies a list of globs. One collector definition is read from each matching file.
@@ -51,7 +58,8 @@ Log:
   max_log_filesize:  1 
 
 ```
-Vertica Base example Configurations
+## vertica-base-example.collector.yml configuration
+**Note in this file that all metrics issue their own query, and all queries return a single numeric value result.**
 ```yml
 collector_name: example
 ### min_interval: 0s
@@ -97,7 +105,8 @@ metrics:
 
 ```
 
-Vertica Base example1 Configurations
+## vertica-base-example1.collector.yml configuration
+**Note in this file that some metrics have their own queries and some reference different values returned by the single query at the end.**
 ```yml
 collector_name: vertica-example1
 metrics:

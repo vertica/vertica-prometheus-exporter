@@ -120,7 +120,7 @@ I0902 11:35:26.049919  140624 main.go:82] Listening on :9968
 ```
 
 ### PORT NUMBER in DOCKER
-As noted in the README.md the port number the exporter listens on is registered with Prometheus. In a Docker environment you can use the Docker -p argument to assign an alternate port if desired. The exporter will still liste on 9968 internally but the container can listen on a different port as a Prometheus target.
+As noted in the README.md the port number the exporter listens on is registered with Prometheus and should not be changed. In a Docker environment you can use the Docker -p argument to assign an alternate external port number if desired. The exporter will still be listening on post 9968 internally but the container can listen on a different port as a Prometheus target.
 
 In the example below we've started the container telling it to proxy the internal port 9968 to external port 9970.
 ```
@@ -136,7 +136,10 @@ Now you can set your Prometheus config file target to port 9970
 ```
 - targets: ["10.20.71.180:9970"]
 ```
-     
+
+**Note make sure to check availability on your system for the port you plan on using as the container listening port before implementing.**
+ 
+ 
 ### Vertica Prometheus Exporter min_interval EXPLAINED 
 The min_interval knob determines the lifespan of the internal collector objects. A collector with min_interval=0s will open, scrape Vertica, and close. A collector with min_interval=60s will open, scrape Vertica, and remain open as a temporary cache. Subsequent requests for that collector from Prometheus prior to the min_interval will get cached results from the exporter and not scrape Vertica. A request for that collector from Prometheus which occurs after the min_interval is reached will get a new collector, fresh scrape of Vertica, and again live for the duration of min_interval. 
 

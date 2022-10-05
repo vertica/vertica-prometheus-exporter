@@ -1,7 +1,5 @@
 
---------------------
-Unused Columns
---------------------
+### UNUSED COLUMNS IN QUERY
 If you see these in the exporter output they are warnings.
 ```
 W0817 16:15:51.296708   96868 query.go:150] [collector="vertica_base_EON_Mode", query="vertica_s3_performance"] Extra column "end_time" returned by query
@@ -36,9 +34,7 @@ Root cause is typically due to a query object being defined and not all columns 
         order by node_name,end_time desc;
 ```
 
---------------------
-TABLES
---------------------
+### TABLES WITH STRING VALUES
 Prometheus doesn't support string metrics, so any attempt at creating a metric with non numeric return vlaues will error when trying to convert.
 https://stackoverflow.com/questions/65850083/prometheus-java-client-export-string-based-metrics
 https://github.com/prometheus/prometheus/issues/2227
@@ -108,16 +104,16 @@ INFO[2022-09-19T13:53:51-04:00] Error gathering metrics:%!(EXTRA prometheus.Mult
 * [from Gatherer #1] [collector="vertica_base_tables", query="vertica_node_states"] scanning of query result failed: sql: Scan error on column index 1, name "c2": converting driver.Value type string ("two") to a float64: invalid syntax
 * [from Gatherer #1] [collector="vertica_base_tables", query="vertica_node_states"] scanning of query result failed: sql: Scan error on column index 1, name "c2": converting driver.Value type string ("two2") to a float64: invalid syntax)
 ```
---------------------
-EMPTY OR NULL VALUES
---------------------
-Any column returning an empty or null value will fail. A system table example would be the node_dwon_since columns of the nodes table. That column is empty unless the node state is DOWN.
 
+### EMPTY OR NULL VALUES
+Any column returning an empty or null value will fail. A system table example would be the node_down_since columns of the nodes table. That column is empty unless the node state is DOWN.
+```
 dbadmin=> select * from mvaltesti;
  c1 | c2 | c3
 ----+----+----
  11 | 22 | 33
   1 |  2 |
+```
 ```
 INFO[2022-09-19T13:58:51-04:00] [collector="vertica_base_tables"] Collecting fresh metrics: min_interval=10.000s cache_age=9223372036.855s
 INFO[2022-09-19T13:58:51-04:00] returned_columns="[c1 c2 c3]"collector="vertica_base_tables", query="vertica_node_states"

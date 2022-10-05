@@ -66,9 +66,9 @@ A prerequisite for this install is that you have GO installed and in your PATH. 
 ```shell
 $ go install github.com/vertica/vertica-prometheus-exporter/cmd/vertica-prometheus-exporter@latest
 ```
-You will need a configuraiton file and at least one collector file to go any further.
+You will need a configuration file and at least one collector file to go any further.
 
-Create a metrics dir under whereever you are going to permanently keep the binary. Copy the vertica-prometheus-exporter.yml
+Create a metrics dir under wherever you are going to permanently keep the binary. Copy the vertica-prometheus-exporter.yml
 config file and at least one example collector file into the metrics directory.
 
 Modify the data_source_name in the metrics/vertica-prometheus-exporter.yml config file to point to your Vertica database. 

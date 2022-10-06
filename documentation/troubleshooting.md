@@ -105,7 +105,7 @@ INFO[2022-09-19T13:53:51-04:00] Error gathering metrics:%!(EXTRA prometheus.Mult
 * [from Gatherer #1] [collector="vertica_base_tables", query="vertica_node_states"] scanning of query result failed: sql: Scan error on column index 1, name "c2": converting driver.Value type string ("two2") to a float64: invalid syntax)
 ```
 
-### EMPTY OR NULL VALUES
+### EMPTY OR NULL COLUMN VALUES
 Any column returning an empty or null value will fail. A system table example would be the node_down_since columns of the nodes table. That column is empty unless the node state is DOWN.
 ```
 dbadmin=> select * from mvaltesti;
@@ -120,5 +120,31 @@ INFO[2022-09-19T13:58:51-04:00] returned_columns="[c1 c2 c3]"collector="vertica_
 INFO[2022-09-19T13:58:51-04:00] Error gathering metrics:%!(EXTRA *errors.errorString=[from Gatherer #1] [collector="vertica_base_tables", query="vertica_node_states"] scanning of query result failed: sql: Scan error on column index 2, name "c3": converting NULL to float64 is unsupported)
 ```
 
+### DATA GAPS IN GRAPHS
+Prometheus and tools like Grafana may show gaps in the data in graphs for some metrics. This is most likely because there is no data for one or more rows for that metric scrape at that time. It will happen more often on an idle Vertica database than a busy one
+
+Here's an example of a metric against a 3 node database where at the time of the scrape only node0001 had activity
+```  
+metric_name: vertica_query_requests_transactions_count_per_node
+SELECT /*+ LABEL(exporter_vertica_query_requests_transactions_count_per_node) */ node_name , count(*) total FROM transactions 
+WHERE start_timestamp between date_trunc('minute',sysdate) - '1 minutes'::interval and date_trunc('minute',sysdate) - 
+'1 milliseconds'::interval GROUP BY node_name;
+```
+vsql shows that there are only 4 transactions on node0001, nothing for node0002 or node0003
+``` 
+    node_name     | total
+------------------+-------
+ v_vmart_node0001 |     4
+(1 row)
+```
+Prometheus metrics output shows only a row for the node0001 that had a return value, no rows for node0002 or node0003
+```
+# HELP vertica_query_requests_transactions_count_per_node Running transactions per node
+# TYPE vertica_query_requests_transactions_count_per_node gauge
+vertica_query_requests_transactions_count_per_node{node_name="v_vmart_node0001"} 4
+```
+In Prometheus graphs, or tools like Grafana, this will show the missing values as gaps in the graph for the line/bar representing the nodes that had no return values. Prometheus has a Resolution setting you can adjust that may help adjust the graph resolution to minimize the gaps visually. Grafana has a "Connect null values" option on the graph panels that will fill the gaps, noting that this could be technically misleading even though visually pleasing. 
+
+If your Vertica query happens to be a timeseries you may be able to use the TS_LATEST_VALUE or TS_FIRST_VALUE functions to fill gaps if desired. See the Vertica documentaiton for more details.
 
 

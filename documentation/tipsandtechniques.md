@@ -31,6 +31,9 @@ vertica_query_requests_transactions_count_per_node{node_name="v_vmart_node0001"}
 vertica_query_requests_transactions_count_per_node{node_name="v_vmart_node0002"} 15 
 vertica_query_requests_transactions_count_per_node{node_name="v_vmart_node0003"} 9 
 ```
+Notice in this Grafana graph for that metric the node names are truncated because of the long metric name.
+ ![image](https://user-images.githubusercontent.com/52294647/194360068-c3f5a7a4-876c-4b1d-8368-eab385813bdb.png)
+
 
 ### FILE LOCATIONS 
 **Non Docker Linux Build**

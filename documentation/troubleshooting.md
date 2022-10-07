@@ -145,6 +145,19 @@ vertica_query_requests_transactions_count_per_node{node_name="v_vmart_node0001"}
 ```
 In Prometheus graphs, or tools like Grafana, this will show the missing values as gaps in the graph for the line/bar representing the nodes that had no return values. Prometheus has a Resolution setting you can adjust that may help adjust the graph resolution to minimize the gaps visually. Grafana has a "Connect null values" option on the graph panels that will fill the gaps, noting that this could be technically misleading even though visually pleasing. 
 
-If your Vertica query happens to be a timeseries you may be able to use the TS_LATEST_VALUE or TS_FIRST_VALUE functions to fill gaps if desired. See the Vertica documentaiton for more details.
+If your Vertica query happens to be a timeseries you may be able to use the TS_LATEST_VALUE or TS_FIRST_VALUE functions to fill gaps if desired. See the Vertica documentation for more details.
+
+### TLSMODE SERVER-STRICT FAILS
+Currently the exporter supports using the data_source_name tlsmode parameters of either tlsmode=none or tlsmode=server. 
+tlsmode-strict is not currently implemented
+
+If you try to use strict (mutual) mode you will get an error like this in the exporter log or console
+Oct  7 12:27:24.542147 ERROR driver: x509: certificate signed by unknown authority
+INFO[2022-10-07T12:27:24-04:00] Error gathering metrics:%!(EXTRA *errors.errorString=[from Gatherer #1] x509: certificate signed by unknown authority)
+
+If you turn on the vertica-sql-go driver debug logging you will see a similar message in it's log file.
+go drive debug level log shows the same
+Oct  7 13:12:41.702736 ERROR connection: -> FAILED SENDING Startup (packet): ProtocolVersion:00030009, DriverName='vertica-sql-go', DriverVersion='1.2.2', UserName='dbadmin', Database='VMart', SessionID='vertica-sql-go-1.2.2-257565-1665162761', ClientPID=257565: x509: certificate signed by unknown authority
+Oct  7 13:12:41.702814 ERROR driver: x509: certificate signed by unknown authority
 
 

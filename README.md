@@ -27,6 +27,10 @@ Per the Prometheus philosophy, scrapes are synchronous (metrics are collected on
 
 **Open Source Contributors** - This project is open source and allows contributors. Users are encouraged to submit code for fixes and/or enhancements. Additionally, users can contribute metrics collector files they've developed that they feel might benefit the Vertica community. Hopefully this will result in a growing collection of metrics that can be used by all to get the most value from the exporter.
 
+**TLS/SSLModes**
+The exporter current supports the following data_source_name tlsmode parameters: tlsmode=none or tlsmode=server. 
+The tlsmode server-strict is not currently implemented
+
 ## Usage
 Get Vertica Prometheus Exporter, either via go install, as a packaged release tarball, build it yourself or build a Docker image. All releases use the same basic directory layout. The binary expects there to be a metrics dir below it with the desired collector files (supplied examples or your own). It will create the logfile directory for the exporter log if it doesn't exist.
 

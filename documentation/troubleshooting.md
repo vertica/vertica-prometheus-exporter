@@ -148,8 +148,9 @@ In Prometheus graphs, or tools like Grafana, this will show the missing values a
 If your Vertica query happens to be a timeseries you may be able to use the TS_LATEST_VALUE or TS_FIRST_VALUE functions to fill gaps if desired. See the Vertica documentation for more details.
 
 ### TLSMODE SERVER-STRICT FAILS
-Currently the exporter supports using the data_source_name tlsmode parameters of either tlsmode=none or tlsmode=server. 
-tlsmode-strict is not currently implemented
+Currently the exporter supports using the data_source_name tlsmode parameters of either tlsmode=none or tlsmode=server.
+
+tlsmode server-strict is not currently implemented
 
 If you try to use strict (mutual) mode you will get an error like this in the exporter log or console
 Oct  7 12:27:24.542147 ERROR driver: x509: certificate signed by unknown authority

@@ -37,6 +37,7 @@ Once you build the vertica-prometheus-exporter binary you can move it to any loc
 - Your logfile directory must be under the binary’s. The binary will create the logfile dir and the vertica-prometheus-exporter.log in it if they don’t exist. 
  
 **Docker build** 
+ 
 By default the vertica-prometheus-exporter config and collector files, as well as the logfiles, will be inside the container. You can use the docker -v binds to allow you config for the files to be external to the container. This makes it easier to monitor the log file and manipulate the config and collector files. To do this:
 
 Make a local filesystem metrics directory (make sure to set perms to RWX for user who will run the docker container)

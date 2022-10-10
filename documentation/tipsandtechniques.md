@@ -51,9 +51,9 @@ Copy the yml files from the vertica-prometheus-exporter tree to the local metric
 ```shell
 cp vertica-prometheus-exporter/cmd/vertica-prometheus-exporter/metrics/* ./metrics
 ```
-Edit the vertica config file to set data source name and adjust any knobs desired
+Edit the copied vertica config file in the metrics directory to set data source name and adjust any knobs desired
 ```shell
-vi vertica-prometheus-exporter.yml
+vi metrics/vertica-prometheus-exporter.yml
 ```
 Start the container using the -v bind for mapping the internal docker paths to the local file system paths (Example here local dir is under dbadmin's home directory)
 ```shell

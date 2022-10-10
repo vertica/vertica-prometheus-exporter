@@ -31,6 +31,9 @@ Per the Prometheus philosophy, scrapes are synchronous (metrics are collected on
 The exporter current supports the following data_source_name tlsmode parameters: tlsmode=none or tlsmode=server. 
 The tlsmode server-strict is not currently implemented
 
+## Scope
+The vertica-prometheus-exporter is delivered as a toolkit that allows you to download or build the exporter for the deployment type desired. During research we found that customers all have their own definition of what is critical to track. Rather than trying to define a one size fits all set of collectors we've provided a few basic examples with various metrics and ways of formatting them. We've also provided several documents with additional information that should prove helpful in getting the most out of the exporter while minimizing the impact on the Vertica database. 
+
 ## Usage
 Get Vertica Prometheus Exporter, either via go install, as a packaged release tarball, build it yourself or build a Docker image. All releases use the same default  directory layout. The binary expects there to be a metrics dir below it with the desired collector files (supplied examples or your own). This can be overridden by using the -web.metrics-path parameter on start-up. The exporter will create the logfile directory for the exporter log if it doesn't exist.
 

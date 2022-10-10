@@ -1,22 +1,14 @@
 ### AVAILABLE TOOLS COMPARISON: 
 This is a high level comparison of available monitoring tools. Hopefully it will allow you to decide which is best suited for your use case.
 
-- Vertica Management Console – Comes with Vertica but requires seperate install. All metrics available are chosen by Vertica. It's a static set so the user can’t customize the metrics available or how they are displayed.  
+- Vertica Management Console – Comes with Vertica but requires separate install. All metrics available are chosen by Vertica. It's a static set so the user can’t customize the metrics available or how they are displayed.  
 
-- Grafana plugin – Requires Grafana with Vertica datasource be installed and configured. The data source does a direct connection to Vertica to get metrics. There is no caching of results. It runs queries based on the defined Grafana panel intervals. Queries and dashboards are fully customizable so the user is free to choose what metrics they want to look at, how they are visualized, and frequency of refresh. The Grafana datasource supports tables with string values. Requires Vertica SQL and Grafana skills.
+- Grafana plugin – Requires Grafana with Vertica data source be installed and configured. The data source does a direct connection to Vertica to get metrics. There is no caching of results. It runs queries based on the defined Grafana panel intervals. Queries and dashboards are fully customizable so the user is free to choose what metrics they want to look at, how they are visualized, and frequency of refresh. The Grafana Vertica data source supports tables with string values. Requires Vertica SQL and Grafana skills.
 
-- Prometheus exporter – Requires Prometheus and vertica-prometheus-exporter. Prometheus is configured to use the vertica-prometheus-exporter as a target and initiates scrapes from it. The exporter connects to Vertica, runs the metrics queries, and returns them to Prometheus in a known format. The exporter has the ability to cache metrics if desired, which can help minimize the scrapes it does to the Vertica database. The Prometheus metrics can be used by any tool that supports Prometheus format, e.g. Grafana. Collectors (sets of metrics queries) are fully customizable so the user is free to choose what metrics they want to look at, how they are visualized, and frequency of refresh. They support collector level cache settings. Note that Prometheus doesn't support metric string values, so you can't render a table for non numeric data. Requires Vertica SQL and Prometheus skills, plus whatever visualization tool is being used skills.  
+- Prometheus exporter – Requires Prometheus and vertica-prometheus-exporter. Prometheus is configured to use the vertica-prometheus-exporter as a target and initiates scrapes from it. The exporter connects to Vertica, runs the metrics queries, and returns them to Prometheus in a known format. The exporter has the ability to cache metrics if desired, which can help minimize the scrapes it does to the Vertica database. The Prometheus metrics can be displayed in Prometheus as raw text, tables, and graphs. They can also be used by any tool that supports Prometheus format, e.g. Grafana with it's Prometheus data source plugin. Collectors (sets of metrics queries) are fully customizable, so the user is free to choose what metrics they want to look at, how they are visualized, and frequency of refresh. They support collector level cache settings. Note that Prometheus doesn't support metric string values, so you can't render a table for non numeric data. Requires Vertica SQL and Prometheus skills, plus whatever visualization tool is being used skills.  
 
-### LOAD BALANCE AND FAIL SAFE: 
-You can add Vertica native connection_load_balance and backup_server_node parameters via the data source name in the vertica-prometheus-exporter.yml file for best distributed connections and fail safety in event the primary Vertica node goes down. See the Vertica documentation for more details on these two features.
-
-Here's an example of them added to the basic data_source_name string
-```
-  *data_source_name: 'vertica://dbadmin:@nn.nn.nn.235:5433/VMart?connection_load_balance=1&backup_server_node=nn.nn.nn.236:5433,nn.nn.nn.237:5433'*
-```
-  
-### STARTUP ORDER: 
-Typically you will want to start the exporter prior to Prometheus. This way you can verify it's listening on the port prior to starting Prometheus which will ping that port. The startup order would be similar ot below.
+### START-UP ORDER: 
+Typically you will want to start the exporter prior to Prometheus. This way you can verify it's listening on the port prior to starting Prometheus which will ping that port. The start-up order would be similar to below.
 
 - First start the vertica-prometheus-exporter. Depending on your deployment It should say listening at the end of console output, end of logfile/vertica-prometheus-exporter.log, or end of nohup.out. 
 - Wait a minute and then start Prometheus.  It should say listening at the end of console output or end of nohup.out. 
@@ -31,17 +23,21 @@ vertica_query_requests_transactions_count_per_node{node_name="v_vmart_node0001"}
 vertica_query_requests_transactions_count_per_node{node_name="v_vmart_node0002"} 15 
 vertica_query_requests_transactions_count_per_node{node_name="v_vmart_node0003"} 9 
 ```
+Notice in this Grafana graph for that metric the node names are truncated because of the long metric name.
+ ![image](https://user-images.githubusercontent.com/52294647/194360068-c3f5a7a4-876c-4b1d-8368-eab385813bdb.png)
+
 
 ### FILE LOCATIONS 
 **Non Docker Linux Build**
  
 Once you build the vertica-prometheus-exporter binary you can move it to any location you want but the following dependencies exist: 
 - You have to launch the binary from the directory where it exists
-- You have to have a metrics dir under the binary’s directory that contains the collector yml files 
+- You have to have a metrics dir under the binary’s directory that contains the collector yml files. Can be overridden, see exporter -help. 
 - You can have the vertica-prometheus-exporter.yml file anywhere you like as the –config-file parameter to starting the binary can be a fully qualified path to it. 
-- Your logfile dir must be under the binary’s directory. The binary will create the logfile dir and the vertica-prometheus-exporter.log in it if they don’t exist. 
+- Your logfile directory must be under the binary’s. The binary will create the logfile dir and the vertica-prometheus-exporter.log in it if they don’t exist. 
  
 **Docker build** 
+By default the vertica-prometheus-exporter config and collector files, as well as the logfiles, will be inside the container. You can use the docker -v binds to allow you config for the files to be external to the container. This makes it easier to monitor the log file and manipulate the config and collector files. To do this:
 
 Make a local filesystem metrics directory (make sure to set perms to RWX for user who will run the docker container)
 ```shell
@@ -59,7 +55,7 @@ Edit the vertica config file to set data source name and adjust any knobs desire
 ```shell
 vi vertica-prometheus-exporter.yml
 ```
-Start the container using the -v bind for mapping the internal docker paths to the local file system paths (Example here local dir is under dbadmin's home dir)
+Start the container using the -v bind for mapping the internal docker paths to the local file system paths (Example here local dir is under dbadmin's home directory)
 ```shell
 docker container run -d --name vpexporter -p 9968:9968 -v /home/dbadmin/metrics:/bin/metrics -v /home/dbadmin/logfile:/bin/logfile vertica-prometheus-exporter
 ```
@@ -85,7 +81,7 @@ Log:
 Also, if the log file reaches the max size within a single day that log will be zipped and a new log will be started. This further helps keep the log files under control without much user monitoring.
 
 ### CLEARTEXT PASSWORD 
-To prevent the clear text database password from showing n logs or command history we’ve used a GO secret datatype to store it. The password will still be clear text in the vertica-prometheus-exporter.yml so that file should have an access mask to only allow the user running the exporter to read it.  
+To prevent the clear text database password from showing in logs or command history we’ve used a GO secret datatype to store it. The password will still be clear text in the vertica-prometheus-exporter.yml so that file should have an access mask to only allow the user running the exporter to read it.  
 
 ### COLLECTOR FILE PLACEMENT 
 To prevent false console/log output by the exporter, only put collector yml files in the metrics directory that are associated with collectors you specify in the vertica-prometheus-exporter.yml config file. Alternatively, if you want to keep a superset of collectors but change which you use at different times, then instead of the collector_files value specifying a glob list the yml files individually, e.g. (vertica_base_example.collector.yml,vertica_base_example2.collector.yml).  

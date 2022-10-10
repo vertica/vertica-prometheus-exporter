@@ -137,6 +137,8 @@ A good pull request means:
 - documentation and tests, if needed
 - Go to https://github.com/YOURUSERNAME/vertica-prometheus-exporter  and [make a Pull Request](https://help.github.com/articles/creating-a-pull-request/) to vertica:master.
 
+**Note: When you initate a contribution some background tests run to verify you proposed changes pass. These tests can take 5 to 10 minutes to execute, so be patient. It is out there doing something when you see the pause in activity.**
+
 ### Sign the CLA
 
 Before we can accept a pull request, we first ask people to sign a Contributor License Agreement (or CLA). We ask this so that we know that contributors have the right to donate the code. You should notice a comment from **CLAassistant**  on your pull request page, follow this comment to sign the CLA electronically.

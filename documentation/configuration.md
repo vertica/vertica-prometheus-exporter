@@ -1,4 +1,3 @@
-### Configurations :
 ## Configuration General
 Vertica Prometheus Exporter is typically installed on a non Vertica host so they don't share the same failure domain. In this way the exporter can report a Vertica database side failure.
 
@@ -58,6 +57,25 @@ Log:
   max_log_filesize:  1 
 
 ```
+
+#### LOAD BALANCE AND FAIL SAFE: 
+You can add Vertica native connection_load_balance and backup_server_node parameters via the data source name in the vertica-prometheus-exporter.yml file for best distributed connections and fail safety in event the primary Vertica node goes down. See the Vertica documentation for more details on these two features.
+
+Here's an example of them added to the basic data_source_name string
+```
+  *data_source_name: 'vertica://dbadmin:@nn.nn.nn.235:5433/VMart?connection_load_balance=1&backup_server_node=nn.nn.nn.236:5433,nn.nn.nn.237:5433'*
+```
+
+#### TLS AUTHENTICATION: 
+You can add Vertica TLS authentication parameter via the data source name in the vertica-prometheus-exporter.yml file. See the Vertica documentation for more details on TLS/SSL authenticaiton and server side setup requirements. The exporter supports tlsmodes of "none" and "server". It doesn't support "server-strict".
+
+Here's an example of the tlsmode added to the basic data_source_name string
+```
+  *data_source_name: 'vertica://dbadmin:@nn.nn.nn.235:5433/VMart?tlsmode=server*
+```
+
+
+
 ## vertica-base-example.collector.yml configuration
 **Note in this file that all metrics issue their own query, and all queries return a single numeric value result.**
 ```yml

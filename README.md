@@ -76,13 +76,9 @@ $ go install github.com/vertica/vertica-prometheus-exporter/cmd/vertica-promethe
 You will need a configuration file and at least one collector file to go any further.
 
 Create a metrics directory under wherever you are going to permanently keep the binary. Copy the vertica-prometheus-exporter.yml
-=======
-Create a metrics directory under wherever you are going to permanently keep the binary. Copy the vertica-prometheus-exporter.yml
-
-config file and at least one example collector file into the metrics directory.
 
 Modify the data_source_name in the metrics/vertica-prometheus-exporter.yml config file to point to your Vertica database. 
-Also modify the collectors list to match the example you chose.
+Also modify the collectors list to match the example(s) you chose.
 
 cd to the directory with the binary and run 
 ```shell
@@ -96,7 +92,8 @@ Download the tarball and uncompress it. You will end up with a directory contain
 LICENSE file, README.md file, a metrics dir with the config and example yml files, and a documentation directory with additional 
 documentation files.
 
-Modify the data_source_name in the metrics/vertica-prometheus-exporter.yml config file to point to your Vertica database 
+Modify the data_source_name in the metrics/vertica-prometheus-exporter.yml config file to point to your Vertica database. 
+Also modify the collectors list to match the example(s) you chose.
 
 cd to the directory with the binary and run 
 ```shell
@@ -113,7 +110,8 @@ $ make build
 ```
 The build will create a binary file in ***cmd/vertica-prometheus-exporter/***
 
-Modify the data_source_name in the cmd/vertica-prometheus-exporter/metrics/vertica-prometheus-exporter.yml config file to point to your Vertica database 
+Modify the data_source_name in the metrics/vertica-prometheus-exporter.yml config file to point to your Vertica database. 
+Also modify the collectors list to match the example(s) you chose.
 
 cd to the cmd/vertica-prometheus-exporter directory with the binary and run 
 ```shell
@@ -131,6 +129,8 @@ $ docker build -t "vertica-prometheus-exporter:latest" .
 ```shell
 $ docker container run -d -p 9968:9968 --network=vertica  --name vpexporter vertica-prometheus-exporter:latest
 ```
+At this point you'll need to go into the container's interactive mode to edit the vertica-prometheus-exporter.yml config file and modify the data_source_name in the cmd/vertica-prometheus-exporter/metrics/vertica-prometheus-exporter.yml config file to point to your Vertica database. Also modify the collectors list to match the example(s) you choose to use.
+
 **More information about docker build and usage can be found in documentation directory.**
 
 > **Note**

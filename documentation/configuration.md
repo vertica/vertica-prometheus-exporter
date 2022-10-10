@@ -1,4 +1,3 @@
-### Configurations :
 ## Configuration General
 Vertica Prometheus Exporter is typically installed on a non Vertica host so they don't share the same failure domain. In this way the exporter can report a Vertica database side failure.
 

@@ -73,6 +73,9 @@ $ go install github.com/vertica/vertica-prometheus-exporter/cmd/vertica-promethe
 You will need a configuration file and at least one collector file to go any further.
 
 Create a metrics directory under wherever you are going to permanently keep the binary. Copy the vertica-prometheus-exporter.yml
+=======
+Create a metrics directory under wherever you are going to permanently keep the binary. Copy the vertica-prometheus-exporter.yml
+
 config file and at least one example collector file into the metrics directory.
 
 Modify the data_source_name in the metrics/vertica-prometheus-exporter.yml config file to point to your Vertica database. 

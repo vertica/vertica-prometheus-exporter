@@ -62,7 +62,7 @@ const (
 )
 
 var (
-	showVersion   = flag.Bool("version", false, "Print version, license, and copyright information")
+	showVersion   = flag.Bool("version", false, "Print version, license, copyright, and build information")
 	listenAddress = flag.String("web.listen-address", ":9968", "Address to listen on for web interface and telemetry")
 	metricsPath   = flag.String("web.metrics-path", "/metrics", "Path under which to expose metrics")
 	enableReload  = flag.Bool("web.enable-reload", false, "Enable reload collector data handler")

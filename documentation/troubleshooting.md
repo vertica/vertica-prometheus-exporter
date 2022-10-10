@@ -15,7 +15,7 @@ W0817 16:15:51.296868   96868 query.go:150] [collector="vertica_base_EON_Mode", 
 W0817 16:15:51.305122   96868 query.go:150] [collector="vertica_base_EON_Mode", query="vertica_depot_evictions_by_minute"] Extra column "YMDHM" returned by query
 W0817 16:15:51.306289   96868 query.go:150] [collector="vertica_base_EON_Mode", query="vertica_depot_fetches_by_minute"] Extra column "YMDHM" returned by query
 ```
-Root cause is typically due to a query object being defined and not all columns in the query being used in queryref objects. E.g.the query below only has one metric using it in a single value queryref. So all the other columns in the query are flagged as extras not used. To fix this one would change the query object to only select columns that will have metrics that queryref them.
+Root cause is typically due to a query object being defined and not all columns in the query being used in queryref objects. E.g. the query below only has one metric using it in a single value queryref. So all the other columns in the query are flagged as extras not used. To fix this one would change the query object to only select columns that will have metrics that queryref them.
 
 ```yml
   - metric_name: vertica_data_writes_per_hour
@@ -37,7 +37,7 @@ Root cause is typically due to a query object being defined and not all columns 
 ```
 
 ## TABLES WITH STRING VALUES
-Prometheus doesn't support string metrics, so any attempt at creating a metric with non numeric return vlaues will error when trying to convert.
+Prometheus doesn't support string metrics, so any attempt at creating a metric with non numeric return values will error when trying to convert.
 https://stackoverflow.com/questions/65850083/prometheus-java-client-export-string-based-metrics
 https://github.com/prometheus/prometheus/issues/2227
 

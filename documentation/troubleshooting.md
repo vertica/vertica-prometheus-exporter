@@ -1,5 +1,7 @@
+## TROUBLESHOOTING
+This document covers some common errors one might see and the potential root causes.
 
-### UNUSED COLUMNS IN QUERY
+## UNUSED COLUMNS IN QUERY
 If you see these in the exporter output they are warnings.
 ```
 W0817 16:15:51.296708   96868 query.go:150] [collector="vertica_base_EON_Mode", query="vertica_s3_performance"] Extra column "end_time" returned by query
@@ -34,7 +36,7 @@ Root cause is typically due to a query object being defined and not all columns 
         order by node_name,end_time desc;
 ```
 
-### TABLES WITH STRING VALUES
+## TABLES WITH STRING VALUES
 Prometheus doesn't support string metrics, so any attempt at creating a metric with non numeric return vlaues will error when trying to convert.
 https://stackoverflow.com/questions/65850083/prometheus-java-client-export-string-based-metrics
 https://github.com/prometheus/prometheus/issues/2227
@@ -120,7 +122,7 @@ INFO[2022-09-19T13:58:51-04:00] returned_columns="[c1 c2 c3]"collector="vertica_
 INFO[2022-09-19T13:58:51-04:00] Error gathering metrics:%!(EXTRA *errors.errorString=[from Gatherer #1] [collector="vertica_base_tables", query="vertica_node_states"] scanning of query result failed: sql: Scan error on column index 2, name "c3": converting NULL to float64 is unsupported)
 ```
 
-### DATA GAPS IN GRAPHS
+## DATA GAPS IN GRAPHS
 Prometheus and tools like Grafana may show gaps in the data in graphs for some metrics. This is most likely because there is no data for one or more rows for that metric scrape at that time. It will happen more often on an idle Vertica database than a busy one
 
 Here's an example of a metric against a 3 node database where at the time of the scrape only node0001 had activity
@@ -147,7 +149,7 @@ In Prometheus graphs, or tools like Grafana, this will show the missing values a
 
 If your Vertica query happens to be a timeseries you may be able to use the TS_LATEST_VALUE or TS_FIRST_VALUE functions to fill gaps if desired. See the Vertica documentation for more details.
 
-### TLSMODE SERVER-STRICT FAILS
+## TLSMODE SERVER-STRICT FAILS
 Currently the exporter supports using the data_source_name tlsmode parameters of either tlsmode=none or tlsmode=server.
 
 tlsmode server-strict is not currently implemented

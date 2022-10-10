@@ -1,3 +1,4 @@
+## DOCKER COMMANDS
 This file covers some basic docker commands that may be helpful during the pre-build, build, and post build of a docker image.
 
 Requirements:

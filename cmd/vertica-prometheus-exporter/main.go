@@ -62,7 +62,7 @@ const (
 )
 
 var (
-	showVersion   = flag.Bool("version", false, "Print version information")
+	showVersion   = flag.Bool("version", false, "Print version, license, and copyright information")
 	listenAddress = flag.String("web.listen-address", ":9968", "Address to listen on for web interface and telemetry")
 	metricsPath   = flag.String("web.metrics-path", "/metrics", "Path under which to expose metrics")
 	enableReload  = flag.Bool("web.enable-reload", false, "Enable reload collector data handler")
@@ -99,7 +99,7 @@ func main() {
 	flag.Parse()
 
 	if *showVersion {
-		fmt.Println(version.Print("vertica-prometheus-exporter"))
+		fmt.Println(version.Print("vertica-prometheus-exporter, Licensed under the Apache License, Version 2.0, Copyright [2018-2022] Micro Focus or one of its affiliates"))
 		os.Exit(0)
 	}
 

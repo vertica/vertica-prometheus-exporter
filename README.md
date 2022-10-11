@@ -100,6 +100,8 @@ cd to the directory with the binary and run
 $ ./vertica-prometheus-exporter --config.file metrices/vertica-prometheus-exporter.yml
 ```
 
+** Note to view the documentation with markdown formatting outside of Github you will need to use a markdown viewer.
+
 ### Build it yourself (full source distribution)
 A prerequisite for this install is that you have GO installed and in your PATH. This method will install just the vertica-prometheus-exporter binary in your ~/go/bin directory. You will need to download any configuration, example, and documentation files separately.
 

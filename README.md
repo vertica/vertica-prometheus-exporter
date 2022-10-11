@@ -12,10 +12,9 @@ Per the Prometheus philosophy, scrapes are synchronous (metrics are collected on
 
 ## List of Features
 **Multiple release formats to choose from**
- 1. running go install to build and install just the binary
- 2. downloading a tarball that is a minimal footprint with a Linux amd64 binary plus the example and documentation files
- 3. git clone or download/uncompress the repo zip and build your own exporter binary
- 4. git clone or download/uncompress the repo zip and do a docker build to create an exporter docker image
+ 1. downloading a tarball that is a minimal footprint with a Linux amd64 binary plus the example and documentation files
+ 2. git clone or download/uncompress the repo zip and build your own exporter binary
+ 3. git clone or download/uncompress the repo zip and do a docker build to create an exporter docker image
 
 **Configuration and collector file knobs** - There are several configuration file (global) and collector file (override global) knobs the end use can adjust to meet their needs regarding things like log retention, database connections, and metrics caching.
 
@@ -35,7 +34,7 @@ The tlsmode server-strict is not currently implemented
 The vertica-prometheus-exporter is delivered as a toolkit that allows you to download or build the exporter for the deployment type desired. During research we found that customers all have their own definition of what is critical to track. Rather than trying to define a one size fits all set of collectors we've provided a few basic examples with various metrics and ways of formatting them. We've also provided several documents with additional information that should prove helpful in getting the most out of the exporter while minimizing the impact on the Vertica database. 
 
 ## Usage
-Get Vertica Prometheus Exporter, either via go install, as a packaged release tarball, build it yourself or build a Docker image. All releases use the same default  directory layout. The binary expects there to be a metrics dir below it with the desired collector files (supplied examples or your own). This can be overridden by using the -web.metrics-path parameter on start-up. The exporter will create the logfile directory for the exporter log if it doesn't exist.
+Get Vertica Prometheus Exporter, either via a packaged release tarball, build it yourself or build a Docker image. All releases use the same default  directory layout. The binary expects there to be a metrics dir below it with the desired collector files (supplied examples or your own). This can be overridden by using the -web.metrics-path parameter on start-up. The exporter will create the logfile directory for the exporter log if it doesn't exist.
 
 The example collector files all query Vertica's system tables. So the user that you use in your data_source_name must be the dbadmin or a user that has sysmonitor as it's default role. We recommend you create a user specifically for the exporter and give it the sysmonitor default role. This gives the user ability to select system and data collector tables but none of the other dbadmin capabilities. See the Vertica documentation for more details on the sysmonitor role.
 
@@ -67,24 +66,6 @@ vertica-prometheus-exporter, Licensed under the Apache License, Version 2.0, Cop
 ```
 
 ## Package releases
-### GO Install (binary only)
-A prerequisite for this install is that you have GO installed and in your PATH. This method will install just the vertica-prometheus-exporter binary in your ~/go/bin directory. You will need to download any configuration, example, and documentation files separately.
-
-```shell
-$ go install github.com/vertica/vertica-prometheus-exporter/cmd/vertica-prometheus-exporter@latest
-```
-You will need a configuration file and at least one collector file to go any further.
-
-Create a metrics directory under wherever you are going to permanently keep the binary. Copy the vertica-prometheus-exporter.yml
-
-Modify the data_source_name in the metrics/vertica-prometheus-exporter.yml config file to point to your Vertica database. 
-Also modify the collectors list to match the example(s) you chose.
-
-cd to the directory with the binary and run 
-```shell
-$ ./vertica-prometheus-exporter --config.file metrices/vertica-prometheus-exporter.yml
-```
-
 ### Tarball (binary, license, examples, documentation)
 Under the repo release latest Downloads tab you will find assets including a tarball and two forms of the source. The tarball will have a name like vertica-prometheus-exporter-vn.n.n-linux-amd64.tar.gz. 
 

@@ -1,4 +1,8 @@
-# Vertica Prometheus Exporter [![Go](https://github.com/vertica/vertica-prometheus-exporter/actions/workflows/build.yml/badge.svg)](https://github.com/vertica/vertica-prometheus-exporter/actions/workflows/build.yml) [![Go Report Card](https://goreportcard.com/badge/github.com/vertica/vertica-prometheus-exporter)](https://goreportcard.com/report/github.com/vertica/vertica-prometheus-exporter/) [![Github All Releases](https://img.shields.io/github/downloads/vertica/vertica-prometheus-exporter/total.svg)]()
+# Vertica Prometheus Exporter
+[![Go](https://github.com/vertica/vertica-prometheus-exporter/actions/workflows/build.yml/badge.svg)](https://github.com/vertica/vertica-prometheus-exporter/actions/workflows/build.yml) 
+[![Go Reference](https://pkg.go.dev/badge/github.com/vertica/vertica-prometheus-exporter.svg)](https://pkg.go.dev/github.com/vertica/vertica-prometheus-exporter)
+[![Go Report Card](https://goreportcard.com/badge/github.com/vertica/vertica-prometheus-exporter)](https://goreportcard.com/report/github.com/vertica/vertica-prometheus-exporter/) 
+[![Github All Releases](https://img.shields.io/github/downloads/vertica/vertica-prometheus-exporter/total.svg)]()
 
 
 This is a permanent fork of the [sql_exporter](https://github.com/burningalchemist/sql_exporter) by burningalchemist. We used that as a base to create a Vertica specific exporter tailored to the needs of our customers. There were some breaking changes planned, e.g. different logger and removal of non Vertica database support, that made it impractical to just branch the code. 

@@ -177,7 +177,7 @@ Log:
 ### Collectors
 Collectors may be defined inline, in the exporter configuration file, under `collectors`, or they may be defined in separate files and referenced in the exporter configuration by name, making them easy to share and reuse. We recommend separate files as they are easier to debug and put in and out of service.
 
-The collector definition below generates gauge metrics for finding out  `vertica_connections_per_node`. The collectors are written in YAML and have pretty strict formatting rules.
+The collector definition below generates gauge metrics for finding out  `vertica_connections_per_node`. The collectors are written in YAML and have strict formatting rules.
 
 **vertica-example1.collector.yml**
 
@@ -190,9 +190,9 @@ metrics:
     help: 'Connections per node'
     key_labels:
        - node_name
-    values: [totaltrans]
+    values: [totalconns]
     query: |
-        SELECT /*+ LABEL(exporter_vertica_global_status_connections_per_node) */ node_name , count(*) totaltrans 
+        SELECT /*+ LABEL(exporter_vertica_global_status_connections_per_node) */ node_name , count(*) totalconns 
         FROM v_monitor.sessions s 
         GROUP BY node_name
         ORDER BY node_name;

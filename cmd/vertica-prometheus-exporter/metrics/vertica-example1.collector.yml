@@ -5,9 +5,9 @@ metrics:
     help: 'Connections per node'
     key_labels:
        - node_name
-    values: [totaltrans]
+    values: [totalconns]
     query: |
-        SELECT /*+ LABEL(exporter_vertica_global_status_connections_per_node) */ node_name , count(*) totaltrans 
+        SELECT /*+ LABEL(exporter_vertica_global_status_connections_per_node) */ node_name , count(*) totalconns 
         FROM v_monitor.sessions s 
         GROUP BY node_name
         ORDER BY node_name;
@@ -22,7 +22,8 @@ metrics:
        node_name , count(*) total
        FROM transactions
        WHERE start_timestamp between date_trunc('minute',sysdate) - '1 minutes'::interval and date_trunc('minute',sysdate) - '1 milliseconds'::interval
-       GROUP BY node_name;
+       GROUP BY node_name
+       ORDER BY node_name;
   - metric_name: vertica_cpu_usage_pct
     type: gauge
     help: 'vertica cpu usage percentage'
@@ -78,6 +79,7 @@ queries:
           CAST(max(io_read_kbytes_per_second)*1024 as INTEGER) as io_read_bps,
           CAST(max(io_written_kbytes_per_second)*1024 as INTEGER) as io_write_bps
        from system_resource_usage 
-       group by node_name;
+       group by node_name
+       order by end_time desc limit 1;
        
 

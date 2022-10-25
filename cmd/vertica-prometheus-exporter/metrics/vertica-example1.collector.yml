@@ -79,7 +79,7 @@ queries:
           CAST(max(io_read_kbytes_per_second)*1024 as INTEGER) as io_read_bps,
           CAST(max(io_written_kbytes_per_second)*1024 as INTEGER) as io_write_bps
        from system_resource_usage 
-       group by node_name
+       group by node_name, end_time
        order by end_time desc limit 1;
        
 

@@ -22,7 +22,7 @@ BIN_DIR             ?= $(shell pwd)/cmd/vertica-prometheus-exporter/
 DOCKER_IMAGE_NAME   ?= vertica-prometheus-exporter
 DOCKER_IMAGE_TAG    ?= $(subst /,-,$(shell git rev-parse --abbrev-ref HEAD))
 
-VERSION := v1.0.1
+VERSION := v1.0.2
 
 all: format test build
 
